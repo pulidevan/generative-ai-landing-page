@@ -299,29 +299,23 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
     transition: all 0.2s ease !important;
   }
 
-  /* Seamless Form Embed Wrapper & Skeleton */
+  /* Seamless Form Embed Wrapper */
   .form-embed-wrapper {
     position: relative;
     width: 100%;
-    min-height: 594px;
     background: #FFFFFF;
     border-radius: 16px;
     overflow: hidden;
   }
   .form-embed-wrapper iframe {
     width: 100%;
-    height: 100%;
-    min-height: 594px;
+    min-height: 540px;
     border: none;
-    border-radius: 16px;
+    display: block;
     position: relative;
     z-index: 2;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    margin-bottom: -60px; /* Hide the GHL Privacy Policy footer */
-  }
-  .form-embed-wrapper iframe.iframe-loaded {
     opacity: 1 !important;
+    visibility: visible !important;
   }
   .form-skeleton {
     position: absolute;
