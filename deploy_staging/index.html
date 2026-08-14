@@ -272,7 +272,7 @@
           border-bottom-color: #1A22FF;
         }
 
-        /* Bottom Floating Sticky CTA Bar - Always active across all screen sizes */
+        /* Bottom Floating Sticky CTA Bar - Always visible across all screen sizes */
         #sticky-bottom-bar {
           position: fixed !important;
           bottom: 0 !important;
@@ -283,15 +283,17 @@
           background: #050B36 !important;
           border-top: 1px solid rgba(249, 250, 252, 0.15) !important;
           box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.6) !important;
-          transform: translateY(120%) !important;
-          transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease !important;
+          transform: none !important;
+          opacity: 1 !important;
+          visibility: visible !important;
+          pointer-events: auto !important;
           padding: 12px 20px !important;
           box-sizing: border-box !important;
           display: block !important;
         }
 
         #sticky-bottom-bar.visible {
-          transform: translateY(0) !important;
+          transform: none !important;
           opacity: 1 !important;
           pointer-events: auto !important;
         }
@@ -2133,21 +2135,21 @@ class Component extends DCLogic {
       });
     });
 
-    // Bottom Floating Sticky Bar Scroll Listener — Trigger on first scroll across all screen sizes
+    // Bottom Floating Sticky Bar — Always visible across all screen sizes
     function handleStickyBarScroll() {
       const stickyBar = document.getElementById('sticky-bottom-bar');
       if (!stickyBar) return;
-      const scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-      if (scrollPos > 60) {
-        stickyBar.classList.add('visible');
-      } else {
-        stickyBar.classList.remove('visible');
-      }
+      stickyBar.classList.add('visible');
+      stickyBar.style.transform = 'none';
+      stickyBar.style.opacity = '1';
+      stickyBar.style.visibility = 'visible';
+      stickyBar.style.display = 'block';
     }
     window.addEventListener('scroll', handleStickyBarScroll, { passive: true });
     window.addEventListener('touchmove', handleStickyBarScroll, { passive: true });
     window.addEventListener('load', handleStickyBarScroll);
     document.addEventListener('DOMContentLoaded', handleStickyBarScroll);
+    handleStickyBarScroll();
 
     // Universal seamless CTA click handler — ALL buttons and top ticker go directly to hero form embed (#enroll)
     window.scrollToEnrollForm = function (e) {
@@ -2381,7 +2383,8 @@ class Component extends DCLogic {
   </style>
 
   <!-- Floating Bottom Sticky Bar (Root Level Viewport Attached) -->
-  <div id="sticky-bottom-bar">
+  <div id="sticky-bottom-bar"
+    style="position: fixed !important; bottom: 0 !important; left: 0 !important; right: 0 !important; width: 100% !important; z-index: 999999 !important; background: #050B36 !important; border-top: 1px solid rgba(249, 250, 252, 0.15) !important; box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.6) !important; transform: none !important; opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; padding: 12px 20px !important; box-sizing: border-box !important; display: block !important;">
     <div
       style="max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
       <div style="display: flex; align-items: center; gap: 12px;" class="sticky-info">
@@ -2404,23 +2407,27 @@ class Component extends DCLogic {
   </div>
 
   <script>
-    // Self-contained sticky footer controller — fires on ANY scroll, no x-dc dependency
+    // Self-contained sticky footer controller — always active & visible
     (function () {
-      var bar = document.getElementById('sticky-bottom-bar');
-      if (!bar) return;
-      function show() {
-        var y = window.pageYOffset || document.documentElement.scrollTop || 0;
-        if (y > 10) {
-          bar.classList.add('visible');
-        } else {
-          bar.classList.remove('visible');
-        }
+      function forceVisible() {
+        var bar = document.getElementById('sticky-bottom-bar');
+        if (!bar) return;
+        bar.classList.add('visible');
+        bar.style.setProperty('transform', 'none', 'important');
+        bar.style.setProperty('opacity', '1', 'important');
+        bar.style.setProperty('visibility', 'visible', 'important');
+        bar.style.setProperty('display', 'block', 'important');
+        bar.style.setProperty('pointer-events', 'auto', 'important');
       }
-      window.addEventListener('scroll', show, { passive: true });
-      window.addEventListener('touchmove', show, { passive: true });
-      show();
-      setTimeout(show, 500);
-      setTimeout(show, 1500);
+      forceVisible();
+      document.addEventListener('DOMContentLoaded', forceVisible);
+      window.addEventListener('load', forceVisible);
+      window.addEventListener('scroll', forceVisible, { passive: true });
+      window.addEventListener('touchmove', forceVisible, { passive: true });
+      setTimeout(forceVisible, 200);
+      setTimeout(forceVisible, 800);
+      setTimeout(forceVisible, 2000);
+
       // Fallback scrollToEnrollForm
       if (!window.scrollToEnrollForm) {
         window.scrollToEnrollForm = function (e) {
