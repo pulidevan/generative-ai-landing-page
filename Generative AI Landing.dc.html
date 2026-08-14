@@ -805,13 +805,21 @@ class Component extends DCLogic {
       if (window.hasTrackedLeadSubmission) return;
       window.hasTrackedLeadSubmission = true;
 
-      // Track Meta Pixel Lead & CompleteRegistration events
+      // 1. Immediately close modal drawer if open
+      if (typeof closeLeadModal === 'function') {
+        closeLeadModal();
+      }
+
+      // 2. Track Meta Pixel Lead & CompleteRegistration events
       if (typeof fbq === 'function') {
         fbq('track', 'Lead', { content_name: 'Generative AI Lead Form' });
         fbq('track', 'CompleteRegistration', { content_name: 'Generative AI Programme' });
       }
 
-      // Automatic JS frontend redirect disabled — form backend handles thank you page / response natively
+      // 3. Smooth redirect to thank you page
+      setTimeout(() => {
+        window.location.href = 'https://genai.aiessentials.in/thankyou.html';
+      }, 200);
     }
 
     window.addEventListener('message', (e) => {
@@ -826,7 +834,7 @@ class Component extends DCLogic {
 
       const lower = str.toLowerCase();
 
-      // Check for submission keywords in message payload
+      // 1. Check for submission keywords in message payload
       const isKeywordMatch = 
         lower.includes('form_submitted') ||
         lower.includes('form-submitted') ||
@@ -838,7 +846,19 @@ class Component extends DCLogic {
         lower.includes('thankyou') ||
         lower.includes('thank_you');
 
-      if (isKeywordMatch) {
+      // 2. Check for iFrameSizer height collapse (inline thank-you message shrinks iframe height < 360px)
+      let isHeightCollapse = false;
+      if (typeof e.data === 'string' && e.data.startsWith('[iFrameSizer]')) {
+        const parts = e.data.split(':');
+        if (parts.length >= 2) {
+          const h = parseInt(parts[1], 10);
+          if (!isNaN(h) && h > 60 && h < 360 && userHasInteracted) {
+            isHeightCollapse = true;
+          }
+        }
+      }
+
+      if (isKeywordMatch || isHeightCollapse) {
         handleFormSubmission();
       }
     });
