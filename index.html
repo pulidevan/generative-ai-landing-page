@@ -23,7 +23,7 @@
   <link rel="apple-touch-icon" href="assets/favicon.png">
   <link rel="amphtml" href="https://genai.aiessentials.in/amp.html">
   <script>
-    // Immediate Bulletproof Scroll Handler
+    // Immediate Bulletproof Centered Scroll & Highlight Glow Handler
     window.scrollToEnrollForm = function (e) {
       if (e) {
         if (e.preventDefault) e.preventDefault();
@@ -31,13 +31,28 @@
       }
       var target = document.getElementById('enroll') || document.querySelector('.hero-form') || document.querySelector('.form-embed-wrapper');
       if (target) {
-        var offset = window.innerWidth <= 991 ? 16 : 24;
         var scrollY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-        var targetTop = target.getBoundingClientRect().top + scrollY - offset;
-        window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+        var targetHeight = target.offsetHeight || 550;
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        var centerOffset = Math.max(16, (vh - targetHeight) / 2);
+        var targetTop = target.getBoundingClientRect().top + scrollY - centerOffset;
+
+        window.scrollTo({
+          top: Math.max(0, targetTop),
+          behavior: 'smooth'
+        });
+
         try {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } catch (err) {}
+
+        // Trigger luminous highlight glow
+        target.classList.remove('form-highlight-glow');
+        void target.offsetWidth;
+        target.classList.add('form-highlight-glow');
+        setTimeout(function () {
+          target.classList.remove('form-highlight-glow');
+        }, 2600);
       } else {
         window.location.hash = '#enroll';
       }
@@ -992,6 +1007,35 @@
           margin-top: 6px;
         }
 
+        /* Luminous Highlight Pulse & Focus Glow on CTA Trigger */
+        @keyframes formHighlightPulse {
+          0% {
+            box-shadow: 0 0 0 0 rgba(216, 255, 50, 0.95), 0 0 35px rgba(216, 255, 50, 0.8), 0 24px 60px rgba(5, 11, 54, 0.5);
+            border-color: #D8FF32 !important;
+            transform: scale(1.02);
+          }
+          40% {
+            box-shadow: 0 0 0 12px rgba(216, 255, 50, 0.4), 0 0 50px rgba(216, 255, 50, 0.75), 0 24px 60px rgba(5, 11, 54, 0.5);
+            border-color: #D8FF32 !important;
+            transform: scale(1.015);
+          }
+          70% {
+            box-shadow: 0 0 0 6px rgba(216, 255, 50, 0.2), 0 0 30px rgba(216, 255, 50, 0.4), 0 24px 60px rgba(5, 11, 54, 0.4);
+            border-color: #D8FF32 !important;
+            transform: scale(1.008);
+          }
+          100% {
+            box-shadow: 0 24px 60px rgba(5, 11, 54, 0.35);
+            border-color: #E4E6F0 !important;
+            transform: scale(1);
+          }
+        }
+
+        .form-highlight-glow {
+          animation: formHighlightPulse 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+          transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease !important;
+        }
+
         @media (max-width: 640px) {
           .form-iframe-clipper {
             max-height: 525px !important;
@@ -1072,12 +1116,13 @@
 
         @media (max-width: 640px) {
           .top-brand-strip {
-            padding: 8px 14px 0 14px !important;
+            padding: 8px 14px 5px 14px !important;
             margin-bottom: 0 !important;
           }
           .top-strip-logo {
             height: 22px;
             max-width: 140px;
+            margin-bottom: 5px !important;
           }
         }
       </style>
@@ -2155,17 +2200,28 @@ class Component extends DCLogic {
       }
       const enrollEl = document.getElementById('enroll') || document.querySelector('.hero-form') || document.querySelector('.form-embed-wrapper');
       if (enrollEl) {
-        const offset = window.innerWidth <= 991 ? 16 : 24;
         const scrollY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-        const targetTop = enrollEl.getBoundingClientRect().top + scrollY - offset;
+        const targetHeight = enrollEl.offsetHeight || 550;
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        const centerOffset = Math.max(16, (vh - targetHeight) / 2);
+        const targetTop = enrollEl.getBoundingClientRect().top + scrollY - centerOffset;
 
         window.scrollTo({
           top: Math.max(0, targetTop),
           behavior: 'smooth'
         });
+
         try {
-          enrollEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          enrollEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } catch (err) {}
+
+        // Trigger luminous highlight glow
+        enrollEl.classList.remove('form-highlight-glow');
+        void enrollEl.offsetWidth;
+        enrollEl.classList.add('form-highlight-glow');
+        setTimeout(() => {
+          enrollEl.classList.remove('form-highlight-glow');
+        }, 2600);
       } else {
         window.location.hash = '#enroll';
       }
