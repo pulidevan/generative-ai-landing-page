@@ -88,6 +88,51 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
     white-space: nowrap;
   }
 
+  /* Blue Social Proof Enrollment Ticker Toast */
+  #recent-enrollment-ticker {
+    position: fixed;
+    bottom: 84px;
+    left: 20px;
+    z-index: 9998;
+    background: #050B36;
+    border: 1px solid #1A22FF;
+    box-shadow: 0 12px 32px rgba(26, 34, 255, 0.35);
+    border-radius: 12px;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #F9FAFC;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8125rem;
+    max-width: 340px;
+    transform: translateY(120px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+  }
+  #recent-enrollment-ticker.visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .ticker-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #D8FF32;
+    box-shadow: 0 0 10px #D8FF32;
+    flex-shrink: 0;
+  }
+  @media (max-width: 768px) {
+    #recent-enrollment-ticker {
+      bottom: 76px;
+      left: 12px;
+      right: 12px;
+      max-width: none;
+    }
+  }
+
   /* Mobile Responsive Fixes */
   @media (max-width: 960px) {
     .responsive-2col {
@@ -876,6 +921,85 @@ class Component extends DCLogic {
         handleFormSubmission();
       }
     });
+  })();
+
+  // South Indian / Tamil Enrollments Blue Ticker Toast
+  (function() {
+    const recentEnrollments = [
+      { name: "Karthik Raja S.", city: "Chennai", role: "Working Professional", time: "2 mins ago" },
+      { name: "Soundarya V.", city: "Coimbatore", role: "Business Owner", time: "4 mins ago" },
+      { name: "Murugan K.", city: "Madurai", role: "Marketing Manager", time: "6 mins ago" },
+      { name: "Priyadarshini R.", city: "Trichy", role: "Working Professional", time: "9 mins ago" },
+      { name: "Saravanan P.", city: "Salem", role: "Business Owner", time: "11 mins ago" },
+      { name: "Anitha M.", city: "Chennai", role: "Software Engineer", time: "14 mins ago" },
+      { name: "Vigneshwaran G.", city: "Erode", role: "Freelance Operator", time: "17 mins ago" },
+      { name: "Divya Bharathi N.", city: "Bengaluru", role: "Working Professional", time: "21 mins ago" },
+      { name: "Gokulakrishnan T.", city: "Tirunelveli", role: "Student / Developer", time: "25 mins ago" },
+      { name: "Jayanthi S.", city: "Vellore", role: "Business Owner", time: "28 mins ago" }
+    ];
+
+    let currentIndex = 0;
+    function displayNextTicker() {
+      let ticker = document.getElementById('recent-enrollment-ticker');
+      if (!ticker) {
+        ticker = document.createElement('div');
+        ticker.id = 'recent-enrollment-ticker';
+        document.body.appendChild(ticker);
+      }
+
+      const current = recentEnrollments[currentIndex];
+      ticker.innerHTML = `
+        <div class="ticker-dot"></div>
+        <div>
+          <div style="font-weight: 700; color: #FFFFFF; font-family: 'Sora', sans-serif; font-size: 0.8125rem;">
+            ${current.name} (${current.city})
+          </div>
+          <div style="font-size: 0.75rem; color: rgba(249,250,252,0.75); margin-top: 2px;">
+            ${current.role} enrolled in Gen AI Programme · <span style="color: #D8FF32; font-weight: 600;">${current.time}</span>
+          </div>
+        </div>
+      `;
+
+      ticker.classList.add('visible');
+
+      setTimeout(() => {
+        ticker.classList.remove('visible');
+      }, 4500);
+
+      currentIndex = (currentIndex + 1) % recentEnrollments.length;
+    }
+
+    setTimeout(() => {
+      displayNextTicker();
+      setInterval(displayNextTicker, 8500);
+    }, 2500);
+  })();
+
+  // Exit Intent Form Modal Popup
+  (function() {
+    let hasTriggeredExitIntent = false;
+
+    function triggerExitModal() {
+      if (hasTriggeredExitIntent || window.hasTrackedLeadSubmission) return;
+      hasTriggeredExitIntent = true;
+      if (typeof openLeadModal === 'function') {
+        openLeadModal('Exit Intent');
+      }
+    }
+
+    // Trigger on cursor moving towards top browser bar (Desktop)
+    document.addEventListener('mouseleave', (e) => {
+      if (e.clientY <= 10) {
+        triggerExitModal();
+      }
+    });
+
+    // Mobile / idle fallback trigger after 25s
+    setTimeout(() => {
+      if (!window.hasTrackedLeadSubmission && !hasTriggeredExitIntent) {
+        triggerExitModal();
+      }
+    }, 25000);
   })();
 </script>
 </body>
