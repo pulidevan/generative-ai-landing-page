@@ -435,26 +435,30 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
 
   /* Pro Hero Grid Layout (Desktop & Mobile) */
   .hero-container {
-    display: grid !important;
+    display: grid;
     grid-template-areas: 
       "header form"
       "content form";
-    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr) !important;
-    gap: 16px clamp(32px, 5vw, 64px) !important;
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+    gap: 16px clamp(32px, 5vw, 64px);
     align-items: start;
+    width: 100%;
+    box-sizing: border-box;
   }
   .hero-header {
     grid-area: header;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100%;
   }
   .hero-form {
     grid-area: form;
     position: relative;
-    /* On desktop, keep it sticky to stay visible while scrolling left content */
     position: sticky;
     top: 24px; 
+    width: 100%;
+    box-sizing: border-box;
   }
   .hero-content {
     grid-area: content;
@@ -462,28 +466,42 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
     flex-direction: column;
     gap: 16px;
     margin-top: 8px;
+    width: 100%;
   }
 
-  @media (max-width: 840px) {
+  @media (max-width: 991px) {
     .hero-container {
-      grid-template-areas: 
-        "header"
-        "form"
-        "content" !important;
-      grid-template-columns: 1fr !important;
-      gap: 32px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 24px !important;
+      padding: 32px 16px 48px !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 auto !important;
+      box-sizing: border-box !important;
+    }
+    .hero-header {
+      width: 100% !important;
+      order: 1 !important;
     }
     .hero-form {
-      position: relative;
-      top: 0;
       width: 100% !important;
-      margin: 0 !important;
-      border-radius: 16px !important;
+      max-width: 100% !important;
+      order: 2 !important;
+      position: relative !important;
+      top: 0 !important;
+      margin: 0 auto !important;
+      box-sizing: border-box !important;
     }
-
-    /* Hide the form container shadow on mobile to make it blend cleaner */
+    .hero-content {
+      width: 100% !important;
+      order: 3 !important;
+    }
     .form-embed-wrapper {
       box-shadow: none !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
     }
   }
 
@@ -508,13 +526,30 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
     color: #D8FF32 !important;
   }
 
-  /* Keep high contrast on lime badge tags and buttons */
-  .sk-button, .sticky-btn-pri, [style*="background: #D8FF32"], [style*="background:#D8FF32"] {
+  /* Keep high contrast on lime badge tags and buttons: TRUE BLACK ALWAYS */
+  .btn-lime, 
+  button.btn-lime, 
+  a.btn-lime, 
+  .sk-button, 
+  .sticky-btn-pri,
+  .btn-lime *, 
+  button.btn-lime *, 
+  a.btn-lime *,
+  [style*="background: #D8FF32"], 
+  [style*="background:#D8FF32"],
+  [style*="background: #d8ff32"],
+  [style*="background:#d8ff32"],
+  [style*="background: rgb(216, 255, 50)"],
+  [style*="background: rgb(216,255,50)"],
+  [style*="background: #D8FF32"] *, 
+  [style*="background:#D8FF32"] *,
+  [style*="background: #d8ff32"] *,
+  [style*="background:#d8ff32"] *,
+  [style*="background: rgb(216, 255, 50)"] *,
+  [style*="background: rgb(216,255,50)"] * {
     color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
     font-weight: 800 !important;
-  }
-  .sk-button *, .sticky-btn-pri *, [style*="background: #D8FF32"] *, [style*="background:#D8FF32"] * {
-    color: #000000 !important;
   }
 
   /* Force 100% page width on all layout containers */
@@ -538,7 +573,7 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
 
   <!-- Hero (01) -->
   <section data-screen-label="Hero" style="background: #050B36; color: #F9FAFC;">
-    <div class="responsive-2col hero-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(40px, 6vw, 84px) clamp(20px, 5vw, 80px);">
+    <div class="hero-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(40px, 6vw, 84px) clamp(20px, 5vw, 80px);">
       <div class="hero-header">
         <!-- Brand Logo -->
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 2px;">
@@ -566,7 +601,7 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
         
         <!-- Hero CTA & Social Proof -->
         <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 4px;">
-          <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" style="background: #D8FF32; color: #000000 !important; border: none; border-radius: 99px; padding: 18px 36px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.0625rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 10px 30px rgba(216, 255, 50, 0.35); width: fit-content;">
+          <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" class="btn-lime" style="background: #D8FF32; color: #000000 !important; border: none; border-radius: 99px; padding: 18px 36px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.0625rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 10px 30px rgba(216, 255, 50, 0.35); width: fit-content;">
             BOOK YOUR FREE AI STRATEGY CALL → <span style="font-size: 0.8125rem; opacity: 0.9; font-weight: 600; color: #000000 !important;"><s style="opacity:0.6; color: #000000 !important;">₹999</s> ₹0 Today</span>
           </button>
           <div style="font-size: 0.8125rem; font-weight: 600; color: rgba(255, 255, 255, 0.9); display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
@@ -639,35 +674,51 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
       </div>
 
       <!-- Lead form (13 - Form) -->
-      <div id="enroll" class="hero-form form-embed-wrapper" style="box-shadow: 0 24px 60px rgba(5,11,54,0.35); border: 1px solid #E4E6F0; position: relative;">
-        <div style="background: linear-gradient(135deg, #08125C 0%, #050B36 100%); padding: 14px 20px; border-bottom: 1px solid rgba(26, 34, 255, 0.4); display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top-left-radius: 16px; border-top-right-radius: 16px;">
+      <div id="enroll" class="hero-form form-embed-wrapper" style="box-shadow: 0 24px 60px rgba(5,11,54,0.35); border: 1px solid #E4E6F0; position: relative; border-radius: 16px; overflow: hidden; background: #FFFFFF;">
+        <div style="background: linear-gradient(135deg, #08125C 0%, #050B36 100%); padding: 14px 20px; border-bottom: 1px solid rgba(26, 34, 255, 0.4); display: flex; align-items: center; justify-content: space-between; gap: 12px;">
           <div style="display: flex; align-items: center; gap: 8px;">
             <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #D8FF32; box-shadow: 0 0 10px #D8FF32;"></span>
             <span style="font-family: 'Sora', sans-serif; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.02em; color: #FFFFFF;">Let's find where AI can take you</span>
           </div>
           <span style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; color: #D8FF32; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(216,255,50,0.12); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(216,255,50,0.3);"><s style="opacity:0.7;font-weight:400;">₹999</s> → ₹0</span>
         </div>
-        <iframe
-          src="https://link.trym.co.in/widget/form/C3QNWOEvU9lO9L2o63iY"
-          id="inline-C3QNWOEvU9lO9L2o63iY" 
-          loading="eager"
-          fetchpriority="high"
-          data-layout="{'id':'INLINE'}"
-          data-trigger-type="alwaysShow"
-          data-trigger-value=""
-          data-activation-type="alwaysActivated"
-          data-activation-value=""
-          data-deactivation-type="neverDeactivate"
-          data-deactivation-value=""
-          data-form-name="Form 0"
-          data-height="594"
-          data-layout-iframe-id="inline-C3QNWOEvU9lO9L2o63iY"
-          data-form-id="C3QNWOEvU9lO9L2o63iY"
-          title="Form 0"
-          onload="this.classList.add('iframe-loaded')"
-        >
-        </iframe>
+        <div class="form-iframe-clipper" style="overflow: hidden; height: 535px; position: relative; background: #FFFFFF;">
+          <iframe
+            src="https://link.trym.co.in/widget/form/C3QNWOEvU9lO9L2o63iY"
+            id="inline-C3QNWOEvU9lO9L2o63iY" 
+            style="width: 100%; height: 594px; border: none; display: block;"
+            loading="eager"
+            fetchpriority="high"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name="Form 0"
+            data-height="594"
+            data-layout-iframe-id="inline-C3QNWOEvU9lO9L2o63iY"
+            data-form-id="C3QNWOEvU9lO9L2o63iY"
+            title="Form 0"
+            onload="this.classList.add('iframe-loaded')"
+          >
+          </iframe>
+        </div>
         <script src="https://link.trym.co.in/js/form_embed.js"></script>
+        <script>
+          window.addEventListener('message', function(e) {
+            if (e.data && (e.data.type === 'form-height' || e.data.height)) {
+              var clippers = document.querySelectorAll('.form-iframe-clipper');
+              var h = parseInt(e.data.height, 10);
+              if (!isNaN(h) && h > 100) {
+                clippers.forEach(function(c) {
+                  c.style.height = (h - 55) + 'px';
+                });
+              }
+            }
+          });
+        </script>
       </div>
     </div>
   </section>
@@ -732,7 +783,7 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
           <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.375rem; color: #FFFFFF;">Not how to use AI once. How to make AI work for you.</div>
           <div style="font-size: 0.9375rem; color: rgba(255,255,255,0.85); margin-top: 4px;">Move from one-off prompts to an autonomous AI operating system.</div>
         </div>
-        <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" style="background: #D8FF32; color: #000000 !important; border: none; border-radius: 99px; padding: 14px 28px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 0.9375rem; cursor: pointer; white-space: nowrap;">
+        <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" class="btn-lime" style="background: #D8FF32; color: #000000 !important; border: none; border-radius: 99px; padding: 14px 28px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 0.9375rem; cursor: pointer; white-space: nowrap;">
           SHOW ME WHAT I CAN BUILD →
         </button>
       </div>
@@ -1069,7 +1120,7 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
 
       <div style="background: rgba(216,255,50,0.1); border: 1px solid rgba(216,255,50,0.3); border-radius: 16px; padding: 24px; text-align: center;">
         <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.25rem; color: #FFFFFF;">You don't finish with 20 recorded classes. You finish with things you built.</div>
-        <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" style="margin-top: 14px; background: #D8FF32; color: #000000 !important; border: none; border-radius: 99px; padding: 12px 28px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 0.9375rem; cursor: pointer;">SEE WHAT I'LL BUILD →</button>
+        <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" class="btn-lime" style="margin-top: 14px; background: #D8FF32; color: #000000 !important; border: none; border-radius: 99px; padding: 12px 28px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 0.9375rem; cursor: pointer;">SEE WHAT I'LL BUILD →</button>
       </div>
     </div>
   </section>
@@ -1199,7 +1250,7 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
       </div>
 
       <div style="text-align: center; margin-top: 8px;">
-        <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" style="background: #D8FF32; color: #000000 !important; border: none; border-radius: 99px; padding: 16px 36px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1rem; cursor: pointer;">
+        <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" class="btn-lime" style="background: #D8FF32; color: #000000 !important; border: none; border-radius: 99px; padding: 16px 36px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1rem; cursor: pointer;">
           BOOK MY FREE AI STRATEGY CALL →
         </button>
       </div>
@@ -1334,7 +1385,7 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
         <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 2rem; color: #D8FF32;">
           <s style="opacity: 0.5; font-size: 1.375rem; font-weight: 400; text-decoration: line-through; color: #FFFFFF;">₹999</s> ₹0 TODAY
         </div>
-        <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" style="background: #D8FF32; color: #000000 !important; border: none; border-radius: 99px; padding: 18px 36px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.0625rem; cursor: pointer; box-shadow: 0 10px 30px rgba(216, 255, 50, 0.4);">
+        <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" class="btn-lime" style="background: #D8FF32; color: #000000 !important; border: none; border-radius: 99px; padding: 18px 36px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.0625rem; cursor: pointer; box-shadow: 0 10px 30px rgba(216, 255, 50, 0.4);">
           CLAIM MY FREE AI STRATEGY CALL →
         </button>
         <div style="font-size: 0.8125rem; color: rgba(255,255,255,0.8); margin-top: 4px;">
@@ -1356,7 +1407,7 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
         </div>
       </div>
       <div style="display: flex; gap: 10px; align-items: center; width: auto;" class="sticky-actions">
-        <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" style="background: #D8FF32; color: #000000 !important; border: none; border-radius: 99px; padding: 12px 28px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.9375rem; cursor: pointer; white-space: nowrap; box-shadow: 0 4px 16px rgba(216, 255, 50, 0.4);" class="sticky-btn-pri">
+        <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" style="background: #D8FF32; color: #000000 !important; border: none; border-radius: 99px; padding: 12px 28px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.9375rem; cursor: pointer; white-space: nowrap; box-shadow: 0 4px 16px rgba(216, 255, 50, 0.4);" class="sticky-btn-pri btn-lime">
           Book Consultation
         </button>
       </div>
@@ -1373,37 +1424,30 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
         </div>
         <button id="close-modal-btn" type="button" aria-label="Close modal" onclick="closeLeadModal()" style="background: #F0F2F8; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.25rem; display: flex; align-items: center; justify-content: center; color: #4A4F6A; outline: none; z-index: 99;">✕</button>
       </div>
-      <div class="form-embed-wrapper">
-        <div class="form-skeleton">
-          <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #060814;">Book Consultation</div>
-          <div class="sk-field" style="width: 40%; height: 14px;"></div>
-          <div class="sk-field"></div>
-          <div class="sk-field" style="width: 40%; height: 14px;"></div>
-          <div class="sk-field"></div>
-          <div class="sk-field" style="width: 40%; height: 14px;"></div>
-          <div class="sk-field"></div>
-          <div class="sk-button">Book Consultation</div>
+      <div class="form-embed-wrapper" style="overflow: hidden; border-radius: 16px;">
+        <div class="form-iframe-clipper" style="overflow: hidden; height: 535px; position: relative; background: #FFFFFF;">
+          <iframe
+            src="https://link.trym.co.in/widget/form/C3QNWOEvU9lO9L2o63iY"
+            id="drawer-inline-C3QNWOEvU9lO9L2o63iY" 
+            style="width: 100%; height: 594px; border: none; display: block;"
+            loading="eager"
+            fetchpriority="high"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name="Form 0"
+            data-height="594"
+            data-layout-iframe-id="drawer-inline-C3QNWOEvU9lO9L2o63iY"
+            data-form-id="C3QNWOEvU9lO9L2o63iY"
+            title="Form 0"
+            onload="this.classList.add('iframe-loaded')"
+          >
+          </iframe>
         </div>
-        <iframe
-          src="https://link.trym.co.in/widget/form/C3QNWOEvU9lO9L2o63iY"
-          id="drawer-inline-C3QNWOEvU9lO9L2o63iY" 
-          loading="eager"
-          fetchpriority="high"
-          data-layout="{'id':'INLINE'}"
-          data-trigger-type="alwaysShow"
-          data-trigger-value=""
-          data-activation-type="alwaysActivated"
-          data-activation-value=""
-          data-deactivation-type="neverDeactivate"
-          data-deactivation-value=""
-          data-form-name="Form 0"
-          data-height="594"
-          data-layout-iframe-id="drawer-inline-C3QNWOEvU9lO9L2o63iY"
-          data-form-id="C3QNWOEvU9lO9L2o63iY"
-          title="Form 0"
-          onload="this.classList.add('iframe-loaded')"
-        >
-        </iframe>
       </div>
     </div>
   </div>
