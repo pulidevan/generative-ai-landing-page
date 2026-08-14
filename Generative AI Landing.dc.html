@@ -363,7 +363,7 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
 <div style="font-family: 'Inter', system-ui, sans-serif; color: #F9FAFC; background: #050B36;">
 
   <!-- Top Offer Ticker Banner Bar (Single Line) -->
-  <div id="top-offer-ticker" onclick="openLeadModal('Top Ticker')" style="background: linear-gradient(90deg, #1A22FF 0%, #050B36 50%, #1A22FF 100%); border-bottom: 1px solid rgba(216, 255, 50, 0.4); padding: 8px 12px; color: #F9FAFC; cursor: pointer; position: relative; z-index: 9999;">
+  <div id="top-offer-ticker" onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" style="background: linear-gradient(90deg, #1A22FF 0%, #050B36 50%, #1A22FF 100%); border-bottom: 1px solid rgba(216, 255, 50, 0.4); padding: 8px 12px; color: #F9FAFC; cursor: pointer; position: relative; z-index: 9999;">
     <div style="max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Sora', sans-serif; font-size: 0.78125rem; font-weight: 600; white-space: nowrap; overflow-x: auto; scrollbar-width: none;">
       <span style="background: #D8FF32; color: #050B36; font-size: 0.625rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em; flex-shrink: 0;">🔥 FREE TODAY</span>
       <span>1-on-1 AI Strategy Call: <strong style="color: #D8FF32;">FREE</strong> <s style="opacity: 0.65; font-weight: 400; text-decoration: line-through;">₹999</s></span>
@@ -676,14 +676,8 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
         <p style="margin: 0 0 20px 43px; font-size: 0.9375rem; line-height: 1.65; color: rgba(249, 250, 252, 0.75);">Yes — the AI Essentials Operator certificate, issued when you complete all eight deployments. It's backed by a clickable portfolio, not attendance.</p>
       </details>
       <details style="border-bottom: 1px solid rgba(26, 34, 255, 0.4); padding: 4px 0;">
-        <summary style="list-style: none; cursor: pointer; padding: 20px 0; font-family: 'Sora', sans-serif; font-weight: 600; font-size: 1.0625rem; letter-spacing: -0.01em; display: flex; gap: 16px; align-items: baseline; color: #F9FAFC;"><span style="font-size: 0.6875rem; letter-spacing: 0.32em; color: #D8FF32;">Q5</span>Are EMI or scholarship options available?</summary>
-        <p style="margin: 0 0 20px 43px; font-size: 0.9375rem; line-height: 1.65; color: rgba(249, 250, 252, 0.75);">Yes. EMI plans are available on all tiers, and programme counselors can unlock scholarship benefits on a call.</p>
-      </details>
-    </div>
-  </section>
-      <details style="border-bottom: 1px solid #C9CCDC; padding: 4px 0;">
-        <summary style="list-style: none; cursor: pointer; padding: 20px 0; font-family: 'Sora', sans-serif; font-weight: 600; font-size: 1.0625rem; letter-spacing: -0.01em; display: flex; gap: 16px; align-items: baseline;"><span style="font-size: 0.6875rem; letter-spacing: 0.32em; color: #1A22FF;">Q5</span>Are EMI or scholarship options available?</summary>
-        <p style="margin: 0 0 20px 43px; font-size: 0.9375rem; line-height: 1.65; color: #4A4F6A;">Yes. EMI plans are available on all tiers, and programme counselors can unlock scholarship benefits on a call.</p>
+        <summary style="list-style: none; cursor: pointer; padding: 20px 0; font-family: 'Sora', sans-serif; font-weight: 600; font-size: 1.0625rem; letter-spacing: -0.01em; display: flex; gap: 16px; align-items: baseline; color: #FFFFFF;"><span style="font-size: 0.6875rem; letter-spacing: 0.32em; color: #D8FF32;">Q5</span>Are EMI or scholarship options available?</summary>
+        <p style="margin: 0 0 20px 43px; font-size: 0.9375rem; line-height: 1.65; color: #FFFFFF;">Yes. EMI plans are available on all tiers, and programme counselors can unlock scholarship benefits on a call.</p>
       </details>
     </div>
   </section>
@@ -709,7 +703,7 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
         </div>
       </div>
       <div style="display: flex; gap: 10px; align-items: center; width: auto;" class="sticky-actions">
-        <button onclick="openLeadModal('Bottom Bar')" style="background: #D8FF32; color: #050B36; border: none; border-radius: 99px; padding: 12px 28px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.9375rem; cursor: pointer; white-space: nowrap; box-shadow: 0 4px 16px rgba(216, 255, 50, 0.4);" class="sticky-btn-pri">
+        <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" style="background: #D8FF32; color: #050B36; border: none; border-radius: 99px; padding: 12px 28px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.9375rem; cursor: pointer; white-space: nowrap; box-shadow: 0 4px 16px rgba(216, 255, 50, 0.4);" class="sticky-btn-pri">
           Book Consultation
         </button>
       </div>
@@ -870,26 +864,18 @@ class Component extends DCLogic {
     }
   });
 
-  // Universal seamless CTA click handler — ensures ALL buttons open the form
+  // Universal seamless CTA click handler — ALL buttons go directly to hero form embed (#enroll)
   document.addEventListener('click', (e) => {
     const targetBtn = e.target.closest('a[href="#enroll"], button, [class*="Button"], [class*="PriceCard"] button');
     if (!targetBtn) return;
     
-    // Ignore close button or buttons inside the modal itself
-    if (targetBtn.id === 'close-modal-btn' || targetBtn.closest('#lead-modal-drawer') || targetBtn.innerText === '✕') return;
+    // Ignore close buttons or notification dismiss buttons
+    if (targetBtn.id === 'close-modal-btn' || targetBtn.closest('#recent-enrollment-ticker') || targetBtn.innerText === '✕') return;
 
-    const isMobile = window.innerWidth <= 960;
-    const isLowerSection = targetBtn.closest('#pricing, [data-screen-label="FAQ"], [data-screen-label="Closing CTA"], #sticky-bottom-bar, #outcomes, #curriculum');
-
-    if (isMobile || isLowerSection) {
+    const enrollEl = document.getElementById('enroll');
+    if (enrollEl) {
       e.preventDefault();
-      openLeadModal(targetBtn.innerText || 'CTA Click');
-    } else {
-      const enrollEl = document.getElementById('enroll');
-      if (enrollEl) {
-        e.preventDefault();
-        enrollEl.scrollIntoView({ behavior: 'smooth' });
-      }
+      enrollEl.scrollIntoView({ behavior: 'smooth' });
     }
   });
 
@@ -1030,32 +1016,7 @@ class Component extends DCLogic {
     }, 2500);
   })();
 
-  // Exit Intent Form Modal Popup
-  (function() {
-    let hasTriggeredExitIntent = false;
-
-    function triggerExitModal() {
-      if (hasTriggeredExitIntent || window.hasTrackedLeadSubmission) return;
-      hasTriggeredExitIntent = true;
-      if (typeof openLeadModal === 'function') {
-        openLeadModal('Exit Intent');
-      }
-    }
-
-    // Trigger on cursor moving towards top browser bar (Desktop)
-    document.addEventListener('mouseleave', (e) => {
-      if (e.clientY <= 10) {
-        triggerExitModal();
-      }
-    });
-
-    // Mobile / idle fallback trigger after 25s
-    setTimeout(() => {
-      if (!window.hasTrackedLeadSubmission && !hasTriggeredExitIntent) {
-        triggerExitModal();
-      }
-    }, 25000);
-  })();
+  // Exit intent modal popup disabled — all traffic directed directly to hero form embed (#enroll)
 </script>
 </body>
 </html>
