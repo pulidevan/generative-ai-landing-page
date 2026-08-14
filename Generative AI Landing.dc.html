@@ -476,17 +476,11 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
     .hero-form {
       position: relative;
       top: 0;
-      /* Edge-to-edge full width on mobile */
-      width: 100vw;
-      margin-left: calc(50% - 50vw);
-      border-radius: 0 !important;
-      border-left: none !important;
-      border-right: none !important;
+      width: 100% !important;
+      margin: 0 !important;
+      border-radius: 16px !important;
     }
-    .hero-form > div:first-child {
-      border-top-left-radius: 0 !important;
-      border-top-right-radius: 0 !important;
-    }
+
     /* Hide the form container shadow on mobile to make it blend cleaner */
     .form-embed-wrapper {
       box-shadow: none !important;
