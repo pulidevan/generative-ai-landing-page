@@ -758,41 +758,74 @@ class Component extends DCLogic {
     });
   });
 
-  // Precise, bug-free event listener for Trym / LeadConnector form submission (Redirects ONLY after lead fill)
-  window.addEventListener('message', (e) => {
-    if (!e.data) return;
+  // Bulletproof Dual-Detection Event Listener for Trym / LeadConnector Form Submission
+  (function() {
+    let userHasInteracted = false;
 
-    let payload = e.data;
-    if (typeof payload === 'string') {
-      try { payload = JSON.parse(e.data); } catch(err) {}
-    }
+    // Track user interaction with the form container
+    ['click', 'touchstart', 'keydown'].forEach(evt => {
+      document.addEventListener(evt, (e) => {
+        if (e.target.closest && e.target.closest('#enroll, #lead-modal-drawer, .form-embed-wrapper, iframe')) {
+          userHasInteracted = true;
+        }
+      }, { passive: true });
+    });
 
-    const isSubmitted = 
-      (typeof payload === 'object' && (
-        payload.type === 'form_submitted' || 
-        payload.type === 'form-submitted' || 
-        payload.event === 'form_submitted' || 
-        payload.event === 'submit' ||
-        payload.type === 'ghl_form_submitted' ||
-        payload.action === 'form_submitted' ||
-        payload.formSubmitted === true
-      )) ||
-      (typeof payload === 'string' && (
-        payload.includes('form_submitted') || 
-        payload.includes('submission_success') ||
-        payload.includes('thank_you')
-      ));
+    function executeThankYouRedirect() {
+      if (window.isRedirectingToThankYou) return;
+      window.isRedirectingToThankYou = true;
 
-    if (isSubmitted) {
       if (typeof fbq === 'function') {
         fbq('track', 'Lead', { content_name: 'Generative AI Lead Form' });
-        fbq('track', 'CompleteRegistration');
+        fbq('track', 'CompleteRegistration', { content_name: 'Generative AI Programme' });
       }
+
       setTimeout(() => {
-        window.location.href = '/thankyou.html';
-      }, 300);
+        window.location.href = 'https://genai.aiessentials.in/thankyou.html';
+      }, 150);
     }
-  });
+
+    window.addEventListener('message', (e) => {
+      if (!e.data) return;
+
+      let str = '';
+      if (typeof e.data === 'string') {
+        str = e.data;
+      } else if (typeof e.data === 'object') {
+        try { str = JSON.stringify(e.data); } catch(err) { str = ''; }
+      }
+
+      const lower = str.toLowerCase();
+
+      // 1. Check for submission keywords in message payload
+      const isKeywordMatch = 
+        lower.includes('form_submitted') ||
+        lower.includes('form-submitted') ||
+        lower.includes('ghl_form_submitted') ||
+        lower.includes('submission_success') ||
+        lower.includes('appreciate your feedback') ||
+        lower.includes('thank you for taking') ||
+        lower.includes('complete') ||
+        lower.includes('thankyou') ||
+        lower.includes('thank_you');
+
+      // 2. Check for iFrameSizer height collapse (inline thank-you message shrinks iframe height < 360px)
+      let isHeightCollapse = false;
+      if (typeof e.data === 'string' && e.data.startsWith('[iFrameSizer]')) {
+        const parts = e.data.split(':');
+        if (parts.length >= 2) {
+          const h = parseInt(parts[1], 10);
+          if (!isNaN(h) && h > 60 && h < 360 && userHasInteracted) {
+            isHeightCollapse = true;
+          }
+        }
+      }
+
+      if (isKeywordMatch || isHeightCollapse) {
+        executeThankYouRedirect();
+      }
+    });
+  })();
 </script>
 </body>
 </html>
