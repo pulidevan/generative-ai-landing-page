@@ -393,37 +393,69 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
     </div>
   </div>
 
-  <!-- Hero -->
+  <!-- Hero (01) -->
   <section data-screen-label="Hero" style="background: #050B36; color: #F9FAFC;">
-    <div class="responsive-2col hero-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(56px, 8vw, 110px) clamp(20px, 5vw, 80px); display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr); gap: clamp(40px, 5vw, 80px); align-items: start;">
-      <div style="display: flex; flex-direction: column; gap: 28px;">
-        <h1 class="hero-title" style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.9rem, 5.5vw, 5.2rem); letter-spacing: -0.035em; line-height: 0.98;">The Advanced <em style="font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic; letter-spacing: -0.01em;">Generative AI</em> Programme.</h1>
+    <div class="responsive-2col hero-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(40px, 6vw, 84px) clamp(20px, 5vw, 80px); display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr); gap: clamp(32px, 5vw, 64px); align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+        <div style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #D8FF32; background: rgba(216,255,50,0.1); border: 1px solid rgba(216,255,50,0.3); padding: 6px 14px; border-radius: 99px; width: fit-content;">
+          ⚡ AI Is Changing How Work Gets Done
+        </div>
+        <h1 class="hero-title" style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(2.7rem, 5vw, 4.6rem); letter-spacing: -0.035em; line-height: 1.02; color: #FFFFFF;">
+          Learn to Work With AI. <br>Build With AI. <em style="font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic; color: #D8FF32;">Win With AI.</em>
+        </h1>
+        <p style="margin: 0; font-size: 1.125rem; line-height: 1.65; color: #FFFFFF; max-width: 54ch;">
+          A practical 8-week Generative AI programme designed to transform how you <strong>work, create, solve problems and build</strong> — whether you're a student, professional, freelancer or business owner.
+        </p>
         <div class="hero-stats-pills" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px;">
-          <span class="stat-pill" style="border-color: rgba(216, 255, 50, 0.4); background: rgba(216, 255, 50, 0.1);"><strong style="color: #D8FF32; font-size: 0.8125rem;">🌐 100%</strong> Online</span>
-          <span class="stat-pill" style="border-color: rgba(216, 255, 50, 0.4); background: rgba(216, 255, 50, 0.1);"><strong style="color: #D8FF32; font-size: 0.8125rem;">🎥 Recordings</strong> Included</span>
-          <span class="stat-pill" style="border-color: rgba(216, 255, 50, 0.4); background: rgba(216, 255, 50, 0.1);"><strong style="color: #D8FF32; font-size: 0.8125rem;">📍 Learn</strong> From Anywhere</span>
-          <span class="stat-pill"><strong style="color: #D8FF32; font-size: 0.8125rem;">20</strong> Live Classes</span>
-          <span class="stat-pill"><strong style="color: #D8FF32; font-size: 0.8125rem;">8</strong> Weeks</span>
+          <span class="stat-pill" style="border-color: rgba(216, 255, 50, 0.4); background: rgba(216, 255, 50, 0.1);"><strong style="color: #D8FF32;">🗓️ 8 Weeks</strong></span>
+          <span class="stat-pill" style="border-color: rgba(216, 255, 50, 0.4); background: rgba(216, 255, 50, 0.1);"><strong style="color: #D8FF32;">⚡ 20 Live Classes</strong></span>
+          <span class="stat-pill" style="border-color: rgba(216, 255, 50, 0.4); background: rgba(216, 255, 50, 0.1);"><strong style="color: #D8FF32;">🛠️ Real Projects</strong></span>
+          <span class="stat-pill"><strong style="color: #D8FF32;">🌐 100% Online</strong></span>
+        </div>
+        
+        <!-- Hero CTA & Social Proof -->
+        <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 8px;">
+          <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" style="background: #D8FF32; color: #050B36; border: none; border-radius: 99px; padding: 18px 36px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.0625rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 10px 30px rgba(216, 255, 50, 0.35); width: fit-content;">
+            BOOK YOUR FREE AI STRATEGY CALL → <span style="font-size: 0.8125rem; opacity: 0.9; font-weight: 600;"><s style="opacity:0.6;">₹999</s> ₹0 Today</span>
+          </button>
+          <div style="font-size: 0.8125rem; font-weight: 600; color: rgba(255, 255, 255, 0.9); display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+            <span>👥 <strong>5,000+ Learners</strong></span>
+            <span>⭐ <strong>4.9/5 Rating</strong></span>
+            <span>🚀 <strong>Live Expert-Led</strong></span>
+          </div>
+        </div>
+
+        <!-- Shift Callout Card -->
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.5); border-radius: 16px; padding: 20px; margin-top: 12px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+          <div style="border-right: 1px solid rgba(26, 34, 255, 0.3); padding-right: 12px;">
+            <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; color: #FF3B30; letter-spacing: 0.15em; text-transform: uppercase;">FROM THIS</div>
+            <p style="margin: 6px 0 0 0; font-size: 0.875rem; line-height: 1.5; color: rgba(255,255,255,0.85); font-style: italic;">“I know AI exists, but I don't know how to use it properly.”</p>
+          </div>
+          <div>
+            <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; color: #D8FF32; letter-spacing: 0.15em; text-transform: uppercase;">TO THIS</div>
+            <p style="margin: 6px 0 0 0; font-size: 0.875rem; line-height: 1.5; color: #FFFFFF; font-weight: 600;">“I know exactly how AI can help me get more done, build faster and create new opportunities.”</p>
+          </div>
         </div>
       </div>
-      <!-- Lead form -->
+
+      <!-- Lead form (13 - Form) -->
       <div id="enroll" class="form-embed-wrapper" style="box-shadow: 0 24px 60px rgba(5,11,54,0.35); border: 1px solid #E4E6F0; position: relative;">
         <div style="background: linear-gradient(135deg, #08125C 0%, #050B36 100%); padding: 14px 20px; border-bottom: 1px solid rgba(26, 34, 255, 0.4); display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top-left-radius: 16px; border-top-right-radius: 16px;">
           <div style="display: flex; align-items: center; gap: 8px;">
             <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #D8FF32; box-shadow: 0 0 10px #D8FF32;"></span>
-            <span style="font-family: 'Sora', sans-serif; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.02em; color: #FFFFFF;">Over 1,000+ People Enrolled Already</span>
+            <span style="font-family: 'Sora', sans-serif; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.02em; color: #FFFFFF;">Let's find where AI can take you</span>
           </div>
-          <span style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; color: #D8FF32; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(216,255,50,0.12); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(216,255,50,0.3);">Limited Seats</span>
+          <span style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; color: #D8FF32; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(216,255,50,0.12); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(216,255,50,0.3);">₹999 → ₹0</span>
         </div>
         <div class="form-skeleton">
-          <div style="font-family: 'Sora', sans-serif; font-weight: 600; font-size: 0.875rem; color: #060814;">Over 1,000+ People Enrolled Already</div>
+          <div style="font-family: 'Sora', sans-serif; font-weight: 600; font-size: 0.875rem; color: #060814;">Let's find where AI can take you</div>
           <div class="sk-field" style="width: 40%; height: 14px;"></div>
           <div class="sk-field"></div>
           <div class="sk-field" style="width: 40%; height: 14px;"></div>
           <div class="sk-field"></div>
           <div class="sk-field" style="width: 40%; height: 14px;"></div>
           <div class="sk-field"></div>
-          <div class="sk-button">Book Consultation</div>
+          <div class="sk-button">CLAIM MY FREE AI STRATEGY CALL →</div>
         </div>
         <iframe
           src="https://link.trym.co.in/widget/form/C3QNWOEvU9lO9L2o63iY"
@@ -450,273 +482,603 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
     </div>
   </section>
 
-  <!-- Career outcomes -->
-  <section id="outcomes" class="responsive-2col section-container" data-screen-label="Career outcomes" style="max-width: 1240px; margin: 0 auto; padding: clamp(36px, 5vw, 72px) clamp(20px, 5vw, 80px); display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(24px, 4vw, 48px); align-items: start;">
-    <div class="sticky-col" style="display: flex; flex-direction: column; gap: 20px; position: sticky; top: 40px;">
-      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.SectionLabel" code="Career Outcomes" color="onDark" hint-size="280px,16px">D01 — D05</x-import>
-      <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.2rem, 4vw, 3.5rem); letter-spacing: -0.03em; line-height: 0.98; color: #F9FAFC;">Step into high-leverage Generative AI roles.</h2>
-      <p style="margin: 0; font-size: 1.0625rem; line-height: 1.65; color: rgba(249, 250, 252, 0.75); max-width: 46ch;">One stack, five domains. Whatever your seat, the programme turns you into the AI operator your market pays a premium for.</p>
-      <div>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Button" variant="{{ ctaVariant }}" size="md" arrow="true" as="a" href="#enroll" hint-size="180px,48px">Book Consultation</x-import>
+  <!-- 02 — THE TRANSFORMATION -->
+  <section id="transformation" data-screen-label="The Transformation" style="background: #08125C; color: #F9FAFC; border-top: 1px solid rgba(26, 34, 255, 0.4); border-bottom: 1px solid rgba(26, 34, 255, 0.4);">
+    <div class="section-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(48px, 6vw, 88px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 40px;">
+      <div style="display: flex; flex-direction: column; gap: 16px; max-width: 780px;">
+        <span style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #D8FF32;">02 // THE TRANSFORMATION</span>
+        <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(2.2rem, 4.2vw, 3.6rem); letter-spacing: -0.03em; line-height: 1.05; color: #FFFFFF;">
+          AI isn't just another skill to add to your resume.<br><em style="font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic; color: #D8FF32;">It's a new way of working.</em>
+        </h2>
       </div>
-    </div>
-    <div style="display: flex; flex-direction: column;">
-      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.DomainCard" code="D01" title="Founders" description="Automate operations and ship AI products without adding headcount." hint-size="100%,110px"></x-import>
-      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.DomainCard" code="D02" title="Marketers" description="Run content engines that produce a month of output in a day." hint-size="100%,110px"></x-import>
-      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.DomainCard" code="D03" title="Designers" description="Direct generative image and video pipelines end to end." hint-size="100%,110px"></x-import>
-      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.DomainCard" code="D04" title="Analysts" description="Turn raw data into decisions with AI-assisted analysis and reporting." hint-size="100%,110px"></x-import>
-      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.DomainCard" code="D05" title="Developers" description="Ship production-grade codebases with agentic coding workflows." hint-size="100%,110px"></x-import>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 24px; display: flex; gap: 14px; align-items: start;">
+          <span style="font-size: 1.25rem;">🔍</span>
+          <div>
+            <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem; color: #FFFFFF;">Research in minutes instead of hours</div>
+            <p style="margin: 6px 0 0 0; font-size: 0.9375rem; color: rgba(255,255,255,0.85); line-height: 1.5;">Synthesize deep documents, market research, and complex data instantly with reasoning engines.</p>
+          </div>
+        </div>
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 24px; display: flex; gap: 14px; align-items: start;">
+          <span style="font-size: 1.25rem;">✍️</span>
+          <div>
+            <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem; color: #FFFFFF;">Create content without starting from zero</div>
+            <p style="margin: 6px 0 0 0; font-size: 0.9375rem; color: rgba(255,255,255,0.85); line-height: 1.5;">Never face a blank page again. Turn rough ideas into published campaigns in minutes.</p>
+          </div>
+        </div>
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 24px; display: flex; gap: 14px; align-items: start;">
+          <span style="font-size: 1.25rem;">⚡</span>
+          <div>
+            <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem; color: #FFFFFF;">Automate repetitive work while focusing on strategy</div>
+            <p style="margin: 6px 0 0 0; font-size: 0.9375rem; color: rgba(255,255,255,0.85); line-height: 1.5;">Design autonomous workflows that execute low-level tasks while you focus on high leverage.</p>
+          </div>
+        </div>
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 24px; display: flex; gap: 14px; align-items: start;">
+          <span style="font-size: 1.25rem;">🌐</span>
+          <div>
+            <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem; color: #FFFFFF;">Turn an idea into a working website</div>
+            <p style="margin: 6px 0 0 0; font-size: 0.9375rem; color: rgba(255,255,255,0.85); line-height: 1.5;">Direct AI frontends and vibe coding agents to launch digital properties autonomously.</p>
+          </div>
+        </div>
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 24px; display: flex; gap: 14px; align-items: start;">
+          <span style="font-size: 1.25rem;">🧠</span>
+          <div>
+            <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem; color: #FFFFFF;">Build an AI assistant around your own knowledge</div>
+            <p style="margin: 6px 0 0 0; font-size: 0.9375rem; color: rgba(255,255,255,0.85); line-height: 1.5;">Connect your documents, files, and notes into your personal corporate RAG brain.</p>
+          </div>
+        </div>
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 24px; display: flex; gap: 14px; align-items: start;">
+          <span style="font-size: 1.25rem;">🎬</span>
+          <div>
+            <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem; color: #FFFFFF;">Create media without a production team</div>
+            <p style="margin: 6px 0 0 0; font-size: 0.9375rem; color: rgba(255,255,255,0.85); line-height: 1.5;">Direct studio-quality images, AI video assets, and hyper-realistic voice content at scale.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: linear-gradient(90deg, #1A22FF 0%, #050B36 100%); border-radius: 16px; padding: 28px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;">
+        <div>
+          <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.375rem; color: #FFFFFF;">Not how to use AI once. How to make AI work for you.</div>
+          <div style="font-size: 0.9375rem; color: rgba(255,255,255,0.85); margin-top: 4px;">Move from one-off prompts to an autonomous AI operating system.</div>
+        </div>
+        <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" style="background: #D8FF32; color: #050B36; border: none; border-radius: 99px; padding: 14px 28px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 0.9375rem; cursor: pointer; white-space: nowrap;">
+          SHOW ME WHAT I CAN BUILD →
+        </button>
+      </div>
     </div>
   </section>
 
-  <!-- Curriculum -->
-  <section id="curriculum" data-screen-label="Curriculum" style="background: #08125C; color: #F9FAFC; border-top: 1px solid rgba(26, 34, 255, 0.4); border-bottom: 1px solid rgba(26, 34, 255, 0.4);">
-    <div class="section-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(36px, 5vw, 72px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 36px;">
-      <div style="display: flex; flex-direction: column; gap: 16px; max-width: 680px;">
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.SectionLabel" code="Programme Curriculum // W01–W08" color="onDark" hint-size="360px,16px">The 2026 Stack</x-import>
-        <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.2rem, 4vw, 3.5rem); letter-spacing: -0.03em; line-height: 0.98; color: #F9FAFC;">Eight weeks. End-to-end Generative AI expertise.</h2>
-        <p style="margin: 0; font-size: 1.0625rem; line-height: 1.65; color: rgba(249, 250, 252, 0.85);">From reasoning engines to monetized deployments — a structured path through the exact tools dominating the market.</p>
+  <!-- 03 — WHO IS THIS FOR? -->
+  <section id="who-for" data-screen-label="Who Is This For" style="background: #050B36; color: #F9FAFC;">
+    <div class="section-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(48px, 6vw, 88px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 40px;">
+      <div style="display: flex; flex-direction: column; gap: 16px; max-width: 780px;">
+        <span style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #D8FF32;">03 // WHO IS THIS FOR?</span>
+        <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(2.2rem, 4.2vw, 3.6rem); letter-spacing: -0.03em; line-height: 1.05; color: #FFFFFF;">
+          Wherever you are today, <em style="font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic; color: #D8FF32;">AI can take you further.</em>
+        </h2>
+        <p style="margin: 0; font-size: 1.0625rem; color: #FFFFFF; line-height: 1.6;">You don't need to be a developer. You don't need years of AI experience. You don't need to know every tool. <strong>You just need a reason to want more.</strong></p>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 16px;">
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.ModuleCard" code="W01" title="Cognitive Awakening" description="Rewire your executive mindset. Master reasoning engines, prompt engineering, and deep-search tools." dc-props="{{ w01 }}" hint-size="100%,220px"></x-import>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.ModuleCard" code="W02" title="Synthetic Knowledge" description="Build your corporate brain. Connect files, docs, and notes into custom RAG pipelines." dc-props="{{ w02 }}" hint-size="100%,220px"></x-import>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.ModuleCard" code="W03" title="Autonomous Fleet" description="Design agents that think, act, and self-heal. Automate backend tasks, and connect APIs." dc-props="{{ w03 }}" hint-size="100%,220px"></x-import>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.ModuleCard" code="W04" title="Voice &amp; Audio Scale" description="Scale outbound sales and support with voice agents, hyper-realistic voice-overs, and avatars." dc-props="{{ w04 }}" hint-size="100%,220px"></x-import>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.ModuleCard" code="W05" title="The Content Factory" description="Generate stunning images and high-fidelity video. Build an autonomous loop that publishes assets." dc-props="{{ w05 }}" hint-size="100%,220px"></x-import>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.ModuleCard" code="W06" title="Visual &amp; Design Moat" description="Generate responsive web frontends instantly. Tweak components conversationally in seconds." dc-props="{{ w06 }}" hint-size="100%,220px"></x-import>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.ModuleCard" code="W07" title="Vibe Coding" description="Architect complete React/TypeScript codebases. Direct Claude Code to program, test, and deploy apps." dc-props="{{ w07 }}" hint-size="100%,220px"></x-import>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.ModuleCard" code="W08" title="Digital Real Estate" description="Launch micro-SaaS products and monetize them. Integrate Stripe and databases autonomously." dc-props="{{ w08 }}" hint-size="100%,220px"></x-import>
-      </div>
-      <div>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Button" variant="outline" size="md" arrow="true" as="a" href="#enroll" hint-size="220px,48px">Book Consultation</x-import>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 20px;">
+        <!-- Card 1: Students -->
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px;">
+          <div>
+            <div style="font-size: 2.2rem; margin-bottom: 8px;">🎓</div>
+            <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32; text-transform: uppercase;">STUDENTS</div>
+            <h3 style="margin: 6px 0 12px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">Start ahead, not from behind.</h3>
+            <p style="margin: 0; font-size: 0.9375rem; color: rgba(255,255,255,0.85); line-height: 1.6;">Build practical AI skills while you're still learning. Create live projects. Build your portfolio. Understand how AI is changing modern jobs.</p>
+          </div>
+          <div>
+            <div style="background: rgba(216,255,50,0.1); border: 1px solid rgba(216,255,50,0.3); border-radius: 8px; padding: 10px 14px; font-family: 'Sora', sans-serif; font-size: 0.8125rem; font-weight: 700; color: #D8FF32; margin-bottom: 14px;">
+              Student → AI-enabled professional
+            </div>
+            <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" style="width: 100%; background: #1A22FF; color: #FFFFFF; border: none; border-radius: 99px; padding: 12px 20px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.875rem; cursor: pointer;">I'M A STUDENT →</button>
+          </div>
+        </div>
+
+        <!-- Card 2: Working Professionals -->
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px;">
+          <div>
+            <div style="font-size: 2.2rem; margin-bottom: 8px;">💼</div>
+            <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32; text-transform: uppercase;">WORKING PROFESSIONALS</div>
+            <h3 style="margin: 6px 0 12px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">Become the person who gets more done.</h3>
+            <p style="margin: 0; font-size: 0.9375rem; color: rgba(255,255,255,0.85); line-height: 1.6;">Research faster. Automate repetitive work. Create better presentations, reports and content. Bring AI into your everyday role.</p>
+          </div>
+          <div>
+            <div style="background: rgba(216,255,50,0.1); border: 1px solid rgba(216,255,50,0.3); border-radius: 8px; padding: 10px 14px; font-family: 'Sora', sans-serif; font-size: 0.8125rem; font-weight: 700; color: #D8FF32; margin-bottom: 14px;">
+              Employee → AI-powered professional
+            </div>
+            <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" style="width: 100%; background: #1A22FF; color: #FFFFFF; border: none; border-radius: 99px; padding: 12px 20px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.875rem; cursor: pointer;">I'M A PROFESSIONAL →</button>
+          </div>
+        </div>
+
+        <!-- Card 3: Business Owners -->
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px;">
+          <div>
+            <div style="font-size: 2.2rem; margin-bottom: 8px;">🏢</div>
+            <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32; text-transform: uppercase;">BUSINESS OWNERS</div>
+            <h3 style="margin: 6px 0 12px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">Turn AI into leverage for your business.</h3>
+            <p style="margin: 0; font-size: 0.9375rem; color: rgba(255,255,255,0.85); line-height: 1.6;">Automate operations. Accelerate marketing. Build internal AI systems. Prototype ideas without waiting for a large team.</p>
+          </div>
+          <div>
+            <div style="background: rgba(216,255,50,0.1); border: 1px solid rgba(216,255,50,0.3); border-radius: 8px; padding: 10px 14px; font-family: 'Sora', sans-serif; font-size: 0.8125rem; font-weight: 700; color: #D8FF32; margin-bottom: 14px;">
+              Business owner → AI-powered operator
+            </div>
+            <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" style="width: 100%; background: #1A22FF; color: #FFFFFF; border: none; border-radius: 99px; padding: 12px 20px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.875rem; cursor: pointer;">I'M A BUSINESS OWNER →</button>
+          </div>
+        </div>
+
+        <!-- Card 4: Freelancers & Creators -->
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px;">
+          <div>
+            <div style="font-size: 2.2rem; margin-bottom: 8px;">⚡</div>
+            <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32; text-transform: uppercase;">FREELANCERS &amp; CREATORS</div>
+            <h3 style="margin: 6px 0 12px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">Create more. Grow beyond your hours.</h3>
+            <p style="margin: 0; font-size: 0.9375rem; color: rgba(255,255,255,0.85); line-height: 1.6;">Use AI to expand what you can offer clients without expanding your workload at the same rate.</p>
+          </div>
+          <div>
+            <div style="background: rgba(216,255,50,0.1); border: 1px solid rgba(216,255,50,0.3); border-radius: 8px; padding: 10px 14px; font-family: 'Sora', sans-serif; font-size: 0.8125rem; font-weight: 700; color: #D8FF32; margin-bottom: 14px;">
+              Freelancer → AI-powered creator
+            </div>
+            <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" style="width: 100%; background: #1A22FF; color: #FFFFFF; border: none; border-radius: 99px; padding: 12px 20px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.875rem; cursor: pointer;">I'M A FREELANCER →</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Success stories -->
-  <section data-screen-label="Success stories" style="background: #050B36; color: #F9FAFC;">
-    <div class="section-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 10vw, 140px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 48px;">
-      <div style="display: flex; flex-direction: column; gap: 20px; max-width: 640px;">
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.SectionLabel" code="Proof // Graduate Outcomes" color="onDark" hint-size="320px,16px">Success Stories</x-import>
-        <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.5rem, 4.5vw, 4rem); letter-spacing: -0.03em; line-height: 0.98;">Results, not theory.</h2>
+  <!-- 04 — WHY THIS PROGRAMME? -->
+  <section id="why-programme" data-screen-label="Why This Programme" style="background: #08125C; color: #F9FAFC; border-top: 1px solid rgba(26, 34, 255, 0.4); border-bottom: 1px solid rgba(26, 34, 255, 0.4);">
+    <div class="section-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(48px, 6vw, 88px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 36px;">
+      <div style="display: flex; flex-direction: column; gap: 16px; max-width: 780px;">
+        <span style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #D8FF32;">04 // WHY THIS PROGRAMME</span>
+        <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(2.2rem, 4.2vw, 3.6rem); letter-spacing: -0.03em; line-height: 1.05; color: #FFFFFF;">
+          Because knowing AI tools isn't enough anymore.<br><em style="font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic; color: #D8FF32;">You need to know what to do with them.</em>
+        </h2>
       </div>
-      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.TestimonialCard" featured="true" on-dark="true" quote="I automated our entire content pipeline in week five and deployed a client-facing RAG assistant on a Sunday afternoon. The retainer paid for the programme twice over." name="Ananya R." role="Marketing Lead → AI Operator" initials="AR" hint-size="100%,220px"></x-import>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px;">
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.TestimonialCard" on-dark="true" quote="Shipped my first paid micro-SaaS before the cohort ended. Zero prior coding — just directed agents." name="Karthik S." role="Founder, D2C brand" initials="KS" hint-size="100%,200px"></x-import>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.TestimonialCard" on-dark="true" quote="Moved from reporting analyst to leading our AI adoption pod. Same company, new mandate, better pay." name="Meera V." role="Senior Analyst" initials="MV" hint-size="100%,200px"></x-import>
+
+      <!-- Shift Comparison Banner -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+        <div style="background: rgba(255, 59, 48, 0.1); border: 1px solid rgba(255, 59, 48, 0.3); border-radius: 16px; padding: 24px;">
+          <div style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; color: #FF3B30; text-transform: uppercase; letter-spacing: 0.15em;">HOW MOST PEOPLE LEARN AI:</div>
+          <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.25rem; color: #FFFFFF; margin-top: 10px;">
+            Watch → Try → Forget → Find another tool
+          </div>
+        </div>
+        <div style="background: rgba(216, 255, 50, 0.1); border: 1px solid rgba(216, 255, 50, 0.4); border-radius: 16px; padding: 24px;">
+          <div style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; color: #D8FF32; text-transform: uppercase; letter-spacing: 0.15em;">HOW WE TEACH YOU:</div>
+          <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.25rem; color: #D8FF32; margin-top: 10px;">
+            Understand → Build → Apply → Deploy
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 Capabilities Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 12px;">
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 20px;">
+          <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 0.9375rem; color: #D8FF32;">THINK WITH AI</div>
+          <p style="margin: 6px 0 0 0; font-size: 0.875rem; color: #FFFFFF; line-height: 1.5;">Get better research, reasoning and decision support.</p>
+        </div>
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 20px;">
+          <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 0.9375rem; color: #D8FF32;">CREATE WITH AI</div>
+          <p style="margin: 6px 0 0 0; font-size: 0.875rem; color: #FFFFFF; line-height: 1.5;">Generate high-quality images, videos, voice and content.</p>
+        </div>
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 20px;">
+          <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 0.9375rem; color: #D8FF32;">AUTOMATE WITH AI</div>
+          <p style="margin: 6px 0 0 0; font-size: 0.875rem; color: #FFFFFF; line-height: 1.5;">Build workflows that reduce repetitive work.</p>
+        </div>
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 20px;">
+          <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 0.9375rem; color: #D8FF32;">BUILD WITH AI</div>
+          <p style="margin: 6px 0 0 0; font-size: 0.875rem; color: #FFFFFF; line-height: 1.5;">Create websites, applications and AI-powered systems.</p>
+        </div>
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 20px;">
+          <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 0.9375rem; color: #D8FF32;">WORK WITH AI</div>
+          <p style="margin: 6px 0 0 0; font-size: 0.875rem; color: #FFFFFF; line-height: 1.5;">Integrate AI into the job or business you already have.</p>
+        </div>
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 20px;">
+          <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 0.9375rem; color: #D8FF32;">LAUNCH WITH AI</div>
+          <p style="margin: 6px 0 0 0; font-size: 0.875rem; color: #FFFFFF; line-height: 1.5;">Turn ideas into real products and opportunities.</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 12px;">
+        <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" style="background: #1A22FF; color: #FFFFFF; border: none; border-radius: 99px; padding: 16px 32px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 0.9375rem; cursor: pointer;">
+          I WANT TO LEARN AI PROPERLY →
+        </button>
       </div>
     </div>
   </section>
 
-  <!-- Mentor -->
-  <section id="mentor" class="responsive-2col section-container" data-screen-label="Mentor" style="max-width: 1240px; margin: 0 auto; padding: clamp(36px, 5vw, 72px) clamp(20px, 5vw, 80px); display: grid; grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr); gap: clamp(24px, 4vw, 48px); align-items: center;">
+  <!-- 05 — WHAT WILL YOU LEARN? (CURRICULUM W01–W08) -->
+  <section id="curriculum" data-screen-label="Curriculum" style="background: #050B36; color: #F9FAFC;">
+    <div class="section-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(48px, 6vw, 88px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 36px;">
+      <div style="display: flex; flex-direction: column; gap: 16px; max-width: 780px;">
+        <span style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #D8FF32;">05 // WHAT WILL YOU LEARN?</span>
+        <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(2.2rem, 4.2vw, 3.6rem); letter-spacing: -0.03em; line-height: 1.05; color: #FFFFFF;">
+          8 Weeks to a Completely Different Way of Working.<br><em style="font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic; color: #D8FF32;">Not 8 weeks of theory. 8 weeks of transformation.</em>
+        </h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        <!-- Week 01 -->
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+          <div>
+            <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">WEEK 01</div>
+            <h3 style="margin: 4px 0 8px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">Think Better With AI</h3>
+            <p style="margin: 0; font-size: 0.875rem; color: rgba(255,255,255,0.85); line-height: 1.5;">Master prompting, reasoning, research and AI-assisted thinking.</p>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px;">
+              <span style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">ChatGPT</span>
+              <span style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Gemini</span>
+              <span style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Perplexity</span>
+            </div>
+          </div>
+          <div style="background: rgba(216,255,50,0.08); border-left: 3px solid #D8FF32; padding: 8px 12px; font-size: 0.75rem;">
+            <div style="color: rgba(255,255,255,0.6); text-decoration: line-through;">“What should I ask AI?”</div>
+            <div style="color: #D8FF32; font-weight: 700; margin-top: 2px;">“I know how to make AI think through the problem with me.”</div>
+          </div>
+        </div>
+
+        <!-- Week 02 -->
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+          <div>
+            <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">WEEK 02</div>
+            <h3 style="margin: 4px 0 8px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">Build Your AI Brain</h3>
+            <p style="margin: 0; font-size: 0.875rem; color: rgba(255,255,255,0.85); line-height: 1.5;">Turn your documents, knowledge and research into an AI knowledge system.</p>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px;">
+              <span style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">NotebookLM</span>
+              <span style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Claude</span>
+            </div>
+          </div>
+          <div style="background: rgba(216,255,50,0.08); border-left: 3px solid #D8FF32; padding: 8px 12px; font-size: 0.75rem;">
+            <div style="color: rgba(255,255,255,0.6); text-decoration: line-through;">Searching through information manually.</div>
+            <div style="color: #D8FF32; font-weight: 700; margin-top: 2px;">Having AI work with your knowledge.</div>
+          </div>
+        </div>
+
+        <!-- Week 03 -->
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+          <div>
+            <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">WEEK 03</div>
+            <h3 style="margin: 4px 0 8px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">Make AI Work For You</h3>
+            <p style="margin: 0; font-size: 0.875rem; color: rgba(255,255,255,0.85); line-height: 1.5;">Create agents and automated workflows that perform multi-step tasks.</p>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px;">
+              <span style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Make</span>
+              <span style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">n8n</span>
+              <span style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Zapier</span>
+            </div>
+          </div>
+          <div style="background: rgba(216,255,50,0.08); border-left: 3px solid #D8FF32; padding: 8px 12px; font-size: 0.75rem;">
+            <div style="color: rgba(255,255,255,0.6); text-decoration: line-through;">Doing repetitive tasks yourself.</div>
+            <div style="color: #D8FF32; font-weight: 700; margin-top: 2px;">Designing systems that do them for you.</div>
+          </div>
+        </div>
+
+        <!-- Week 04 -->
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+          <div>
+            <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">WEEK 04</div>
+            <h3 style="margin: 4px 0 8px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">Give AI a Voice</h3>
+            <p style="margin: 0; font-size: 0.875rem; color: rgba(255,255,255,0.85); line-height: 1.5;">Explore voice agents, realistic voice generation and AI avatars.</p>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px;">
+              <span style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">ElevenLabs</span>
+              <span style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">HeyGen</span>
+            </div>
+          </div>
+          <div style="background: rgba(216,255,50,0.08); border-left: 3px solid #D8FF32; padding: 8px 12px; font-size: 0.75rem;">
+            <div style="color: rgba(255,255,255,0.6); text-decoration: line-through;">Creating everything manually.</div>
+            <div style="color: #D8FF32; font-weight: 700; margin-top: 2px;">Producing voice experiences at scale.</div>
+          </div>
+        </div>
+
+        <!-- Week 05 -->
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+          <div>
+            <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">WEEK 05</div>
+            <h3 style="margin: 4px 0 8px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">Build Your AI Content Studio</h3>
+            <p style="margin: 0; font-size: 0.875rem; color: rgba(255,255,255,0.85); line-height: 1.5;">Create images, videos and branded creative using generative AI.</p>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px;">
+              <span style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Midjourney</span>
+              <span style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Higgsfield</span>
+              <span style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Runway</span>
+            </div>
+          </div>
+          <div style="background: rgba(216,255,50,0.08); border-left: 3px solid #D8FF32; padding: 8px 12px; font-size: 0.75rem;">
+            <div style="color: rgba(255,255,255,0.6); text-decoration: line-through;">Waiting for production.</div>
+            <div style="color: #D8FF32; font-weight: 700; margin-top: 2px;">Directing your own AI production pipeline.</div>
+          </div>
+        </div>
+
+        <!-- Week 06 -->
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+          <div>
+            <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">WEEK 06</div>
+            <h3 style="margin: 4px 0 8px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">Design With AI</h3>
+            <p style="margin: 0; font-size: 0.875rem; color: rgba(255,255,255,0.85); line-height: 1.5;">Turn ideas into interfaces and websites faster.</p>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px;">
+              <span style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">v0</span>
+              <span style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Claude Design</span>
+            </div>
+          </div>
+          <div style="background: rgba(216,255,50,0.08); border-left: 3px solid #D8FF32; padding: 8px 12px; font-size: 0.75rem;">
+            <div style="color: rgba(255,255,255,0.6); text-decoration: line-through;">Blank canvas.</div>
+            <div style="color: #D8FF32; font-weight: 700; margin-top: 2px;">Working interface.</div>
+          </div>
+        </div>
+
+        <!-- Week 07 -->
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+          <div>
+            <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">WEEK 07</div>
+            <h3 style="margin: 4px 0 8px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">Code With AI</h3>
+            <p style="margin: 0; font-size: 0.875rem; color: rgba(255,255,255,0.85); line-height: 1.5;">Build software by directing AI coding agents.</p>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px;">
+              <span style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Claude Code</span>
+              <span style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Cursor</span>
+              <span style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Google Antigravity</span>
+            </div>
+          </div>
+          <div style="background: rgba(216,255,50,0.08); border-left: 3px solid #D8FF32; padding: 8px 12px; font-size: 0.75rem;">
+            <div style="color: rgba(255,255,255,0.6); text-decoration: line-through;">“I can't code.”</div>
+            <div style="color: #D8FF32; font-weight: 700; margin-top: 2px;">“I can build with AI.”</div>
+          </div>
+        </div>
+
+        <!-- Week 08 -->
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+          <div>
+            <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">WEEK 08</div>
+            <h3 style="margin: 4px 0 8px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">Turn Ideas Into Products</h3>
+            <p style="margin: 0; font-size: 0.875rem; color: rgba(255,255,255,0.85); line-height: 1.5;">Bring everything together and build something real.</p>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px;">
+              <span style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Replit</span>
+              <span style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Stripe</span>
+            </div>
+          </div>
+          <div style="background: rgba(216,255,50,0.08); border-left: 3px solid #D8FF32; padding: 8px 12px; font-size: 0.75rem;">
+            <div style="color: rgba(255,255,255,0.6); text-decoration: line-through;">Having ideas.</div>
+            <div style="color: #D8FF32; font-weight: 700; margin-top: 2px;">Shipping something people can actually use.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 — WHAT YOU'LL BUILD -->
+  <section id="what-you-build" data-screen-label="What You Will Build" style="background: #08125C; color: #F9FAFC; border-top: 1px solid rgba(26, 34, 255, 0.4); border-bottom: 1px solid rgba(26, 34, 255, 0.4);">
+    <div class="section-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(48px, 6vw, 88px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 36px;">
+      <div style="display: flex; flex-direction: column; gap: 16px; max-width: 780px;">
+        <span style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #D8FF32;">06 // WHAT YOU'LL BUILD</span>
+        <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(2.2rem, 4.2vw, 3.6rem); letter-spacing: -0.03em; line-height: 1.05; color: #FFFFFF;">
+          Because transformation is easier to believe when you can see it.
+        </h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 28px;">
+          <div style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 800; color: #D8FF32;">01 BLUEPRINT</div>
+          <h3 style="margin: 8px 0 6px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">YOUR AI BRAIN</h3>
+          <p style="margin: 0; font-size: 0.9375rem; color: rgba(255,255,255,0.85); line-height: 1.6;">A knowledge assistant built around your own information and custom RAG pipeline.</p>
+        </div>
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 28px;">
+          <div style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 800; color: #D8FF32;">02 BLUEPRINT</div>
+          <h3 style="margin: 8px 0 6px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">YOUR AI AGENT</h3>
+          <p style="margin: 0; font-size: 0.9375rem; color: rgba(255,255,255,0.85); line-height: 1.6;">An automated system that can research, reason and execute multi-step tasks.</p>
+        </div>
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 28px;">
+          <div style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 800; color: #D8FF32;">03 BLUEPRINT</div>
+          <h3 style="margin: 8px 0 6px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">YOUR AI CONTENT STUDIO</h3>
+          <p style="margin: 0; font-size: 0.9375rem; color: rgba(255,255,255,0.85); line-height: 1.6;">A full production pipeline for images, video and branded creative.</p>
+        </div>
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 28px;">
+          <div style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 800; color: #D8FF32;">04 BLUEPRINT</div>
+          <h3 style="margin: 8px 0 6px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">YOUR AI PRODUCT</h3>
+          <p style="margin: 0; font-size: 0.9375rem; color: rgba(255,255,255,0.85); line-height: 1.6;">A working digital product you can deploy and showcase to clients or users.</p>
+        </div>
+      </div>
+
+      <div style="background: rgba(216,255,50,0.1); border: 1px solid rgba(216,255,50,0.3); border-radius: 16px; padding: 24px; text-align: center;">
+        <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.25rem; color: #FFFFFF;">You don't finish with 20 recorded classes. You finish with things you built.</div>
+        <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" style="margin-top: 14px; background: #D8FF32; color: #050B36; border: none; border-radius: 99px; padding: 12px 28px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 0.9375rem; cursor: pointer;">SEE WHAT I'LL BUILD →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 — THE AI STACK -->
+  <section id="ai-stack" data-screen-label="The AI Stack" style="background: #050B36; color: #F9FAFC;">
+    <div class="section-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(48px, 6vw, 88px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 36px;">
+      <div style="display: flex; flex-direction: column; gap: 16px; max-width: 780px;">
+        <span style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #D8FF32;">07 // THE AI STACK</span>
+        <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(2.2rem, 4.2vw, 3.6rem); letter-spacing: -0.03em; line-height: 1.05; color: #FFFFFF;">
+          Learn the tools. <em style="font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic; color: #D8FF32;">Master the thinking.</em>
+        </h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 20px;">
+          <div style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; color: #D8FF32; text-transform: uppercase;">AI &amp; RESEARCH</div>
+          <div style="font-size: 0.9375rem; color: #FFFFFF; font-weight: 600; margin-top: 6px; line-height: 1.6;">ChatGPT · Claude · Gemini · Perplexity · NotebookLM</div>
+        </div>
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 20px;">
+          <div style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; color: #D8FF32; text-transform: uppercase;">CREATIVE AI</div>
+          <div style="font-size: 0.9375rem; color: #FFFFFF; font-weight: 600; margin-top: 6px; line-height: 1.6;">Midjourney · Higgsfield · Runway</div>
+        </div>
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 20px;">
+          <div style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; color: #D8FF32; text-transform: uppercase;">VOICE &amp; VIDEO</div>
+          <div style="font-size: 0.9375rem; color: #FFFFFF; font-weight: 600; margin-top: 6px; line-height: 1.6;">ElevenLabs · HeyGen</div>
+        </div>
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 20px;">
+          <div style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; color: #D8FF32; text-transform: uppercase;">AUTOMATION</div>
+          <div style="font-size: 0.9375rem; color: #FFFFFF; font-weight: 600; margin-top: 6px; line-height: 1.6;">Make · n8n · Zapier</div>
+        </div>
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 20px;">
+          <div style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; color: #D8FF32; text-transform: uppercase;">DEVELOPMENT</div>
+          <div style="font-size: 0.9375rem; color: #FFFFFF; font-weight: 600; margin-top: 6px; line-height: 1.6;">Claude Code · Cursor · Replit · Google Antigravity</div>
+        </div>
+      </div>
+      
+      <p style="margin: 0; font-size: 1.0625rem; color: #FFFFFF; text-align: center;">Because tools change. <strong>Your ability to adapt is the real skill.</strong></p>
+    </div>
+  </section>
+
+  <!-- 08 — THE EXPERIENCE -->
+  <section id="experience" data-screen-label="The Experience" style="background: #08125C; color: #F9FAFC; border-top: 1px solid rgba(26, 34, 255, 0.4); border-bottom: 1px solid rgba(26, 34, 255, 0.4);">
+    <div class="section-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(48px, 6vw, 88px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 36px;">
+      <div style="display: flex; flex-direction: column; gap: 16px; max-width: 780px;">
+        <span style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #D8FF32;">08 // THE EXPERIENCE</span>
+        <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(2.2rem, 4.2vw, 3.6rem); letter-spacing: -0.03em; line-height: 1.05; color: #FFFFFF;">
+          Don't just watch. <em style="font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic; color: #D8FF32;">Build.</em>
+        </h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 24px;">
+          <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.125rem; color: #D8FF32;">LIVE LEARNING</div>
+          <p style="margin: 8px 0 0 0; font-size: 0.9375rem; color: #FFFFFF; line-height: 1.5;">20 live classes with expert guidance and teardowns.</p>
+        </div>
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 24px;">
+          <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.125rem; color: #D8FF32;">BUILD EVERY WEEK</div>
+          <p style="margin: 8px 0 0 0; font-size: 0.9375rem; color: #FFFFFF; line-height: 1.5;">Turn lessons into practical live projects after every module.</p>
+        </div>
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 24px;">
+          <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.125rem; color: #D8FF32;">GET UNSTUCK</div>
+          <p style="margin: 8px 0 0 0; font-size: 0.9375rem; color: #FFFFFF; line-height: 1.5;">Direct 1:1 mentor support whenever you hit a technical roadblock.</p>
+        </div>
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 24px;">
+          <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.125rem; color: #D8FF32;">REAL USE CASES</div>
+          <p style="margin: 8px 0 0 0; font-size: 0.9375rem; color: #FFFFFF; line-height: 1.5;">See how AI applies beyond tutorials in real production systems.</p>
+        </div>
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 24px;">
+          <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.125rem; color: #D8FF32;">BUILD YOUR PORTFOLIO</div>
+          <p style="margin: 8px 0 0 0; font-size: 0.9375rem; color: #FFFFFF; line-height: 1.5;">Finish with working systems you can actually show recruiters or clients.</p>
+        </div>
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 24px;">
+          <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.125rem; color: #D8FF32;">LEARN FROM ANYWHERE</div>
+          <p style="margin: 8px 0 0 0; font-size: 0.9375rem; color: #FFFFFF; line-height: 1.5;">100% online with HD session recordings included for life.</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 8px;">
+        <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" style="background: #D8FF32; color: #050B36; border: none; border-radius: 99px; padding: 16px 36px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1rem; cursor: pointer;">
+          BOOK MY FREE AI STRATEGY CALL →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 — YOUR MENTOR -->
+  <section id="mentor" class="responsive-2col section-container" data-screen-label="Mentor" style="max-width: 1240px; margin: 0 auto; padding: clamp(48px, 6vw, 88px) clamp(20px, 5vw, 80px); display: grid; grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr); gap: clamp(24px, 4vw, 48px); align-items: center;">
     <div style="border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 5;">
       <image-slot id="mentor-portrait" shape="rounded" radius="16" src="assets/founder-pulidevan.png" placeholder="Drop mentor portrait" style="width: 100%; height: 100%;"></image-slot>
     </div>
     <div style="display: flex; flex-direction: column; gap: 20px;">
-      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.SectionLabel" code="Guided by Expert" color="onDark" hint-size="280px,16px">Your Mentor</x-import>
-      <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.2rem, 4vw, 3.5rem); letter-spacing: -0.03em; line-height: 0.98; color: #F9FAFC;">Learn from an operator, <em style="font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic;">not a lecturer.</em></h2>
-      <p style="margin: 0; font-size: 1.0625rem; line-height: 1.65; color: rgba(249, 250, 252, 0.75); max-width: 52ch;">Live sessions, teardowns of real deployments, and direct feedback on what you build every week — from mentors running AI-native systems in production today.</p>
-      <div style="display: flex; flex-direction: column; gap: 4px; padding-top: 20px; border-top: 1px solid rgba(26, 34, 255, 0.4);">
-        <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; letter-spacing: -0.02em; color: #F9FAFC;">Pulidevan</div>
-        <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; color: #D8FF32;">Founder &amp; Lead Mentor, AI Essentials</div>
+      <span style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #D8FF32;">09 // YOUR MENTOR</span>
+      <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(2.2rem, 4vw, 3.5rem); letter-spacing: -0.03em; line-height: 1.05; color: #FFFFFF;">
+        Learn from someone who uses AI in the real world.
+      </h2>
+      <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.375rem; color: #D8FF32;">Pulidevan — Founder &amp; Lead Mentor, AI Essentials</div>
+      <p style="margin: 0; font-size: 1.0625rem; line-height: 1.65; color: #FFFFFF;">
+        AI Essentials isn't built around teaching tools for the sake of teaching tools. It's built around a simple question:
+      </p>
+      <div style="background: rgba(216, 255, 50, 0.1); border-left: 4px solid #D8FF32; padding: 16px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.25rem; color: #D8FF32;">
+        “What can you actually do with AI after you learn it?”
+      </div>
+      <p style="margin: 0; font-size: 1.0625rem; line-height: 1.65; color: #FFFFFF;">
+        The programme brings together practical experience across <strong>AI, marketing, design, automation and product building</strong> to help learners move from curiosity to capability.
+      </p>
+      <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.125rem; color: #FFFFFF; text-transform: uppercase; letter-spacing: 0.1em;">
+        Learn it. Build it. Apply it.
       </div>
     </div>
   </section>
 
-  <!-- Tools -->
-  <section data-screen-label="Tools" style="background: #08125C; color: #F9FAFC; border-top: 1px solid rgba(26, 34, 255, 0.4); border-bottom: 1px solid rgba(26, 34, 255, 0.4);">
-    <div class="section-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(36px, 5vw, 72px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 32px;">
-      <div style="display: flex; flex-direction: column; gap: 16px; max-width: 640px;">
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.SectionLabel" code="Tools You'll Use" color="onDark" hint-size="280px,16px">The Arsenal</x-import>
-        <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.2rem, 4vw, 3.5rem); letter-spacing: -0.03em; line-height: 0.98; color: #F9FAFC;">Build with the tools powering modern AI.</h2>
-      </div>
-      <div style="display: flex; flex-wrap: wrap; gap: 12px; max-width: 900px;">
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="100px,36px">ChatGPT</x-import>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="90px,36px">Claude</x-import>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="90px,36px">Gemini</x-import>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="110px,36px">Perplexity</x-import>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="120px,36px">NotebookLM</x-import>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="110px,36px">Midjourney</x-import>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="90px,36px">Runway</x-import>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="110px,36px">ElevenLabs</x-import>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="70px,36px">n8n</x-import>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="80px,36px">Make</x-import>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="120px,36px">Claude Code</x-import>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="90px,36px">Cursor</x-import>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="90px,36px">Replit</x-import>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="90px,36px">Stripe</x-import>
+  <!-- 10 — AI ESSENTIALS PHILOSOPHY -->
+  <section id="philosophy" data-screen-label="Philosophy" style="background: #08125C; color: #F9FAFC; border-top: 1px solid rgba(26, 34, 255, 0.4); border-bottom: 1px solid rgba(26, 34, 255, 0.4);">
+    <div class="section-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(48px, 6vw, 88px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 28px; text-align: center; align-items: center;">
+      <span style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #D8FF32;">10 // OUR PHILOSOPHY</span>
+      <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(2rem, 4vw, 3.25rem); letter-spacing: -0.03em; line-height: 1.1; color: #FFFFFF; max-width: 900px;">
+        We don't want to create people who know more about AI.<br><em style="font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic; color: #D8FF32;">We want to create people who can do more because of AI.</em>
+      </h2>
+      <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 24px 40px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.25rem; color: #FFFFFF; max-width: 600px;">
+        Learn less theory. <br><span style="color: #D8FF32;">Build more.</span> <br>Apply immediately.
       </div>
     </div>
   </section>
 
-  <!-- Projects -->
-  <section class="section-container" data-screen-label="Projects" style="max-width: 1240px; margin: 0 auto; padding: clamp(36px, 5vw, 72px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 36px;">
-    <div style="display: flex; flex-direction: column; gap: 16px; max-width: 680px;">
-      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.SectionLabel" code="Project-Based Learning" color="onDark" hint-size="320px,16px">Blueprints 01–04</x-import>
-      <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.2rem, 4vw, 3.5rem); letter-spacing: -0.03em; line-height: 0.98; color: #F9FAFC;">Ship deployments that stand out.</h2>
-      <p style="margin: 0; font-size: 1.0625rem; line-height: 1.65; color: rgba(249, 250, 252, 0.75);">Every module ends in a live artifact. By week eight you have a portfolio of working systems, not certificates of attendance.</p>
-    </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
-      <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 10px;">
-        <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; color: #D8FF32;">01</div>
-        <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.1875rem; letter-spacing: -0.02em; color: #F9FAFC;">Personal Knowledge Engine</div>
-        <p style="margin: 0; font-size: 0.9375rem; line-height: 1.6; color: rgba(249, 250, 252, 0.75);">A RAG assistant trained on your own corpus — answers like you, cites like a researcher.</p>
+  <!-- 11 — REVIEWS -->
+  <section id="reviews" data-screen-label="Reviews" style="background: #050B36; color: #F9FAFC;">
+    <div class="section-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(48px, 6vw, 88px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 36px;">
+      <div style="display: flex; flex-direction: column; gap: 16px; max-width: 780px;">
+        <span style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #D8FF32;">11 // REVIEWS &amp; PROOF</span>
+        <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(2.2rem, 4.2vw, 3.6rem); letter-spacing: -0.03em; line-height: 1.05; color: #FFFFFF;">
+          The real transformation happens when you start using it.
+        </h2>
       </div>
-      <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 10px;">
-        <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; color: #D8FF32;">02</div>
-        <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.1875rem; letter-spacing: -0.02em; color: #F9FAFC;">Autonomous Growth Agent</div>
-        <p style="margin: 0; font-size: 0.9375rem; line-height: 1.6; color: rgba(249, 250, 252, 0.75);">An agent that researches, writes, and publishes across channels on a schedule you set.</p>
-      </div>
-      <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 10px;">
-        <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; color: #D8FF32;">03</div>
-        <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.1875rem; letter-spacing: -0.02em; color: #F9FAFC;">Generative Brand Studio</div>
-        <p style="margin: 0; font-size: 0.9375rem; line-height: 1.6; color: rgba(249, 250, 252, 0.75);">An image and video pipeline producing on-brand creative for a real business.</p>
-      </div>
-      <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 10px;">
-        <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; color: #D8FF32;">04</div>
-        <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.1875rem; letter-spacing: -0.02em; color: #F9FAFC;">Micro-SaaS Launch</div>
-        <p style="margin: 0; font-size: 0.9375rem; line-height: 1.6; color: rgba(249, 250, 252, 0.75);">Build, deploy, and take live payments on your own product — digital real estate you own.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- Certification -->
-  <section data-screen-label="Certification" style="background: #08125C; color: #F9FAFC; border-top: 1px solid rgba(26, 34, 255, 0.4); border-bottom: 1px solid rgba(26, 34, 255, 0.4);">
-    <div class="responsive-2col section-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(36px, 5vw, 72px) clamp(20px, 5vw, 80px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 0.9fr); gap: clamp(24px, 4vw, 48px); align-items: center;">
-      <div style="display: flex; flex-direction: column; gap: 20px;">
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.SectionLabel" code="Get Certified" color="onDark" hint-size="240px,16px">The Credential</x-import>
-        <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.2rem, 4vw, 3.5rem); letter-spacing: -0.03em; line-height: 0.98; color: #F9FAFC;">A certificate that signals deployment, not attendance.</h2>
-        <div style="display: flex; flex-direction: column;">
-          <div style="padding: 16px 0; border-top: 1px solid rgba(26, 34, 255, 0.4); display: flex; flex-direction: column; gap: 4px;">
-            <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem; letter-spacing: -0.01em; color: #F9FAFC;">Verified credential</div>
-            <p style="margin: 0; font-size: 0.9375rem; line-height: 1.6; color: rgba(249, 250, 252, 0.75);">An AI Essentials Operator certificate, issued on completion of all eight deployments.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+          <div>
+            <div style="color: #D8FF32; font-size: 1.125rem;">★★★★★</div>
+            <p style="margin: 12px 0 0 0; font-size: 1rem; color: #FFFFFF; font-weight: 600; line-height: 1.5;">“I automated our entire content pipeline and deployed a client-facing RAG assistant.”</p>
           </div>
-          <div style="padding: 16px 0; border-top: 1px solid rgba(26, 34, 255, 0.4); display: flex; flex-direction: column; gap: 4px;">
-            <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem; letter-spacing: -0.01em; color: #F9FAFC;">Portfolio-backed</div>
-            <p style="margin: 0; font-size: 0.9375rem; line-height: 1.6; color: rgba(249, 250, 252, 0.75);">Every claim on the certificate maps to a live system a recruiter can click.</p>
+          <div style="border-top: 1px solid rgba(26,34,255,0.3); padding-top: 12px;">
+            <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1rem; color: #FFFFFF;">Ananya R.</div>
+            <div style="font-size: 0.8125rem; color: #D8FF32;">Marketing Lead</div>
           </div>
-          <div style="padding: 16px 0; border-top: 1px solid rgba(26, 34, 255, 0.4); display: flex; flex-direction: column; gap: 4px;">
-            <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem; letter-spacing: -0.01em; color: #F9FAFC;">Industry-aligned</div>
-            <p style="margin: 0; font-size: 0.9375rem; line-height: 1.6; color: rgba(249, 250, 252, 0.75);">Capabilities matched to how AI-native teams actually work in 2026.</p>
+        </div>
+
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+          <div>
+            <div style="color: #D8FF32; font-size: 1.125rem;">★★★★★</div>
+            <p style="margin: 12px 0 0 0; font-size: 1rem; color: #FFFFFF; font-weight: 600; line-height: 1.5;">“I shipped my first paid micro-SaaS before the cohort ended.”</p>
+          </div>
+          <div style="border-top: 1px solid rgba(26,34,255,0.3); padding-top: 12px;">
+            <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1rem; color: #FFFFFF;">Karthik S.</div>
+            <div style="font-size: 0.8125rem; color: #D8FF32;">Founder</div>
+          </div>
+        </div>
+
+        <div style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+          <div>
+            <div style="color: #D8FF32; font-size: 1.125rem;">★★★★★</div>
+            <p style="margin: 12px 0 0 0; font-size: 1rem; color: #FFFFFF; font-weight: 600; line-height: 1.5;">“I moved from reporting analyst to leading our AI adoption initiatives.”</p>
+          </div>
+          <div style="border-top: 1px solid rgba(26,34,255,0.3); padding-top: 12px;">
+            <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1rem; color: #FFFFFF;">Meera V.</div>
+            <div style="font-size: 0.8125rem; color: #D8FF32;">Senior Analyst</div>
           </div>
         </div>
       </div>
-      <div style="aspect-ratio: 4 / 3;">
-        <image-slot id="certificate" shape="rounded" radius="16" src="assets/Capture-2026-08-01-192731.png" placeholder="Drop your certificate image" style="width: 100%; height: 100%;"></image-slot>
+
+      <div style="text-align: center; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.125rem; color: #FFFFFF; margin-top: 8px;">
+        Different backgrounds. Same shift. <span style="color: #D8FF32;">From consuming AI → to creating with AI.</span>
       </div>
     </div>
   </section>
 
-  <!-- Career support -->
-  <section class="section-container" data-screen-label="Career support" style="max-width: 1240px; margin: 0 auto; padding: clamp(36px, 5vw, 72px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 32px;">
-    <div style="display: flex; flex-direction: column; gap: 16px; max-width: 680px;">
-      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.SectionLabel" code="Career Support That Delivers" color="onDark" hint-size="360px,16px">End to End</x-import>
-      <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.2rem, 4vw, 3.5rem); letter-spacing: -0.03em; line-height: 0.98; color: #F9FAFC;">Crack interviews with end-to-end support.</h2>
-      <p style="margin: 0; font-size: 1.0625rem; line-height: 1.65; color: rgba(249, 250, 252, 0.75);">Prepare smarter, perform better, and get closer to your next opportunity — with support that runs past graduation.</p>
-    </div>
-    <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-      <div style="font-family: 'Sora', sans-serif; font-weight: 600; font-size: 0.9375rem; letter-spacing: -0.01em; padding: 12px 20px; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 999px; background: #0A1245; color: #F9FAFC;">1:1 Mock Interviews</div>
-      <div style="font-family: 'Sora', sans-serif; font-weight: 600; font-size: 0.9375rem; letter-spacing: -0.01em; padding: 12px 20px; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 999px; background: #0A1245; color: #F9FAFC;">Resume &amp; Portfolio Review</div>
-      <div style="font-family: 'Sora', sans-serif; font-weight: 600; font-size: 0.9375rem; letter-spacing: -0.01em; padding: 12px 20px; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 999px; background: #0A1245; color: #F9FAFC;">1:1 Mentor Guidance</div>
-      <div style="font-family: 'Sora', sans-serif; font-weight: 600; font-size: 0.9375rem; letter-spacing: -0.01em; padding: 12px 20px; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 999px; background: #0A1245; color: #F9FAFC;">Interview Prep Sprints</div>
-      <div style="font-family: 'Sora', sans-serif; font-weight: 600; font-size: 0.9375rem; letter-spacing: -0.01em; padding: 12px 20px; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 999px; background: #0A1245; color: #F9FAFC;">Access to Job Opportunities</div>
-    </div>
-  </section>
-
-  <!-- How it works -->
-  <section data-screen-label="How it works" style="background: #08125C; color: #F9FAFC; border-top: 1px solid rgba(26, 34, 255, 0.4); border-bottom: 1px solid rgba(26, 34, 255, 0.4);">
-    <div class="section-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(36px, 5vw, 72px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 36px;">
-      <div style="display: flex; flex-direction: column; gap: 16px; max-width: 640px;">
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.SectionLabel" code="Delivery Framework" color="onDark" hint-size="300px,16px">S01 — S06</x-import>
-        <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.2rem, 4vw, 3.5rem); letter-spacing: -0.03em; line-height: 0.98; color: #F9FAFC;">How the programme works.</h2>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0; border-top: 1px solid rgba(26, 34, 255, 0.4);">
-        <div style="padding: 24px 20px 24px 0; border-bottom: 1px solid rgba(26, 34, 255, 0.4); display: flex; gap: 16px; align-items: baseline;">
-          <span style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; color: #D8FF32;">S01</span>
-          <div><div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem; color: #F9FAFC;">Apply &amp; onboard</div><p style="margin: 4px 0 0 0; font-size: 0.9375rem; line-height: 1.6; color: rgba(249, 250, 252, 0.75);">A counselor call, cohort placement, and your operator workspace set up.</p></div>
-        </div>
-        <div style="padding: 24px 20px 24px 0; border-bottom: 1px solid rgba(26, 34, 255, 0.4); display: flex; gap: 16px; align-items: baseline;">
-          <span style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; color: #D8FF32;">S02</span>
-          <div><div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem; color: #F9FAFC;">Foundations week</div><p style="margin: 4px 0 0 0; font-size: 0.9375rem; line-height: 1.6; color: rgba(249, 250, 252, 0.75);">Guided onboarding and the mental models behind every tool that follows.</p></div>
-        </div>
-        <div style="padding: 24px 20px 24px 0; border-bottom: 1px solid rgba(26, 34, 255, 0.4); display: flex; gap: 16px; align-items: baseline;">
-          <span style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; color: #D8FF32;">S03</span>
-          <div><div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem; color: #F9FAFC;">Live expert modules</div><p style="margin: 4px 0 0 0; font-size: 0.9375rem; line-height: 1.6; color: rgba(249, 250, 252, 0.75);">Twenty live classes across eight structured weeks — recorded if you miss one.</p></div>
-        </div>
-        <div style="padding: 24px 20px 24px 0; border-bottom: 1px solid rgba(26, 34, 255, 0.4); display: flex; gap: 16px; align-items: baseline;">
-          <span style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; color: #D8FF32;">S04</span>
-          <div><div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem; color: #F9FAFC;">Build every week</div><p style="margin: 4px 0 0 0; font-size: 0.9375rem; line-height: 1.6; color: rgba(249, 250, 252, 0.75);">Hands-on deployments after every module — feedback from mentors, not autograders.</p></div>
-        </div>
-        <div style="padding: 24px 20px 24px 0; border-bottom: 1px solid rgba(26, 34, 255, 0.4); display: flex; gap: 16px; align-items: baseline;">
-          <span style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; color: #D8FF32;">S05</span>
-          <div><div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem; color: #F9FAFC;">Master the stack</div><p style="margin: 4px 0 0 0; font-size: 0.9375rem; line-height: 1.6; color: rgba(249, 250, 252, 0.75);">Industry-standard tools, wired together into your personal operating system.</p></div>
-        </div>
-        <div style="padding: 24px 20px 24px 0; border-bottom: 1px solid rgba(26, 34, 255, 0.4); display: flex; gap: 16px; align-items: baseline;">
-          <span style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; color: #D8FF32;">S06</span>
-          <div><div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem; color: #F9FAFC;">Portfolio &amp; career prep</div><p style="margin: 4px 0 0 0; font-size: 0.9375rem; line-height: 1.6; color: rgba(249, 250, 252, 0.75);">Package your deployments, rehearse interviews, and step into the market.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing -->
-  <sc-if value="{{ showPricing }}" hint-placeholder-val="{{ true }}">
-    <section id="pricing" class="section-container" data-screen-label="Pricing" style="max-width: 1240px; margin: 0 auto; padding: clamp(36px, 5vw, 72px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 36px;">
-      <div style="display: flex; flex-direction: column; gap: 16px; max-width: 640px;">
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.SectionLabel" code="Pricing" color="onDark" hint-size="180px,16px">Invest in Leverage</x-import>
-        <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.2rem, 4vw, 3.5rem); letter-spacing: -0.03em; line-height: 0.98; color: #F9FAFC;">Choose your level of leverage.</h2>
-        <p style="margin: 0; font-size: 1.0625rem; line-height: 1.65; color: rgba(249, 250, 252, 0.75);">Flexible plans and EMI options. Talk to a counselor to unlock scholarship benefits.</p>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; align-items: stretch;">
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.PriceCard" eyebrow="Gen AI" price="₹25,000" anchor="₹45,000" note="8 Weeks · Live Cohort" cta="Book Consultation" cta-variant="outline" dc-props="{{ p1 }}" hint-size="100%,420px"></x-import>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.PriceCard" eyebrow="Gen AI Plus Meta" price="₹35,000" anchor="₹65,000" note="Recommended Tier" cta="Book Consultation" cta-variant="{{ ctaVariant }}" highlight="true" dc-props="{{ p2 }}" hint-size="100%,460px"></x-import>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.PriceCard" eyebrow="Gen AI, Marketing Plus Campaign Management" price="₹99,999" anchor="₹2,00,000" note="Includes upto 2 lakh ad budget" cta="Book Consultation" cta-variant="dark" dc-props="{{ p3 }}" hint-size="100%,420px"></x-import>
-      </div>
-      <p style="margin: 0; font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(249, 250, 252, 0.6);">*No guarantees. Success relies entirely on your execution.</p>
-    </section>
-  </sc-if>
-
-  <!-- FAQ -->
-  <section class="responsive-2col section-container" data-screen-label="FAQ" style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 80px) clamp(36px, 5vw, 72px); display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(24px, 4vw, 48px); align-items: start;">
-    <div style="display: flex; flex-direction: column; gap: 20px;">
-      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.SectionLabel" code="FAQ" color="onDark" hint-size="140px,16px">Straight Answers</x-import>
-      <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.2rem, 4vw, 3.5rem); letter-spacing: -0.03em; line-height: 0.98; color: #F9FAFC;">Need help deciding? <em style="font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic;">Let's connect.</em></h2>
-      <p style="margin: 0; font-size: 1.0625rem; line-height: 1.65; color: rgba(249, 250, 252, 0.75); max-width: 44ch;">Speak with our experts for personalized guidance on the programme, career path, and next steps.</p>
-      <div>
-        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Button" variant="outline" size="md" arrow="true" as="a" href="#enroll" hint-size="200px,48px">Book Consultation</x-import>
-      </div>
-    </div>
-    <div style="display: flex; flex-direction: column; border-top: 1px solid rgba(26, 34, 255, 0.4);">
-      <details style="border-bottom: 1px solid rgba(26, 34, 255, 0.4); padding: 4px 0;">
-        <summary style="list-style: none; cursor: pointer; padding: 20px 0; font-family: 'Sora', sans-serif; font-weight: 600; font-size: 1.0625rem; letter-spacing: -0.01em; display: flex; gap: 16px; align-items: baseline; color: #F9FAFC;"><span style="font-size: 0.6875rem; letter-spacing: 0.32em; color: #D8FF32;">Q1</span>Who is this programme for?</summary>
-        <p style="margin: 0 0 20px 43px; font-size: 0.9375rem; line-height: 1.65; color: rgba(249, 250, 252, 0.75);">Founders, marketers, designers, analysts, and developers who want to operate AI — not just read about it. No prior AI experience required.</p>
-      </details>
-      <details style="border-bottom: 1px solid rgba(26, 34, 255, 0.4); padding: 4px 0;">
-        <summary style="list-style: none; cursor: pointer; padding: 20px 0; font-family: 'Sora', sans-serif; font-weight: 600; font-size: 1.0625rem; letter-spacing: -0.01em; display: flex; gap: 16px; align-items: baseline; color: #F9FAFC;"><span style="font-size: 0.6875rem; letter-spacing: 0.32em; color: #D8FF32;">Q2</span>Do I need to know how to code?</summary>
-        <p style="margin: 0 0 20px 43px; font-size: 0.9375rem; line-height: 1.65; color: rgba(249, 250, 252, 0.75);">No. You'll direct agentic coding tools rather than write code by hand — the Vibe Coding module teaches you to ship apps without a CS background.</p>
-      </details>
-      <details style="border-bottom: 1px solid rgba(26, 34, 255, 0.4); padding: 4px 0;">
-        <summary style="list-style: none; cursor: pointer; padding: 20px 0; font-family: 'Sora', sans-serif; font-weight: 600; font-size: 1.0625rem; letter-spacing: -0.01em; display: flex; gap: 16px; align-items: baseline; color: #F9FAFC;"><span style="font-size: 0.6875rem; letter-spacing: 0.32em; color: #D8FF32;">Q3</span>What's the time commitment?</summary>
-        <p style="margin: 0 0 20px 43px; font-size: 0.9375rem; line-height: 1.65; color: rgba(249, 250, 252, 0.75);">Around 6–8 hours a week: 20 live classes over 8 weeks plus a weekly build. Every session is recorded if you miss one.</p>
-      </details>
-      <details style="border-bottom: 1px solid rgba(26, 34, 255, 0.4); padding: 4px 0;">
-        <summary style="list-style: none; cursor: pointer; padding: 20px 0; font-family: 'Sora', sans-serif; font-weight: 600; font-size: 1.0625rem; letter-spacing: -0.01em; display: flex; gap: 16px; align-items: baseline; color: #F9FAFC;"><span style="font-size: 0.6875rem; letter-spacing: 0.32em; color: #D8FF32;">Q4</span>Do I get a certificate?</summary>
-        <p style="margin: 0 0 20px 43px; font-size: 0.9375rem; line-height: 1.65; color: rgba(249, 250, 252, 0.75);">Yes — the AI Essentials Operator certificate, issued when you complete all eight deployments. It's backed by a clickable portfolio, not attendance.</p>
-      </details>
-      <details style="border-bottom: 1px solid rgba(26, 34, 255, 0.4); padding: 4px 0;">
-        <summary style="list-style: none; cursor: pointer; padding: 20px 0; font-family: 'Sora', sans-serif; font-weight: 600; font-size: 1.0625rem; letter-spacing: -0.01em; display: flex; gap: 16px; align-items: baseline; color: #FFFFFF;"><span style="font-size: 0.6875rem; letter-spacing: 0.32em; color: #D8FF32;">Q5</span>Are EMI or scholarship options available?</summary>
-        <p style="margin: 0 0 20px 43px; font-size: 0.9375rem; line-height: 1.65; color: #FFFFFF;">Yes. EMI plans are available on all tiers, and programme counselors can unlock scholarship benefits on a call.</p>
-      </details>
-    </div>
-  </section>
-
-  <!-- Closing CTA -->
+  <!-- 12 — FINAL CTA -->
   <section data-screen-label="Closing CTA" style="max-width: 1240px; margin: 0 auto 80px; padding: 0 clamp(20px, 5vw, 80px);">
-    <div style="border-radius: 24px; background: #050B36; padding: clamp(48px, 7vw, 96px); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px;">
-      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Badge" tone="{{ badgeTone }}" hint-size="270px,34px">{{ badgeText }}</x-import>
-      <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.75rem, 6vw, 5rem); letter-spacing: -0.03em; line-height: 0.98; color: #F9FAFC;">Stop studying AI.<br>Start deploying it.</h2>
-      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Button" variant="{{ ctaVariant }}" size="lg" arrow="true" as="a" href="#enroll" hint-size="200px,58px">Book Consultation</x-import>
+    <div style="border-radius: 24px; background: linear-gradient(135deg, #08125C 0%, #050B36 100%); border: 1px solid rgba(26, 34, 255, 0.5); padding: clamp(48px, 7vw, 96px); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px;">
+      <span style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #D8FF32; background: rgba(216,255,50,0.1); border: 1px solid rgba(216,255,50,0.3); padding: 6px 14px; border-radius: 99px;">
+        12 // START BUILDING YOUR AI ADVANTAGE
+      </span>
+      <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(2.4rem, 5.5vw, 4.5rem); letter-spacing: -0.03em; line-height: 1.05; color: #FFFFFF; max-width: 900px;">
+        Your AI journey doesn't need another tutorial.<br><em style="font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic; color: #D8FF32;">Will you simply watch it happen? Or will you learn how to use it?</em>
+      </h2>
+      <p style="margin: 0; font-size: 1.125rem; color: #FFFFFF; max-width: 600px;">
+        Book a 1-on-1 AI Strategy Call and discover how the programme fits your goals.
+      </p>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+        <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 2rem; color: #D8FF32;">
+          <s style="opacity: 0.5; font-size: 1.375rem; font-weight: 400; text-decoration: line-through; color: #FFFFFF;">₹999</s> ₹0 TODAY
+        </div>
+        <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})" style="background: #D8FF32; color: #050B36; border: none; border-radius: 99px; padding: 18px 36px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.0625rem; cursor: pointer; box-shadow: 0 10px 30px rgba(216, 255, 50, 0.4);">
+          CLAIM MY FREE AI STRATEGY CALL →
+        </button>
+        <div style="font-size: 0.8125rem; color: rgba(255,255,255,0.8); margin-top: 4px;">
+          8 Weeks · 20 Live Classes · Real Projects · Expert Mentorship
+        </div>
+      </div>
     </div>
   </section>
 
