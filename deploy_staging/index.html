@@ -353,10 +353,31 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
     font-weight: 700;
     font-size: 0.9375rem;
     box-shadow: 0 4px 16px rgba(216, 255, 50, 0.4);
+  :root {
+    --text-strong: #FFFFFF !important;
+    --text-body: #FFFFFF !important;
+    --text-muted: #FFFFFF !important;
+    --text-faint: #FFFFFF !important;
+    --ink-900: #FFFFFF !important;
+    --ink-700: #FFFFFF !important;
+    --ink-500: #FFFFFF !important;
+    --ink-300: #FFFFFF !important;
+    --on-dark-70: #FFFFFF !important;
+    --on-dark-45: rgba(255, 255, 255, 0.9) !important;
   }
-  @keyframes shimmer {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
+
+  body, p, span, div, h1, h2, h3, h4, h5, h6, li, a, td, th, label, input, button, select, textarea, details, summary {
+    color: #FFFFFF !important;
+  }
+
+  .stat-pill strong, strong, .highlight, [style*="color: #D8FF32"], [style*="color:#D8FF32"] {
+    color: #D8FF32 !important;
+  }
+
+  /* Keep high contrast on lime badge tags and buttons */
+  .sk-button, .sticky-btn-pri, [style*="background: #D8FF32"], [style*="background:#D8FF32"] {
+    color: #050B36 !important;
+    font-weight: 800 !important;
   }
 </style>
 </helmet>
