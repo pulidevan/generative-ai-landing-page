@@ -518,6 +518,12 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
     color: #000000 !important;
     font-weight: 800 !important;
   }
+
+  /* Force 100% page width on all layout containers */
+  [style*="max-width: 1240px"], .section-container, .hero-container {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
 </style>
 </helmet>
 <div style="font-family: 'Inter', system-ui, sans-serif; color: #F9FAFC; background: #050B36;">
