@@ -1,0 +1,77 @@
+/* ============================================================
+   AI ESSENTIALS — COLOR SYSTEM
+   Rule of ratio: 80% neutral · 15% primary · 5% accent.
+   Accent colors are rare and intentional — never decorative.
+   ============================================================ */
+
+:root {
+  /* ---- Brand primaries ---- */
+  --blue-electric: #1A22FF;   /* Electric Operator Blue — the signature */
+  --navy-deep:     #08125C;   /* Deep Intelligence Navy — dark ground */
+  --navy-900:      #050B36;   /* Near-black navy, deepest ground */
+
+  /* ---- Neutrals (Signal White scale) ---- */
+  --white:         #F9FAFC;   /* Signal White — page ground on light */
+  --paper:         #FFFFFF;
+  --ink-900:       #060814;   /* near-black ink for text on light */
+  --ink-700:       #1B1E33;
+  --ink-500:       #4A4F6A;   /* muted body on light */
+  --ink-300:       #8C90A8;   /* captions / disabled */
+  --line:          #E4E6F0;   /* hairline on light */
+  --line-strong:   #C9CCDC;
+
+  /* On-dark neutrals */
+  --on-dark-100:   #F9FAFC;
+  --on-dark-70:    rgba(249,250,252,0.70);
+  --on-dark-45:    rgba(249,250,252,0.45);
+  --on-dark-line:  rgba(249,250,252,0.14);
+  --on-dark-fill:  rgba(249,250,252,0.06);
+
+  /* ---- Accents (the 5%) ---- */
+  --orange-deploy: #FF6A1A;   /* Deployment Orange — action / heat */
+  --lime-signal:   #D8FF32;   /* Signal Lime — highlight / live */
+  --red-editorial: #FF3B30;   /* Editorial Red — alerts / emphasis */
+
+  /* ---- Blue support ramp (derived, for washes & states) ---- */
+  --blue-700:      #141AC7;   /* pressed */
+  --blue-600:      #1A22FF;
+  --blue-tint-12:  rgba(26,34,255,0.12);
+  --blue-tint-06:  rgba(26,34,255,0.06);
+
+  /* ============ SEMANTIC ALIASES ============ */
+
+  /* Surfaces */
+  --surface-page:      var(--white);
+  --surface-card:      var(--paper);
+  --surface-sunken:    #F0F2F8;
+  --surface-invert:    var(--navy-900);   /* dark editorial sections */
+  --surface-brand:     var(--blue-electric);
+
+  /* Text — on light */
+  --text-strong:   var(--ink-900);
+  --text-body:     var(--ink-700);
+  --text-muted:    var(--ink-500);
+  --text-faint:    var(--ink-300);
+  --text-brand:    var(--blue-electric);
+
+  /* Text — on dark */
+  --text-on-dark:        var(--on-dark-100);
+  --text-on-dark-muted:  var(--on-dark-70);
+  --text-on-dark-faint:  var(--on-dark-45);
+
+  /* Borders */
+  --border-hairline:   var(--line);
+  --border-strong:     var(--line-strong);
+  --border-on-dark:    var(--on-dark-line);
+
+  /* Interactive */
+  --action-primary:        var(--blue-electric);
+  --action-primary-press:  var(--blue-700);
+  --action-heat:           var(--orange-deploy);
+  --focus-ring:            var(--blue-electric);
+
+  /* Status / signal */
+  --signal-live:     var(--lime-signal);
+  --signal-alert:    var(--red-editorial);
+  --signal-deploy:   var(--orange-deploy);
+}

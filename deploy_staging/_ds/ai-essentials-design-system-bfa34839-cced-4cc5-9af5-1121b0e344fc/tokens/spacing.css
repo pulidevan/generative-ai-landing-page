@@ -1,0 +1,36 @@
+/* ============================================================
+   AI ESSENTIALS — SPACING & LAYOUT
+   Base unit 4px. Generous negative space is a brand rule —
+   sections breathe, headlines occupy 40–70% of a composition.
+   ============================================================ */
+
+:root {
+  --space-0:   0;
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-32:  128px;
+  --space-40:  160px;   /* section rhythm on large canvases */
+
+  /* Layout */
+  --container-max: 1240px;
+  --container-wide: 1440px;
+  --gutter:        clamp(20px, 5vw, 80px);  /* @kind spacing */
+  --section-y:     clamp(64px, 10vw, 160px); /* @kind spacing */
+
+  /* Semantic */
+  --pad-card:      var(--space-8);
+  --pad-card-lg:   var(--space-12);
+  --gap-tight:     var(--space-2);
+  --gap:           var(--space-4);
+  --gap-loose:     var(--space-8);
+}

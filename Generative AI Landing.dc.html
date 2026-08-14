@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<link rel="amphtml" href="https://genai.aiessentials.in/amp.html">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'META_PIXEL_ID_PLACEHOLDER');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Advanced Generative AI Programme | AI Essentials</title>
+<meta name="description" content="Master Generative AI with AI Essentials. Learn prompt engineering, RAG, AI agents, generative media & vibe coding. 8 weeks, 20 live classes, real deployments + career support.">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Advanced Generative AI Programme | AI Essentials",
+  "description": "Master Generative AI with AI Essentials. Learn prompt engineering, RAG pipelines, AI agents, generative media and vibe coding through 8 weeks of live training, hands-on deployments and career support.",
+  "provider": {"@type": "Organization", "name": "AI Essentials"},
+  "educationalLevel": "Beginner to Advanced",
+  "inLanguage": ["English"],
+  "teaches": ["Generative AI", "Prompt Engineering", "Large Language Models", "RAG Pipelines", "AI Agents", "Generative Media", "AI Automation", "Vibe Coding", "Claude Code", "Micro-SaaS"],
+  "timeRequired": "P8W",
+  "offers": {"@type": "Offer", "category": "Paid", "availability": "https://schema.org/InStock", "priceCurrency": "INR"},
+  "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "Online"}
+}</script>
+<link rel="stylesheet" href="_ds/ai-essentials-design-system-bfa34839-cced-4cc5-9af5-1121b0e344fc/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/ai-essentials-design-system-bfa34839-cced-4cc5-9af5-1121b0e344fc/tokens/colors.css">
+<link rel="stylesheet" href="_ds/ai-essentials-design-system-bfa34839-cced-4cc5-9af5-1121b0e344fc/tokens/typography.css">
+<link rel="stylesheet" href="_ds/ai-essentials-design-system-bfa34839-cced-4cc5-9af5-1121b0e344fc/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/ai-essentials-design-system-bfa34839-cced-4cc5-9af5-1121b0e344fc/tokens/radius-shadow.css">
+<link rel="stylesheet" href="_ds/ai-essentials-design-system-bfa34839-cced-4cc5-9af5-1121b0e344fc/styles.css">
+<script src="_ds/ai-essentials-design-system-bfa34839-cced-4cc5-9af5-1121b0e344fc/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin: 0; background: var(--surface-page, #F9FAFC); }
+  a { color: var(--blue-electric, #1A22FF); }
+  a:hover { color: var(--blue-700, #141AC7); }
+  html { scroll-behavior: smooth; }
+
+  /* Mobile Responsive Fixes */
+  @media (max-width: 960px) {
+    .responsive-2col {
+      grid-template-columns: 1fr !important;
+      gap: 40px !important;
+    }
+    .sticky-col {
+      position: relative !important;
+      top: auto !important;
+    }
+    .hero-container {
+      padding-top: 48px !important;
+      padding-bottom: 48px !important;
+    }
+    .section-container {
+      padding-top: 48px !important;
+      padding-bottom: 48px !important;
+    }
+    h1 {
+      font-size: 2.5rem !important;
+    }
+    h2 {
+      font-size: 2rem !important;
+    }
+  }
+
+  /* Sticky Header & Navigation */
+  header.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(5, 11, 54, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(249, 250, 252, 0.1);
+    width: 100%;
+  }
+  .header-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-link {
+    color: rgba(249, 250, 252, 0.75);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .nav-link:hover {
+    color: #FF5C00;
+  }
+
+  /* Sub-navigation tabs bar */
+  .section-nav-bar {
+    position: sticky;
+    top: 60px;
+    z-index: 999;
+    background: #FFFFFF;
+    border-bottom: 1px solid #E4E6F0;
+    box-shadow: 0 4px 12px rgba(6, 8, 20, 0.05);
+  }
+  .section-nav-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    gap: 28px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+  .section-tab {
+    padding: 14px 0;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #4A4F6A;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+  .section-tab:hover, .section-tab.active {
+    color: #1A22FF;
+    border-bottom-color: #1A22FF;
+  }
+
+  /* Bottom Floating Sticky CTA Bar */
+  #sticky-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: #050B36;
+    border-top: 1px solid rgba(249, 250, 252, 0.15);
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.45);
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 12px 20px;
+  }
+  #sticky-bottom-bar.visible {
+    transform: translateY(0);
+  }
+
+  /* Slide-Up Lead Capture Bottom-Sheet / Modal Drawer */
+  #lead-modal-drawer {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    background: rgba(5, 11, 54, 0.8);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .drawer-box {
+    background: #FFFFFF;
+    border-radius: 24px 24px 0 0;
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 24px;
+    position: relative;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 -12px 48px rgba(0,0,0,0.35);
+  }
+
+  @media (max-width: 768px) {
+    .desktop-nav { display: none !important; }
+    .sticky-title { display: none !important; }
+    .sticky-actions { width: 100% !important; display: flex; gap: 10px; }
+    .sticky-btn-pri, .sticky-btn-sec { flex: 1; text-align: center; }
+    .drawer-box { padding: 16px; border-radius: 18px 18px 0 0; }
+  }
+
+  /* Brand Mint Green CTAs (#D8FF32) */
+  button,
+  .btn,
+  .btn-primary,
+  .sticky-btn-pri,
+  .sticky-btn-sec,
+  [class*="Button"],
+  [class*="PriceCard"] button,
+  a[href="#enroll"] {
+    background-color: #D8FF32 !important;
+    color: #050B36 !important;
+    border: none !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 16px rgba(216, 255, 50, 0.4) !important;
+    transition: all 0.2s ease !important;
+  }
+
+  button:hover,
+  .btn:hover,
+  .btn-primary:hover,
+  .sticky-btn-pri:hover,
+  .sticky-btn-sec:hover,
+  [class*="Button"]:hover,
+  [class*="PriceCard"] button:hover,
+  a[href="#enroll"]:hover {
+    background-color: #C4F82A !important;
+    color: #050B36 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(216, 255, 50, 0.6) !important;
+  }
+</style>
+</helmet>
+<div style="font-family: 'Inter', system-ui, sans-serif; color: #060814;">
+
+  <!-- Hero -->
+  <section data-screen-label="Hero" style="background: #050B36; color: #F9FAFC;">
+    <div class="responsive-2col hero-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(56px, 8vw, 110px) clamp(20px, 5vw, 80px); display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr); gap: clamp(40px, 5vw, 80px); align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 28px;">
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Badge" tone="{{ badgeTone }}" hint-size="270px,34px">{{ badgeText }}</x-import>
+          <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Badge" tone="onDark" dot="false" hint-size="220px,34px">8 Weeks · 20 Live Classes</x-import>
+        </div>
+        <h1 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.9rem, 5.5vw, 5.2rem); letter-spacing: -0.035em; line-height: 0.98;">The Advanced <em style="font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic; letter-spacing: -0.01em;">Generative AI</em> Programme.</h1>
+        <p style="margin: 0; font-size: 1.125rem; line-height: 1.65; color: rgba(249,250,252,0.70); max-width: 52ch;">Build with LLMs, agents, and generative media on the 2026 bleeding-edge stack — then deploy it for real. Stop studying AI. Start deploying it.</p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Button" variant="{{ ctaVariant }}" size="lg" arrow="true" as="a" href="#enroll" hint-size="210px,58px">Book Consultation</x-import>
+          <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Button" variant="outline" size="lg" on-dark="true" as="a" href="#curriculum" hint-size="200px,58px">View curriculum</x-import>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 32px; margin-top: 24px; padding-top: 32px; border-top: 1px solid rgba(249,250,252,0.14);">
+          <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.StatBlock" value="20" label="Live Classes" color="onDark" hint-size="130px,100px"></x-import>
+          <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.StatBlock" value="8" label="Weeks" color="onDark" hint-size="130px,100px"></x-import>
+          <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.StatBlock" value="5k+" label="Operators Trained" color="onDark" hint-size="150px,100px"></x-import>
+          <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.StatBlock" value="100+" label="Systems Deployed" color="onDark" hint-size="150px,100px"></x-import>
+        </div>
+      </div>
+      <!-- Lead form -->
+      <div id="enroll" style="background: #FFFFFF; color: #060814; border-radius: 16px; border: 1px solid #E4E6F0; padding: 12px; box-shadow: 0 24px 60px rgba(5,11,54,0.35); min-height: 594px; width: 100%; box-sizing: border-box;">
+        <iframe
+          src="https://link.trym.co.in/widget/form/C3QNWOEvU9lO9L2o63iY"
+          style="width:100%;height:100%;min-height:594px;border:none;border-radius:8px"
+          id="inline-C3QNWOEvU9lO9L2o63iY" 
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="Form 0"
+          data-height="594"
+          data-layout-iframe-id="inline-C3QNWOEvU9lO9L2o63iY"
+          data-form-id="C3QNWOEvU9lO9L2o63iY"
+          title="Form 0"
+        >
+        </iframe>
+        <script src="https://link.trym.co.in/js/form_embed.js"></script>
+      </div>
+    </div>
+  </section>
+
+  <!-- Career outcomes -->
+  <section id="outcomes" class="responsive-2col section-container" data-screen-label="Career outcomes" style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 10vw, 140px) clamp(20px, 5vw, 80px); display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(40px, 5vw, 80px); align-items: start;">
+    <div class="sticky-col" style="display: flex; flex-direction: column; gap: 20px; position: sticky; top: 40px;">
+      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.SectionLabel" code="Career Outcomes" color="brand" hint-size="280px,16px">D01 — D05</x-import>
+      <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.5rem, 4.5vw, 4rem); letter-spacing: -0.03em; line-height: 0.98;">Step into high-leverage Generative AI roles.</h2>
+      <p style="margin: 0; font-size: 1.0625rem; line-height: 1.65; color: #4A4F6A; max-width: 46ch;">One stack, five domains. Whatever your seat, the programme turns you into the AI operator your market pays a premium for.</p>
+      <div>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Button" variant="{{ ctaVariant }}" size="md" arrow="true" as="a" href="#enroll" hint-size="180px,48px">Book Consultation</x-import>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column;">
+      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.DomainCard" code="D01" title="Founders" description="Automate operations and ship AI products without adding headcount." hint-size="100%,110px"></x-import>
+      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.DomainCard" code="D02" title="Marketers" description="Run content engines that produce a month of output in a day." hint-size="100%,110px"></x-import>
+      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.DomainCard" code="D03" title="Designers" description="Direct generative image and video pipelines end to end." hint-size="100%,110px"></x-import>
+      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.DomainCard" code="D04" title="Analysts" description="Turn raw data into decisions with AI-assisted analysis and reporting." hint-size="100%,110px"></x-import>
+      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.DomainCard" code="D05" title="Developers" description="Ship production-grade codebases with agentic coding workflows." hint-size="100%,110px"></x-import>
+    </div>
+  </section>
+
+  <!-- Curriculum -->
+  <section id="curriculum" data-screen-label="Curriculum" style="background: #F0F2F8; border-top: 1px solid #E4E6F0; border-bottom: 1px solid #E4E6F0;">
+    <div class="section-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 10vw, 140px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 48px;">
+      <div style="display: flex; flex-direction: column; gap: 20px; max-width: 680px;">
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.SectionLabel" code="Programme Curriculum // W01–W08" color="brand" hint-size="360px,16px">The 2026 Stack</x-import>
+        <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.5rem, 4.5vw, 4rem); letter-spacing: -0.03em; line-height: 0.98;">Eight weeks. End-to-end Generative AI expertise.</h2>
+        <p style="margin: 0; font-size: 1.0625rem; line-height: 1.65; color: #4A4F6A;">From reasoning engines to monetized deployments — a structured path through the exact tools dominating the market.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 16px;">
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.ModuleCard" code="W01" title="Cognitive Awakening" description="Rewire your executive mindset. Master reasoning engines, prompt engineering, and deep-search tools." dc-props="{{ w01 }}" hint-size="100%,220px"></x-import>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.ModuleCard" code="W02" title="Synthetic Knowledge" description="Build your corporate brain. Connect files, docs, and notes into custom RAG pipelines." dc-props="{{ w02 }}" hint-size="100%,220px"></x-import>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.ModuleCard" code="W03" title="Autonomous Fleet" description="Design agents that think, act, and self-heal. Automate backend tasks, and connect APIs." dc-props="{{ w03 }}" hint-size="100%,220px"></x-import>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.ModuleCard" code="W04" title="Voice &amp; Audio Scale" description="Scale outbound sales and support with voice agents, hyper-realistic voice-overs, and avatars." dc-props="{{ w04 }}" hint-size="100%,220px"></x-import>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.ModuleCard" code="W05" title="The Content Factory" description="Generate stunning images and high-fidelity video. Build an autonomous loop that publishes assets." dc-props="{{ w05 }}" hint-size="100%,220px"></x-import>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.ModuleCard" code="W06" title="Visual &amp; Design Moat" description="Generate responsive web frontends instantly. Tweak components conversationally in seconds." dc-props="{{ w06 }}" hint-size="100%,220px"></x-import>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.ModuleCard" code="W07" title="Vibe Coding" description="Architect complete React/TypeScript codebases. Direct Claude Code to program, test, and deploy apps." dc-props="{{ w07 }}" hint-size="100%,220px"></x-import>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.ModuleCard" code="W08" title="Digital Real Estate" description="Launch micro-SaaS products and monetize them. Integrate Stripe and databases autonomously." dc-props="{{ w08 }}" hint-size="100%,220px"></x-import>
+      </div>
+      <div>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Button" variant="outline" size="md" arrow="true" as="a" href="#enroll" hint-size="220px,48px">Book Consultation</x-import>
+      </div>
+    </div>
+  </section>
+
+  <!-- Success stories -->
+  <section data-screen-label="Success stories" style="background: #050B36; color: #F9FAFC;">
+    <div class="section-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 10vw, 140px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 48px;">
+      <div style="display: flex; flex-direction: column; gap: 20px; max-width: 640px;">
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.SectionLabel" code="Proof // Graduate Outcomes" color="onDark" hint-size="320px,16px">Success Stories</x-import>
+        <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.5rem, 4.5vw, 4rem); letter-spacing: -0.03em; line-height: 0.98;">Results, not theory.</h2>
+      </div>
+      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.TestimonialCard" featured="true" on-dark="true" quote="I automated our entire content pipeline in week five and deployed a client-facing RAG assistant on a Sunday afternoon. The retainer paid for the programme twice over." name="Ananya R." role="Marketing Lead → AI Operator" initials="AR" hint-size="100%,220px"></x-import>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px;">
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.TestimonialCard" on-dark="true" quote="Shipped my first paid micro-SaaS before the cohort ended. Zero prior coding — just directed agents." name="Karthik S." role="Founder, D2C brand" initials="KS" hint-size="100%,200px"></x-import>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.TestimonialCard" on-dark="true" quote="Moved from reporting analyst to leading our AI adoption pod. Same company, new mandate, better pay." name="Meera V." role="Senior Analyst" initials="MV" hint-size="100%,200px"></x-import>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mentor -->
+  <section id="mentor" class="responsive-2col section-container" data-screen-label="Mentor" style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 10vw, 140px) clamp(20px, 5vw, 80px); display: grid; grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr); gap: clamp(40px, 5vw, 80px); align-items: center;">
+    <div style="border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 5;">
+      <image-slot id="mentor-portrait" shape="rounded" radius="16" src="assets/founder-pulidevan.png" placeholder="Drop mentor portrait" style="width: 100%; height: 100%;"></image-slot>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.SectionLabel" code="Guided by Expert" color="brand" hint-size="280px,16px">Your Mentor</x-import>
+      <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.5rem, 4.5vw, 4rem); letter-spacing: -0.03em; line-height: 0.98;">Learn from an operator, <em style="font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic;">not a lecturer.</em></h2>
+      <p style="margin: 0; font-size: 1.0625rem; line-height: 1.65; color: #4A4F6A; max-width: 52ch;">Live sessions, teardowns of real deployments, and direct feedback on what you build every week — from mentors running AI-native systems in production today.</p>
+      <div style="display: flex; flex-direction: column; gap: 4px; padding-top: 20px; border-top: 1px solid #E4E6F0;">
+        <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; letter-spacing: -0.02em;">Pulidevan</div>
+        <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; color: #4A4F6A;">Founder &amp; Lead Mentor, AI Essentials</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools -->
+  <section data-screen-label="Tools" style="background: #F0F2F8; border-top: 1px solid #E4E6F0; border-bottom: 1px solid #E4E6F0;">
+    <div class="section-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 10vw, 140px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 40px;">
+      <div style="display: flex; flex-direction: column; gap: 20px; max-width: 640px;">
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.SectionLabel" code="Tools You'll Use" color="brand" hint-size="280px,16px">The Arsenal</x-import>
+        <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.5rem, 4.5vw, 4rem); letter-spacing: -0.03em; line-height: 0.98;">Build with the tools powering modern AI.</h2>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; max-width: 900px;">
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="100px,36px">ChatGPT</x-import>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="90px,36px">Claude</x-import>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="90px,36px">Gemini</x-import>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="110px,36px">Perplexity</x-import>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="120px,36px">NotebookLM</x-import>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="110px,36px">Midjourney</x-import>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="90px,36px">Runway</x-import>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="110px,36px">ElevenLabs</x-import>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="70px,36px">n8n</x-import>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="80px,36px">Make</x-import>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="120px,36px">Claude Code</x-import>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="90px,36px">Cursor</x-import>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="90px,36px">Replit</x-import>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Tag" hint-size="90px,36px">Stripe</x-import>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="section-container" data-screen-label="Projects" style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 10vw, 140px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 48px;">
+    <div style="display: flex; flex-direction: column; gap: 20px; max-width: 680px;">
+      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.SectionLabel" code="Project-Based Learning" color="brand" hint-size="320px,16px">Blueprints 01–04</x-import>
+      <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.5rem, 4.5vw, 4rem); letter-spacing: -0.03em; line-height: 0.98;">Ship deployments that stand out.</h2>
+      <p style="margin: 0; font-size: 1.0625rem; line-height: 1.65; color: #4A4F6A;">Every module ends in a live artifact. By week eight you have a portfolio of working systems, not certificates of attendance.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
+      <div style="background: #FFFFFF; border: 1px solid #E4E6F0; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; color: #1A22FF;">01</div>
+        <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.1875rem; letter-spacing: -0.02em;">Personal Knowledge Engine</div>
+        <p style="margin: 0; font-size: 0.9375rem; line-height: 1.6; color: #4A4F6A;">A RAG assistant trained on your own corpus — answers like you, cites like a researcher.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E4E6F0; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; color: #1A22FF;">02</div>
+        <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.1875rem; letter-spacing: -0.02em;">Autonomous Growth Agent</div>
+        <p style="margin: 0; font-size: 0.9375rem; line-height: 1.6; color: #4A4F6A;">An agent that researches, writes, and publishes across channels on a schedule you set.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E4E6F0; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; color: #1A22FF;">03</div>
+        <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.1875rem; letter-spacing: -0.02em;">Generative Brand Studio</div>
+        <p style="margin: 0; font-size: 0.9375rem; line-height: 1.6; color: #4A4F6A;">An image and video pipeline producing on-brand creative for a real business.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E4E6F0; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; color: #1A22FF;">04</div>
+        <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.1875rem; letter-spacing: -0.02em;">Micro-SaaS Launch</div>
+        <p style="margin: 0; font-size: 0.9375rem; line-height: 1.6; color: #4A4F6A;">Build, deploy, and take live payments on your own product — digital real estate you own.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certification -->
+  <section data-screen-label="Certification" style="background: #F0F2F8; border-top: 1px solid #E4E6F0; border-bottom: 1px solid #E4E6F0;">
+    <div class="responsive-2col section-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 10vw, 140px) clamp(20px, 5vw, 80px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 0.9fr); gap: clamp(40px, 5vw, 80px); align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.SectionLabel" code="Get Certified" color="brand" hint-size="240px,16px">The Credential</x-import>
+        <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.5rem, 4.5vw, 4rem); letter-spacing: -0.03em; line-height: 0.98;">A certificate that signals deployment, not attendance.</h2>
+        <div style="display: flex; flex-direction: column;">
+          <div style="padding: 20px 0; border-top: 1px solid #C9CCDC; display: flex; flex-direction: column; gap: 6px;">
+            <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem; letter-spacing: -0.01em;">Verified credential</div>
+            <p style="margin: 0; font-size: 0.9375rem; line-height: 1.6; color: #4A4F6A;">An AI Essentials Operator certificate, issued on completion of all eight deployments.</p>
+          </div>
+          <div style="padding: 20px 0; border-top: 1px solid #C9CCDC; display: flex; flex-direction: column; gap: 6px;">
+            <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem; letter-spacing: -0.01em;">Portfolio-backed</div>
+            <p style="margin: 0; font-size: 0.9375rem; line-height: 1.6; color: #4A4F6A;">Every claim on the certificate maps to a live system a recruiter can click.</p>
+          </div>
+          <div style="padding: 20px 0; border-top: 1px solid #C9CCDC; display: flex; flex-direction: column; gap: 6px;">
+            <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem; letter-spacing: -0.01em;">Industry-aligned</div>
+            <p style="margin: 0; font-size: 0.9375rem; line-height: 1.6; color: #4A4F6A;">Capabilities matched to how AI-native teams actually work in 2026.</p>
+          </div>
+        </div>
+      </div>
+      <div style="aspect-ratio: 4 / 3;">
+        <image-slot id="certificate" shape="rounded" radius="16" src="assets/Capture-2026-08-01-192731.png" placeholder="Drop your certificate image" style="width: 100%; height: 100%;"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <!-- Career support -->
+  <section class="section-container" data-screen-label="Career support" style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 10vw, 140px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 40px;">
+    <div style="display: flex; flex-direction: column; gap: 20px; max-width: 680px;">
+      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.SectionLabel" code="Career Support That Delivers" color="brand" hint-size="360px,16px">End to End</x-import>
+      <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.5rem, 4.5vw, 4rem); letter-spacing: -0.03em; line-height: 0.98;">Crack interviews with end-to-end support.</h2>
+      <p style="margin: 0; font-size: 1.0625rem; line-height: 1.65; color: #4A4F6A;">Prepare smarter, perform better, and get closer to your next opportunity — with support that runs past graduation.</p>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+      <div style="font-family: 'Sora', sans-serif; font-weight: 600; font-size: 0.9375rem; letter-spacing: -0.01em; padding: 14px 24px; border: 1px solid #C9CCDC; border-radius: 999px; background: #FFFFFF;">1:1 Mock Interviews</div>
+      <div style="font-family: 'Sora', sans-serif; font-weight: 600; font-size: 0.9375rem; letter-spacing: -0.01em; padding: 14px 24px; border: 1px solid #C9CCDC; border-radius: 999px; background: #FFFFFF;">Resume &amp; Portfolio Review</div>
+      <div style="font-family: 'Sora', sans-serif; font-weight: 600; font-size: 0.9375rem; letter-spacing: -0.01em; padding: 14px 24px; border: 1px solid #C9CCDC; border-radius: 999px; background: #FFFFFF;">1:1 Mentor Guidance</div>
+      <div style="font-family: 'Sora', sans-serif; font-weight: 600; font-size: 0.9375rem; letter-spacing: -0.01em; padding: 14px 24px; border: 1px solid #C9CCDC; border-radius: 999px; background: #FFFFFF;">Interview Prep Sprints</div>
+      <div style="font-family: 'Sora', sans-serif; font-weight: 600; font-size: 0.9375rem; letter-spacing: -0.01em; padding: 14px 24px; border: 1px solid #C9CCDC; border-radius: 999px; background: #FFFFFF;">Access to Job Opportunities</div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section data-screen-label="How it works" style="background: #F0F2F8; border-top: 1px solid #E4E6F0; border-bottom: 1px solid #E4E6F0;">
+    <div class="section-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 10vw, 140px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 48px;">
+      <div style="display: flex; flex-direction: column; gap: 20px; max-width: 640px;">
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.SectionLabel" code="Delivery Framework" color="brand" hint-size="300px,16px">S01 — S06</x-import>
+        <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.5rem, 4.5vw, 4rem); letter-spacing: -0.03em; line-height: 0.98;">How the programme works.</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0; border-top: 1px solid #C9CCDC;">
+        <div style="padding: 28px 24px 28px 0; border-bottom: 1px solid #C9CCDC; display: flex; gap: 20px; align-items: baseline;">
+          <span style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; color: #1A22FF;">S01</span>
+          <div><div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem;">Apply &amp; onboard</div><p style="margin: 4px 0 0 0; font-size: 0.9375rem; line-height: 1.6; color: #4A4F6A;">A counselor call, cohort placement, and your operator workspace set up.</p></div>
+        </div>
+        <div style="padding: 28px 24px 28px 0; border-bottom: 1px solid #C9CCDC; display: flex; gap: 20px; align-items: baseline;">
+          <span style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; color: #1A22FF;">S02</span>
+          <div><div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem;">Foundations week</div><p style="margin: 4px 0 0 0; font-size: 0.9375rem; line-height: 1.6; color: #4A4F6A;">Guided onboarding and the mental models behind every tool that follows.</p></div>
+        </div>
+        <div style="padding: 28px 24px 28px 0; border-bottom: 1px solid #C9CCDC; display: flex; gap: 20px; align-items: baseline;">
+          <span style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; color: #1A22FF;">S03</span>
+          <div><div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem;">Live expert modules</div><p style="margin: 4px 0 0 0; font-size: 0.9375rem; line-height: 1.6; color: #4A4F6A;">Twenty live classes across eight structured weeks — recorded if you miss one.</p></div>
+        </div>
+        <div style="padding: 28px 24px 28px 0; border-bottom: 1px solid #C9CCDC; display: flex; gap: 20px; align-items: baseline;">
+          <span style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; color: #1A22FF;">S04</span>
+          <div><div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem;">Build every week</div><p style="margin: 4px 0 0 0; font-size: 0.9375rem; line-height: 1.6; color: #4A4F6A;">Hands-on deployments after every module — feedback from mentors, not autograders.</p></div>
+        </div>
+        <div style="padding: 28px 24px 28px 0; border-bottom: 1px solid #C9CCDC; display: flex; gap: 20px; align-items: baseline;">
+          <span style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; color: #1A22FF;">S05</span>
+          <div><div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem;">Master the stack</div><p style="margin: 4px 0 0 0; font-size: 0.9375rem; line-height: 1.6; color: #4A4F6A;">Industry-standard tools, wired together into your personal operating system.</p></div>
+        </div>
+        <div style="padding: 28px 24px 28px 0; border-bottom: 1px solid #C9CCDC; display: flex; gap: 20px; align-items: baseline;">
+          <span style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; color: #1A22FF;">S06</span>
+          <div><div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.0625rem;">Portfolio &amp; career prep</div><p style="margin: 4px 0 0 0; font-size: 0.9375rem; line-height: 1.6; color: #4A4F6A;">Package your deployments, rehearse interviews, and step into the market.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <sc-if value="{{ showPricing }}" hint-placeholder-val="{{ true }}">
+    <section id="pricing" class="section-container" data-screen-label="Pricing" style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 10vw, 140px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 48px;">
+      <div style="display: flex; flex-direction: column; gap: 20px; max-width: 640px;">
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.SectionLabel" code="Pricing" color="brand" hint-size="180px,16px">Invest in Leverage</x-import>
+        <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.5rem, 4.5vw, 4rem); letter-spacing: -0.03em; line-height: 0.98;">Choose your level of leverage.</h2>
+        <p style="margin: 0; font-size: 1.0625rem; line-height: 1.65; color: #4A4F6A;">Flexible plans and EMI options. Talk to a counselor to unlock scholarship benefits.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; align-items: stretch;">
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.PriceCard" eyebrow="Gen AI" price="₹25,000" anchor="₹45,000" note="8 Weeks · Live Cohort" cta="Book Consultation" cta-variant="outline" dc-props="{{ p1 }}" hint-size="100%,420px"></x-import>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.PriceCard" eyebrow="Gen AI Plus Meta" price="₹35,000" anchor="₹65,000" note="Recommended Tier" cta="Book Consultation" cta-variant="{{ ctaVariant }}" highlight="true" dc-props="{{ p2 }}" hint-size="100%,460px"></x-import>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.PriceCard" eyebrow="Gen AI, Marketing Plus Campaign Management" price="₹99,999" anchor="₹2,00,000" note="Includes upto 2 lakh ad budget" cta="Book Consultation" cta-variant="dark" dc-props="{{ p3 }}" hint-size="100%,420px"></x-import>
+      </div>
+      <p style="margin: 0; font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; color: #8C90A8;">*No guarantees. Success relies entirely on your execution.</p>
+    </section>
+  </sc-if>
+
+  <!-- FAQ -->
+  <section class="responsive-2col section-container" data-screen-label="FAQ" style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 80px) clamp(64px, 10vw, 140px); display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(40px, 5vw, 80px); align-items: start;">
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.SectionLabel" code="FAQ" color="brand" hint-size="140px,16px">Straight Answers</x-import>
+      <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.5rem, 4.5vw, 4rem); letter-spacing: -0.03em; line-height: 0.98;">Need help deciding? <em style="font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic;">Let's connect.</em></h2>
+      <p style="margin: 0; font-size: 1.0625rem; line-height: 1.65; color: #4A4F6A; max-width: 44ch;">Speak with our experts for personalized guidance on the programme, career path, and next steps.</p>
+      <div>
+        <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Button" variant="outline" size="md" arrow="true" as="a" href="#enroll" hint-size="200px,48px">Book Consultation</x-import>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; border-top: 1px solid #C9CCDC;">
+      <details style="border-bottom: 1px solid #C9CCDC; padding: 4px 0;">
+        <summary style="list-style: none; cursor: pointer; padding: 20px 0; font-family: 'Sora', sans-serif; font-weight: 600; font-size: 1.0625rem; letter-spacing: -0.01em; display: flex; gap: 16px; align-items: baseline;"><span style="font-size: 0.6875rem; letter-spacing: 0.32em; color: #1A22FF;">Q1</span>Who is this programme for?</summary>
+        <p style="margin: 0 0 20px 43px; font-size: 0.9375rem; line-height: 1.65; color: #4A4F6A;">Founders, marketers, designers, analysts, and developers who want to operate AI — not just read about it. No prior AI experience required.</p>
+      </details>
+      <details style="border-bottom: 1px solid #C9CCDC; padding: 4px 0;">
+        <summary style="list-style: none; cursor: pointer; padding: 20px 0; font-family: 'Sora', sans-serif; font-weight: 600; font-size: 1.0625rem; letter-spacing: -0.01em; display: flex; gap: 16px; align-items: baseline;"><span style="font-size: 0.6875rem; letter-spacing: 0.32em; color: #1A22FF;">Q2</span>Do I need to know how to code?</summary>
+        <p style="margin: 0 0 20px 43px; font-size: 0.9375rem; line-height: 1.65; color: #4A4F6A;">No. You'll direct agentic coding tools rather than write code by hand — the Vibe Coding module teaches you to ship apps without a CS background.</p>
+      </details>
+      <details style="border-bottom: 1px solid #C9CCDC; padding: 4px 0;">
+        <summary style="list-style: none; cursor: pointer; padding: 20px 0; font-family: 'Sora', sans-serif; font-weight: 600; font-size: 1.0625rem; letter-spacing: -0.01em; display: flex; gap: 16px; align-items: baseline;"><span style="font-size: 0.6875rem; letter-spacing: 0.32em; color: #1A22FF;">Q3</span>What's the time commitment?</summary>
+        <p style="margin: 0 0 20px 43px; font-size: 0.9375rem; line-height: 1.65; color: #4A4F6A;">Around 6–8 hours a week: 20 live classes over 8 weeks plus a weekly build. Every session is recorded if you miss one.</p>
+      </details>
+      <details style="border-bottom: 1px solid #C9CCDC; padding: 4px 0;">
+        <summary style="list-style: none; cursor: pointer; padding: 20px 0; font-family: 'Sora', sans-serif; font-weight: 600; font-size: 1.0625rem; letter-spacing: -0.01em; display: flex; gap: 16px; align-items: baseline;"><span style="font-size: 0.6875rem; letter-spacing: 0.32em; color: #1A22FF;">Q4</span>Do I get a certificate?</summary>
+        <p style="margin: 0 0 20px 43px; font-size: 0.9375rem; line-height: 1.65; color: #4A4F6A;">Yes — the AI Essentials Operator certificate, issued when you complete all eight deployments. It's backed by a clickable portfolio, not attendance.</p>
+      </details>
+      <details style="border-bottom: 1px solid #C9CCDC; padding: 4px 0;">
+        <summary style="list-style: none; cursor: pointer; padding: 20px 0; font-family: 'Sora', sans-serif; font-weight: 600; font-size: 1.0625rem; letter-spacing: -0.01em; display: flex; gap: 16px; align-items: baseline;"><span style="font-size: 0.6875rem; letter-spacing: 0.32em; color: #1A22FF;">Q5</span>Are EMI or scholarship options available?</summary>
+        <p style="margin: 0 0 20px 43px; font-size: 0.9375rem; line-height: 1.65; color: #4A4F6A;">Yes. EMI plans are available on all tiers, and programme counselors can unlock scholarship benefits on a call.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section data-screen-label="Closing CTA" style="max-width: 1240px; margin: 0 auto 80px; padding: 0 clamp(20px, 5vw, 80px);">
+    <div style="border-radius: 24px; background: #050B36; padding: clamp(48px, 7vw, 96px); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px;">
+      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Badge" tone="{{ badgeTone }}" hint-size="270px,34px">{{ badgeText }}</x-import>
+      <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.75rem, 6vw, 5rem); letter-spacing: -0.03em; line-height: 0.98; color: #F9FAFC;">Stop studying AI.<br>Start deploying it.</h2>
+      <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Button" variant="{{ ctaVariant }}" size="lg" arrow="true" as="a" href="#enroll" hint-size="200px,58px">Book Consultation</x-import>
+    </div>
+  </section>
+
+  <!-- Floating Bottom Sticky Bar -->
+  <div id="sticky-bottom-bar">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 12px;" class="sticky-info">
+        <span style="background: rgba(216, 255, 50, 0.2); color: #D8FF32; font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; padding: 4px 12px; border-radius: 99px; white-space: nowrap;">
+          ⚡ Cohort 01 · 84% Filled
+        </span>
+        <div style="color: #F9FAFC; font-size: 0.875rem; font-weight: 500;" class="sticky-title">
+          The Advanced Generative AI Programme
+        </div>
+      </div>
+      <div style="display: flex; gap: 10px; align-items: center; width: auto;" class="sticky-actions">
+        <button onclick="openLeadModal('Bottom Bar')" style="background: #D8FF32; color: #050B36; border: none; border-radius: 99px; padding: 12px 28px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.9375rem; cursor: pointer; white-space: nowrap; box-shadow: 0 4px 16px rgba(216, 255, 50, 0.4);" class="sticky-btn-pri">
+          Book Consultation
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lead Capture Bottom Sheet / Modal Drawer -->
+  <div id="lead-modal-drawer" onclick="closeLeadModal()">
+    <div onclick="event.stopPropagation()" class="drawer-box">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #E4E6F0; padding-bottom: 12px; margin-bottom: 12px;">
+        <div>
+          <span style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #1A22FF;">AI Essentials</span>
+          <h3 style="margin: 2px 0 0 0; font-family: 'Sora', sans-serif; font-size: 1.25rem; font-weight: 700; color: #060814;">Book Consultation</h3>
+        </div>
+        <button onclick="closeLeadModal()" style="background: #F0F2F8; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 1.125rem; display: flex; align-items: center; justify-content: center; color: #4A4F6A; outline: none;">✕</button>
+      </div>
+      <div style="width: 100%; min-height: 594px;">
+        <iframe
+          src="https://link.trym.co.in/widget/form/C3QNWOEvU9lO9L2o63iY"
+          style="width:100%;height:100%;min-height:594px;border:none;border-radius:8px"
+          id="drawer-inline-C3QNWOEvU9lO9L2o63iY" 
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="Form 0"
+          data-height="594"
+          data-layout-iframe-id="drawer-inline-C3QNWOEvU9lO9L2o63iY"
+          data-form-id="C3QNWOEvU9lO9L2o63iY"
+          title="Form 0"
+        >
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;ctaVariant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;primary&quot;,&quot;heat&quot;],&quot;default&quot;:&quot;primary&quot;,&quot;tsType&quot;:&quot;'primary' | 'heat'&quot;,&quot;section&quot;:&quot;Style&quot;},&quot;enrollmentOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;State&quot;},&quot;showPricing&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
+class Component extends DCLogic {
+  state = { submitted: false };
+  renderVals() {
+    const open = this.props.enrollmentOpen ?? true;
+    return {
+      ctaVariant: this.props.ctaVariant ?? 'primary',
+      showPricing: this.props.showPricing ?? true,
+      badgeTone: open ? 'live' : 'heat',
+      badgeText: open ? 'Cohort 01 // Enrollment Open' : 'Cohort 01 // Waitlist Only',
+      submitted: this.state.submitted,
+      notSubmitted: !this.state.submitted,
+      submitLead: () => this.setState({ submitted: true }),
+      w01: { tools: ['ChatGPT Plus', 'Perplexity'] },
+      w02: { tools: ['NotebookLM', 'Anthropic Claude'] },
+      w03: { tools: ['Make.com', 'Zapier Central'] },
+      w04: { tools: ['ElevenLabs', 'HeyGen'] },
+      w05: { tools: ['Midjourney', 'Higgsfield'] },
+      w06: { tools: ['v0 by Vercel', 'Claude Design'] },
+      w07: { tools: ['Claude Code', 'Google Antigravity'] },
+      w08: { tools: ['Replit Agent', 'Stripe AI'] },
+      p1: { features: ['20 Live Classes', 'Recordings Included', 'EMI Available', 'Certificate of completion'] },
+      p2: { features: ['Everything in Gen AI', '1:1 Mentor Guidance', 'Operator Certificate', 'Flexible EMI Options'] },
+      p3: { features: ['Everything in Gen AI Plus', 'Campaign Management', 'Upto 2 Lakh Ad Budget', '3 Months Duration'] },
+    };
+  }
+}
+</script>
+
+<script>
+  function openLeadModal(source) {
+    const drawer = document.getElementById('lead-modal-drawer');
+    if (!drawer) return;
+    drawer.style.display = 'flex';
+    requestAnimationFrame(() => {
+      drawer.style.opacity = '1';
+      const drawerBox = drawer.querySelector('.drawer-box');
+      if (drawerBox) drawerBox.style.transform = 'translateY(0)';
+    });
+  }
+
+  function closeLeadModal() {
+    const drawer = document.getElementById('lead-modal-drawer');
+    if (!drawer) return;
+    const drawerBox = drawer.querySelector('.drawer-box');
+    if (drawerBox) drawerBox.style.transform = 'translateY(100%)';
+    drawer.style.opacity = '0';
+    setTimeout(() => {
+      drawer.style.display = 'none';
+    }, 250);
+  }
+
+  window.addEventListener('scroll', () => {
+    const stickyBar = document.getElementById('sticky-bottom-bar');
+    const heroSection = document.querySelector('section[data-screen-label="Hero"]');
+    if (!stickyBar) return;
+    
+    if (heroSection) {
+      const heroBottom = heroSection.getBoundingClientRect().bottom;
+      if (heroBottom < 100) {
+        stickyBar.classList.add('visible');
+      } else {
+        stickyBar.classList.remove('visible');
+      }
+    } else {
+      if (window.scrollY > 400) {
+        stickyBar.classList.add('visible');
+      } else {
+        stickyBar.classList.remove('visible');
+      }
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('a[href="#enroll"]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        if (window.innerWidth <= 960) {
+          e.preventDefault();
+          openLeadModal('CTA Anchor Click');
+        }
+      });
+    });
+  });
+
+  // Event listener for Trym form iframe postMessage events (Facebook lead tracking + redirect)
+  window.addEventListener('message', (e) => {
+    if (e.origin && (e.origin.includes('trym.co.in') || e.data?.type === 'form_submitted')) {
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', { content_name: 'Generative AI Lead Form' });
+        fbq('track', 'CompleteRegistration');
+      }
+      setTimeout(() => {
+        window.location.href = '/thankyou.html';
+      }, 400);
+    }
+  });
+</script>
+</body>
+</html>

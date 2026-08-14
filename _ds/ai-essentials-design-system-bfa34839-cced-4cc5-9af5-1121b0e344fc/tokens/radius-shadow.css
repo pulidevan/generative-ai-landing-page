@@ -1,0 +1,45 @@
+/* ============================================================
+   AI ESSENTIALS — RADIUS, BORDERS, SHADOWS, MOTION
+   The brand is flat and editorial. Shadows are used sparingly;
+   structure comes from hairlines and dark/light contrast.
+   Corners are modest — the geometry is confident, not cute.
+   ============================================================ */
+
+:root {
+  /* ---- Radius ---- */
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   12px;   /* default card */
+  --radius-lg:   18px;
+  --radius-xl:   24px;
+  --radius-pill: 999px;  /* pills, tags, buttons */
+  --radius-none: 0px;    /* editorial hard-edge blocks */
+
+  /* ---- Border widths ---- */
+  --bw-hairline: 1px;   /* @kind other */
+  --bw-medium:   1.5px; /* @kind other */
+  --bw-strong:   2px;   /* @kind other */
+
+  /* ---- Shadows (restrained) ---- */
+  --shadow-none: none;
+  --shadow-sm:   0 1px 2px rgba(6,8,20,0.06);
+  --shadow-md:   0 8px 28px -12px rgba(6,8,20,0.18);
+  --shadow-lg:   0 24px 60px -20px rgba(6,8,20,0.28);
+  --shadow-brand: 0 18px 44px -16px rgba(26,34,255,0.42);  /* electric lift */
+  --shadow-inset-line: inset 0 0 0 1px var(--line);
+
+  /* ---- Focus ---- */
+  --ring: 0 0 0 3px rgba(26,34,255,0.35);
+
+  /* ---- Motion ---- */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);   /* @kind other */ /* confident settle */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);                        /* @kind other */
+  --dur-fast:    120ms; /* @kind other */
+  --dur:         220ms; /* @kind other */
+  --dur-slow:    420ms; /* @kind other */
+
+  /* Interaction conventions:
+     hover  → subtle lift + slightly darker/brighter fill
+     press  → scale(0.985), deeper color, no bounce
+     Motion is crisp and short. No decorative infinite loops. */
+}

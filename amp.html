@@ -1,0 +1,352 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+  <meta charset="utf-8">
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+  <title>Advanced Generative AI Programme | AI Essentials</title>
+  <link rel="canonical" href="https://genai.aiessentials.in/Generative%20AI%20Landing.dc.html">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <meta name="description" content="Master Generative AI with AI Essentials. Learn prompt engineering, RAG, AI agents, generative media & vibe coding. 8 weeks, 20 live classes, real deployments + career support.">
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Inter:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+  <style amp-custom>
+    /* CSS reset and tokens */
+    body { margin: 0; background: #F9FAFC; font-family: 'Inter', sans-serif; color: #060814; }
+    * { box-sizing: border-box; }
+    a { color: #1A22FF; text-decoration: none; }
+    a:hover { color: #141AC7; }
+    h1, h2, h3 { font-family: 'Sora', sans-serif; font-weight: 700; margin: 0; letter-spacing: -0.03em; line-height: 1.1; }
+    
+    /* Typography */
+    .hero-title { font-size: clamp(3rem, 6vw, 5.2rem); letter-spacing: -0.035em; line-height: 0.98; }
+    .hero-title em { font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic; }
+    .section-title { font-size: clamp(2.25rem, 5vw, 4rem); letter-spacing: -0.03em; line-height: 0.98; }
+    
+    /* Layout */
+    .container { max-width: 1240px; margin: 0 auto; padding: 110px 80px; }
+    .section-light { background: #F0F2F8; border-top: 1px solid #E4E6F0; border-bottom: 1px solid #E4E6F0; }
+    .hero { background: #050B36; color: #F9FAFC; }
+    .hero .container { padding-top: 110px; padding-bottom: 110px; }
+    .grid-2col { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px; align-items: start; }
+    .grid-auto { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .flex-col { display: flex; flex-direction: column; gap: 24px; }
+    
+    /* Components */
+    .badge { display: inline-block; padding: 6px 14px; border-radius: 99px; font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; background: rgba(26, 34, 255, 0.1); color: #1A22FF; margin-bottom: 8px; }
+    .badge-live { background: rgba(255, 92, 0, 0.15); color: #FF5C00; }
+    .badge-dark { background: rgba(249, 250, 252, 0.1); color: #F9FAFC; }
+    .badge-group { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+    .text-body { font-size: 1.0625rem; line-height: 1.65; color: #4A4F6A; margin: 0; }
+    .text-body-hero { color: rgba(249,250,252,0.7); }
+    .btn { display: inline-flex; justify-content: center; align-items: center; padding: 16px 28px; border-radius: 99px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.9375rem; cursor: pointer; border: none; text-align: center; background: #D8FF32 !important; color: #050B36 !important; box-shadow: 0 4px 16px rgba(216, 255, 50, 0.4); }
+    .btn-primary { background: #D8FF32 !important; color: #050B36 !important; }
+    .btn-outline { background: transparent; border: 1px solid currentColor; }
+    .btn-dark { background: #D8FF32 !important; color: #050B36 !important; }
+    .btn-outline-dark { background: transparent; border: 1px solid rgba(249,250,252,0.5); color: #F9FAFC; }
+    
+    .card { background: #FFFFFF; border: 1px solid #E4E6F0; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 12px; }
+    .card-title { font-family: 'Sora', sans-serif; font-size: 1.1875rem; font-weight: 700; }
+    .card-code { font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; color: #1A22FF; }
+    .card-tools { display: flex; gap: 8px; margin-top: auto; padding-top: 16px; flex-wrap: wrap; }
+    .tool-tag { font-size: 0.75rem; font-weight: 600; padding: 4px 8px; border-radius: 4px; background: #F0F2F8; color: #4A4F6A; }
+    
+    .hero-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin-top: 24px; border-top: 1px solid rgba(249,250,252,0.14); padding-top: 32px; }
+    .stat-block { display: flex; flex-direction: column; gap: 8px; }
+    .stat-val { font-family: 'Sora', sans-serif; font-size: 2.5rem; font-weight: 700; color: #F9FAFC; line-height: 1; }
+    .stat-lbl { font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(249,250,252,0.5); }
+    
+    /* Domain card */
+    .domain-list { display: flex; flex-direction: column; }
+    .domain-card { border-bottom: 1px solid #C9CCDC; padding: 20px 0; display: flex; gap: 24px; align-items: baseline; }
+    
+    /* Price card */
+    .price-card { background: #FFFFFF; border: 1px solid #E4E6F0; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 24px; }
+    .price-card.highlight { border: 2px solid #1A22FF; box-shadow: 0 16px 40px rgba(26,34,255,0.12); }
+    .price-eyebrow { font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; color: #1A22FF; }
+    .price-amount { font-family: 'Sora', sans-serif; font-size: 2.75rem; font-weight: 700; letter-spacing: -0.03em; margin-top: 4px; }
+    .price-anchor { font-size: 1rem; color: #8C90A8; text-decoration: line-through; margin-top: 2px; }
+    .feature-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .feature-item { font-size: 0.9375rem; color: #4A4F6A; display: flex; align-items: center; gap: 8px; }
+    .feature-item::before { content: "✓"; color: #1A22FF; font-weight: bold; }
+    
+    /* Closing CTA */
+    .cta-box { background: #050B36; border-radius: 24px; padding: 64px 32px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 24px; color: #F9FAFC; }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container { padding: 64px 20px; }
+      .grid-2col { grid-template-columns: 1fr; gap: 40px; }
+      .hero .container { padding-top: 56px; padding-bottom: 56px; }
+    }
+    
+    /* AMP Floating Sticky Bottom Bar */
+    .amp-sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: #050B36;
+      border-top: 1px solid rgba(249, 250, 252, 0.15);
+      box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.4);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .amp-sticky-badge {
+      background: rgba(216, 255, 50, 0.2);
+      color: #D8FF32;
+      font-family: 'Sora', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 99px;
+      white-space: nowrap;
+    }
+    .amp-sticky-btn {
+      background: #D8FF32;
+      color: #050B36;
+      border-radius: 99px;
+      padding: 10px 22px;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 0.875rem;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 4px 14px rgba(216, 255, 50, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container grid-2col">
+      <div class="flex-col">
+        <div class="badge-group">
+          <span class="badge badge-live">Cohort 01 // Enrollment Open</span>
+          <span class="badge badge-dark">8 Weeks · 20 Live Classes</span>
+        </div>
+        <h1 class="hero-title">The Advanced <em>Generative AI</em> Programme.</h1>
+        <p class="text-body text-body-hero">Build with LLMs, agents, and generative media on the 2026 bleeding-edge stack — then deploy it for real. Stop studying AI. Start deploying it.</p>
+        <div class="badge-group">
+          <a href="#enroll" class="btn btn-primary">Book Consultation</a>
+          <a href="#curriculum" class="btn btn-outline-dark">View curriculum</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-block"><span class="stat-val">20</span><span class="stat-lbl">Live Classes</span></div>
+          <div class="stat-block"><span class="stat-val">8</span><span class="stat-lbl">Weeks</span></div>
+          <div class="stat-block"><span class="stat-val">5k+</span><span class="stat-lbl">Operators Trained</span></div>
+          <div class="stat-block"><span class="stat-val">100+</span><span class="stat-lbl">Systems Deployed</span></div>
+        </div>
+      </div>
+      
+      <div id="enroll" class="form-box" style="padding: 12px; min-height: 594px;">
+        <iframe
+          src="https://link.trym.co.in/widget/form/C3QNWOEvU9lO9L2o63iY"
+          style="width:100%;height:100%;min-height:594px;border:none;border-radius:8px"
+          id="inline-C3QNWOEvU9lO9L2o63iY" 
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="Form 0"
+          data-height="594"
+          data-layout-iframe-id="inline-C3QNWOEvU9lO9L2o63iY"
+          data-form-id="C3QNWOEvU9lO9L2o63iY"
+          title="Form 0"
+        >
+        </iframe>
+        <script src="https://link.trym.co.in/js/form_embed.js"></script>
+      </div>
+    </div>
+  </section>
+
+  <!-- Career Outcomes -->
+  <section class="container grid-2col">
+    <div class="flex-col">
+      <div><span class="badge">D01 — D05</span></div>
+      <h2 class="section-title">Step into high-leverage Generative AI roles.</h2>
+      <p class="text-body">One stack, five domains. Whatever your seat, the programme turns you into the AI operator your market pays a premium for.</p>
+    </div>
+    <div class="domain-list">
+      <div class="domain-card">
+        <span class="card-code">D01</span>
+        <div><h3 class="card-title">Founders</h3><p class="text-body">Automate operations and ship AI products without adding headcount.</p></div>
+      </div>
+      <div class="domain-card">
+        <span class="card-code">D02</span>
+        <div><h3 class="card-title">Marketers</h3><p class="text-body">Run content engines that produce a month of output in a day.</p></div>
+      </div>
+      <div class="domain-card">
+        <span class="card-code">D03</span>
+        <div><h3 class="card-title">Designers</h3><p class="text-body">Direct generative image and video pipelines end to end.</p></div>
+      </div>
+      <div class="domain-card">
+        <span class="card-code">D04</span>
+        <div><h3 class="card-title">Analysts</h3><p class="text-body">Turn raw data into decisions with AI-assisted analysis and reporting.</p></div>
+      </div>
+      <div class="domain-card">
+        <span class="card-code">D05</span>
+        <div><h3 class="card-title">Developers</h3><p class="text-body">Ship production-grade codebases with agentic coding workflows.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Curriculum -->
+  <section id="curriculum" class="section-light">
+    <div class="container flex-col" style="gap: 48px;">
+      <div class="flex-col" style="max-width: 680px;">
+        <div><span class="badge">Programme Curriculum // W01–W08</span></div>
+        <h2 class="section-title">Eight weeks. End-to-end Generative AI expertise.</h2>
+      </div>
+      
+      <div class="grid-auto">
+        <div class="card">
+          <span class="card-code">W01</span>
+          <h3 class="card-title">Cognitive Awakening</h3>
+          <p class="text-body" style="font-size: 0.9375rem;">Rewire your executive mindset. Master reasoning engines, prompt engineering, and deep-search tools.</p>
+          <div class="card-tools"><span class="tool-tag">ChatGPT Plus</span><span class="tool-tag">Perplexity</span></div>
+        </div>
+        <div class="card">
+          <span class="card-code">W02</span>
+          <h3 class="card-title">Synthetic Knowledge</h3>
+          <p class="text-body" style="font-size: 0.9375rem;">Build your corporate brain. Connect files, docs, and notes into custom RAG pipelines.</p>
+          <div class="card-tools"><span class="tool-tag">NotebookLM</span><span class="tool-tag">Anthropic Claude</span></div>
+        </div>
+        <div class="card">
+          <span class="card-code">W03</span>
+          <h3 class="card-title">Autonomous Fleet</h3>
+          <p class="text-body" style="font-size: 0.9375rem;">Design agents that think, act, and self-heal. Automate backend tasks, and connect APIs.</p>
+          <div class="card-tools"><span class="tool-tag">Make.com</span><span class="tool-tag">Zapier Central</span></div>
+        </div>
+        <div class="card">
+          <span class="card-code">W04</span>
+          <h3 class="card-title">Voice &amp; Audio Scale</h3>
+          <p class="text-body" style="font-size: 0.9375rem;">Scale outbound sales and support with voice agents, hyper-realistic voice-overs, and avatars.</p>
+          <div class="card-tools"><span class="tool-tag">ElevenLabs</span><span class="tool-tag">HeyGen</span></div>
+        </div>
+        <div class="card">
+          <span class="card-code">W05</span>
+          <h3 class="card-title">The Content Factory</h3>
+          <p class="text-body" style="font-size: 0.9375rem;">Generate stunning images and high-fidelity video. Build an autonomous loop that publishes assets.</p>
+          <div class="card-tools"><span class="tool-tag">Midjourney</span><span class="tool-tag">Higgsfield</span></div>
+        </div>
+        <div class="card">
+          <span class="card-code">W06</span>
+          <h3 class="card-title">Visual &amp; Design Moat</h3>
+          <p class="text-body" style="font-size: 0.9375rem;">Generate responsive web frontends instantly. Tweak components conversationally in seconds.</p>
+          <div class="card-tools"><span class="tool-tag">v0 by Vercel</span><span class="tool-tag">Claude Design</span></div>
+        </div>
+        <div class="card">
+          <span class="card-code">W07</span>
+          <h3 class="card-title">Vibe Coding</h3>
+          <p class="text-body" style="font-size: 0.9375rem;">Architect complete React/TypeScript codebases. Direct Claude Code to program, test, and deploy apps.</p>
+          <div class="card-tools"><span class="tool-tag">Claude Code</span><span class="tool-tag">Cursor</span></div>
+        </div>
+        <div class="card">
+          <span class="card-code">W08</span>
+          <h3 class="card-title">Digital Real Estate</h3>
+          <p class="text-body" style="font-size: 0.9375rem;">Launch micro-SaaS products and monetize them. Integrate Stripe and databases autonomously.</p>
+          <div class="card-tools"><span class="tool-tag">Replit Agent</span><span class="tool-tag">Stripe AI</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certification -->
+  <section class="section-light">
+    <div class="container grid-2col" style="align-items: center;">
+      <div class="flex-col">
+        <div><span class="badge">The Credential</span></div>
+        <h2 class="section-title">A certificate that signals deployment, not attendance.</h2>
+        <div class="domain-card" style="padding-top:0; border-bottom: none;">
+          <div><h3 class="card-title" style="font-size: 1.0625rem;">Verified credential</h3><p class="text-body">An AI Essentials Operator certificate, issued on completion of all eight deployments.</p></div>
+        </div>
+      </div>
+      <div>
+        <amp-img src="assets/Capture-2026-08-01-192731.png" width="4" height="3" layout="responsive" style="border-radius:16px;"></amp-img>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="container flex-col" style="gap: 48px;">
+    <div class="flex-col" style="max-width: 640px;">
+      <div><span class="badge">Invest in Leverage</span></div>
+      <h2 class="section-title">Choose your level of leverage.</h2>
+      <p class="text-body">Flexible plans and EMI options. Talk to a counselor to unlock scholarship benefits.</p>
+    </div>
+    
+    <div class="grid-auto">
+      <div class="price-card">
+        <div>
+          <div class="price-eyebrow">Gen AI</div>
+          <div class="price-amount">₹25,000</div>
+          <div class="price-anchor">₹45,000</div>
+          <div style="font-size:0.9375rem; color:#4A4F6A; margin-top:8px;">8 Weeks · Live Cohort</div>
+        </div>
+        <a href="#enroll" class="btn btn-outline" style="width: 100%; border: 1px solid #C9CCDC; color: #060814; display:block;">Book Consultation</a>
+        <ul class="feature-list">
+          <li class="feature-item">20 Live Classes</li>
+          <li class="feature-item">Recordings Included</li>
+          <li class="feature-item">EMI Available</li>
+          <li class="feature-item">Certificate of completion</li>
+        </ul>
+      </div>
+      
+      <div class="price-card highlight">
+        <div>
+          <div class="price-eyebrow">Gen AI Plus Meta</div>
+          <div class="price-amount">₹35,000</div>
+          <div class="price-anchor">₹65,000</div>
+          <div style="font-size:0.9375rem; color:#1A22FF; margin-top:8px; font-weight: 600;">Recommended Tier</div>
+        </div>
+        <a href="#enroll" class="btn btn-primary" style="width: 100%; display:block;">Book Consultation</a>
+        <ul class="feature-list">
+          <li class="feature-item">Everything in Gen AI</li>
+          <li class="feature-item">1:1 Mentor Guidance</li>
+          <li class="feature-item">Operator Certificate</li>
+          <li class="feature-item">Flexible EMI Options</li>
+        </ul>
+      </div>
+
+      <div class="price-card">
+        <div>
+          <div class="price-eyebrow">Gen AI, Marketing Plus Campaign Management</div>
+          <div class="price-amount">₹99,999</div>
+          <div class="price-anchor">₹2,00,000</div>
+          <div style="font-size:0.9375rem; color:#4A4F6A; margin-top:8px;">Includes upto 2 lakh ad budget</div>
+        </div>
+        <a href="#enroll" class="btn btn-dark" style="width: 100%; display:block;">Book Consultation</a>
+        <ul class="feature-list">
+          <li class="feature-item">Everything in Gen AI Plus</li>
+          <li class="feature-item">Campaign Management</li>
+          <li class="feature-item">Upto 2 Lakh Ad Budget</li>
+          <li class="feature-item">3 Months Duration</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Closing CTA -->
+  <section class="container" style="padding-bottom: 80px;">
+    <div class="cta-box">
+      <span class="badge badge-live">Cohort 01 // Enrollment Open</span>
+      <h2 class="section-title" style="color: #F9FAFC;">Stop studying AI.<br>Start deploying it.</h2>
+      <a href="#enroll" class="btn btn-primary">Book Consultation</a>
+    </div>
+  </section>
+  <!-- Floating Bottom Sticky Bar -->
+  <div class="amp-sticky-bar">
+    <span class="amp-sticky-badge">⚡ Cohort 01 · 84% Filled</span>
+    <a href="#enroll" class="amp-sticky-btn">Book Consultation</a>
+  </div>
+</body>
+</html>
