@@ -432,11 +432,54 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
     }
   }
 
-  /* Ensure Form is At the Top on Mobile */
-  @media (max-width: 768px) {
-    .responsive-2col { display: flex !important; flex-direction: column !important; }
-    .hero-container > #enroll { order: 1 !important; margin-top: 12px; }
-    .hero-container > div:first-child { order: 0 !important; }
+  /* Pro Hero Grid Layout (Desktop & Mobile) */
+  .hero-container {
+    display: grid !important;
+    grid-template-areas: 
+      "header form"
+      "content form";
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr) !important;
+    gap: 16px clamp(32px, 5vw, 64px) !important;
+    align-items: start;
+  }
+  .hero-header {
+    grid-area: header;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .hero-form {
+    grid-area: form;
+    position: relative;
+    /* On desktop, keep it sticky to stay visible while scrolling left content */
+    position: sticky;
+    top: 24px; 
+  }
+  .hero-content {
+    grid-area: content;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  @media (max-width: 840px) {
+    .hero-container {
+      grid-template-areas: 
+        "header"
+        "form"
+        "content" !important;
+      grid-template-columns: 1fr !important;
+      gap: 32px !important;
+    }
+    .hero-form {
+      position: relative;
+      top: 0;
+    }
+    /* Hide the form container shadow on mobile to make it blend cleaner */
+    .form-embed-wrapper {
+      box-shadow: 0 12px 30px rgba(5,11,54,0.2) !important;
+    }
   }
 
   :root {
@@ -481,8 +524,8 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
 
   <!-- Hero (01) -->
   <section data-screen-label="Hero" style="background: #050B36; color: #F9FAFC;">
-    <div class="responsive-2col hero-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(40px, 6vw, 84px) clamp(20px, 5vw, 80px); display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr); gap: clamp(32px, 5vw, 64px); align-items: start;">
-      <div style="display: flex; flex-direction: column; gap: 20px;">
+    <div class="responsive-2col hero-container" style="max-width: 1240px; margin: 0 auto; padding: clamp(40px, 6vw, 84px) clamp(20px, 5vw, 80px);">
+      <div class="hero-header">
         <!-- Brand Logo -->
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 2px;">
           <img src="assets/logo-blend.png" alt="AI Essentials Logo" style="height: 52px; width: auto; object-fit: contain; filter: drop-shadow(0 4px 12px rgba(26,34,255,0.4));" />
@@ -497,7 +540,9 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
         <p style="margin: 0; font-size: 1.125rem; line-height: 1.6; color: #FFFFFF; max-width: 50ch;">
           A practical 8-week Generative AI programme designed to transform how you <strong>work, create, and build</strong> — for students, professionals, founders and freelancers.
         </p>
+      </div>
         
+      <div class="hero-content">
         <div class="hero-stats-pills" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 2px;">
           <span class="stat-pill" style="border-color: rgba(216, 255, 50, 0.5); background: rgba(216, 255, 50, 0.15);"><strong style="color: #D8FF32;">🗣️ English &amp; தமிழ்</strong></span>
           <span class="stat-pill" style="border-color: rgba(216, 255, 50, 0.4); background: rgba(216, 255, 50, 0.1);"><strong style="color: #D8FF32;">🗓️ 8 Weeks</strong></span>
@@ -580,7 +625,7 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
       </div>
 
       <!-- Lead form (13 - Form) -->
-      <div id="enroll" class="form-embed-wrapper" style="box-shadow: 0 24px 60px rgba(5,11,54,0.35); border: 1px solid #E4E6F0; position: relative;">
+      <div id="enroll" class="hero-form form-embed-wrapper" style="box-shadow: 0 24px 60px rgba(5,11,54,0.35); border: 1px solid #E4E6F0; position: relative;">
         <div style="background: linear-gradient(135deg, #08125C 0%, #050B36 100%); padding: 14px 20px; border-bottom: 1px solid rgba(26, 34, 255, 0.4); display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top-left-radius: 16px; border-top-right-radius: 16px;">
           <div style="display: flex; align-items: center; gap: 8px;">
             <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #D8FF32; box-shadow: 0 0 10px #D8FF32;"></span>
