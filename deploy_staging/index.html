@@ -2409,6 +2409,35 @@ class Component extends DCLogic {
     </div>
   </div>
 
+  <script>
+    // Self-contained sticky footer controller — fires on ANY scroll, no x-dc dependency
+    (function () {
+      var bar = document.getElementById('sticky-bottom-bar');
+      if (!bar) return;
+      function show() {
+        var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+        if (y > 10) {
+          bar.classList.add('visible');
+        } else {
+          bar.classList.remove('visible');
+        }
+      }
+      window.addEventListener('scroll', show, { passive: true });
+      window.addEventListener('touchmove', show, { passive: true });
+      show();
+      setTimeout(show, 500);
+      setTimeout(show, 1500);
+      // Fallback scrollToEnrollForm
+      if (!window.scrollToEnrollForm) {
+        window.scrollToEnrollForm = function (e) {
+          if (e && e.preventDefault) e.preventDefault();
+          var el = document.getElementById('enroll');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        };
+      }
+    })();
+  </script>
+
   <!-- Lead Modal Drawer Styles (outside x-dc, must be standalone) -->
   <style>
     #lead-modal-drawer {
