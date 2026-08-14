@@ -73,6 +73,21 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
   a:hover { color: var(--blue-700, #141AC7); }
   html { scroll-behavior: smooth; }
 
+  .stat-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(249, 250, 252, 0.06);
+    border: 1px solid rgba(249, 250, 252, 0.14);
+    color: rgba(249, 250, 252, 0.85);
+    font-family: 'Sora', sans-serif;
+    font-weight: 500;
+    font-size: 0.75rem;
+    padding: 6px 14px;
+    border-radius: 99px;
+    white-space: nowrap;
+  }
+
   /* Mobile Responsive Fixes */
   @media (max-width: 960px) {
     .responsive-2col {
@@ -311,12 +326,11 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
           <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.Badge" tone="onDark" dot="false" hint-size="220px,34px">8 Weeks · 20 Live Classes</x-import>
         </div>
         <h1 class="hero-title" style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: clamp(2.9rem, 5.5vw, 5.2rem); letter-spacing: -0.035em; line-height: 0.98;">The Advanced <em style="font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic; letter-spacing: -0.01em;">Generative AI</em> Programme.</h1>
-        <p class="hero-subtitle" style="margin: 0; font-size: 1.125rem; line-height: 1.65; color: rgba(249,250,252,0.70); max-width: 52ch;">Build with LLMs, agents, and generative media on the 2026 bleeding-edge stack — then deploy it for real. Stop studying AI. Start deploying it.</p>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 32px; margin-top: 24px; padding-top: 32px; border-top: 1px solid rgba(249,250,252,0.14);">
-          <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.StatBlock" value="20" label="Live Classes" color="onDark" hint-size="130px,100px"></x-import>
-          <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.StatBlock" value="8" label="Weeks" color="onDark" hint-size="130px,100px"></x-import>
-          <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.StatBlock" value="5k+" label="Operators Trained" color="onDark" hint-size="150px,100px"></x-import>
-          <x-import component-from-global-scope="AIEssentialsDesignSystem_bfa348.StatBlock" value="100+" label="Systems Deployed" color="onDark" hint-size="150px,100px"></x-import>
+        <div class="hero-stats-pills" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px;">
+          <span class="stat-pill"><strong style="color: #D8FF32; font-size: 0.8125rem;">20</strong> Live Classes</span>
+          <span class="stat-pill"><strong style="color: #D8FF32; font-size: 0.8125rem;">8</strong> Weeks</span>
+          <span class="stat-pill"><strong style="color: #D8FF32; font-size: 0.8125rem;">5k+</strong> Trained</span>
+          <span class="stat-pill"><strong style="color: #D8FF32; font-size: 0.8125rem;">100+</strong> Deployed</span>
         </div>
       </div>
       <!-- Lead form -->
