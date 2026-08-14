@@ -762,15 +762,27 @@ class Component extends DCLogic {
     }
   });
 
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('a[href="#enroll"]').forEach(el => {
-      el.addEventListener('click', (e) => {
-        if (window.innerWidth <= 960) {
-          e.preventDefault();
-          openLeadModal('CTA Anchor Click');
-        }
-      });
-    });
+  // Universal seamless CTA click handler — ensures ALL buttons open the form
+  document.addEventListener('click', (e) => {
+    const targetBtn = e.target.closest('a[href="#enroll"], button, [class*="Button"], [class*="PriceCard"] button');
+    if (!targetBtn) return;
+    
+    // Ignore close button or buttons inside the modal itself
+    if (targetBtn.closest('#lead-modal-drawer') || targetBtn.innerText === '✕') return;
+
+    const isMobile = window.innerWidth <= 960;
+    const isLowerSection = targetBtn.closest('#pricing, [data-screen-label="FAQ"], [data-screen-label="Closing CTA"], #sticky-bottom-bar, #outcomes, #curriculum');
+
+    if (isMobile || isLowerSection) {
+      e.preventDefault();
+      openLeadModal(targetBtn.innerText || 'CTA Click');
+    } else {
+      const enrollEl = document.getElementById('enroll');
+      if (enrollEl) {
+        e.preventDefault();
+        enrollEl.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   });
 
   // Bulletproof Dual-Detection Event Listener for Trym / LeadConnector Form Submission
