@@ -907,25 +907,19 @@
         }
 
         .brand-logo-container {
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          margin: 0 0 6px 0;
-          padding: 0;
-          width: 100%;
-          text-align: left;
+          display: none !important;
         }
 
         .brand-logo-img {
-          height: clamp(52px, 6.8vw, 76px);
+          height: 28px;
           max-width: 100%;
           width: auto;
           object-fit: contain;
-          object-position: left center;
+          object-position: center;
           filter: contrast(1.1) brightness(1.08);
           image-rendering: -webkit-optimize-contrast;
           display: block;
-          margin: 0;
+          margin: 0 auto;
           padding: 0;
         }
 
@@ -935,15 +929,7 @@
             text-align: left !important;
           }
           .brand-logo-container {
-            justify-content: flex-start !important;
-            text-align: left !important;
-            margin-left: 0 !important;
-            padding-left: 0 !important;
-          }
-          .brand-logo-img {
-            object-position: left center !important;
-            margin: 0 !important;
-            margin-left: 0 !important;
+            display: none !important;
           }
         }
 
