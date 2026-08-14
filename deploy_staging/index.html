@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://link.trym.co.in" crossorigin>
+<link rel="preconnect" href="https://stcdn.leadconnectorhq.com" crossorigin>
+<link rel="preconnect" href="https://backend.leadconnectorhq.com" crossorigin>
+<link rel="dns-prefetch" href="https://link.trym.co.in">
+<link rel="dns-prefetch" href="https://stcdn.leadconnectorhq.com">
+<link rel="dns-prefetch" href="https://backend.leadconnectorhq.com">
 <script src="./support.js"></script>
 <link rel="amphtml" href="https://genai.aiessentials.in/amp.html">
 <!-- Meta Pixel Code -->
@@ -211,18 +217,64 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
     transition: all 0.2s ease !important;
   }
 
-  button:hover,
-  .btn:hover,
-  .btn-primary:hover,
-  .sticky-btn-pri:hover,
-  .sticky-btn-sec:hover,
-  [class*="Button"]:hover,
-  [class*="PriceCard"] button:hover,
-  a[href="#enroll"]:hover {
-    background-color: #C4F82A !important;
-    color: #050B36 !important;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(216, 255, 50, 0.6) !important;
+  /* Seamless Form Embed Wrapper & Skeleton */
+  .form-embed-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 594px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .form-embed-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 594px;
+    border: none;
+    border-radius: 16px;
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .form-embed-wrapper iframe.iframe-loaded {
+    opacity: 1 !important;
+  }
+  .form-skeleton {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: #FFFFFF;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-sizing: border-box;
+  }
+  .sk-field {
+    height: 48px;
+    border-radius: 8px;
+    animation: shimmer 1.5s infinite linear;
+    background: linear-gradient(90deg, #F0F2F8 25%, #E4E6F0 50%, #F0F2F8 75%);
+    background-size: 200% 100%;
+  }
+  .sk-button {
+    height: 52px;
+    background: #D8FF32;
+    border-radius: 99px;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #050B36;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    box-shadow: 0 4px 16px rgba(216, 255, 50, 0.4);
+  }
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
   }
 </style>
 </helmet>
@@ -250,11 +302,22 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
         </div>
       </div>
       <!-- Lead form -->
-      <div id="enroll" style="background: #FFFFFF; color: #060814; border-radius: 16px; border: 1px solid #E4E6F0; padding: 12px; box-shadow: 0 24px 60px rgba(5,11,54,0.35); min-height: 594px; width: 100%; box-sizing: border-box;">
+      <div id="enroll" class="form-embed-wrapper" style="box-shadow: 0 24px 60px rgba(5,11,54,0.35); border: 1px solid #E4E6F0;">
+        <div class="form-skeleton">
+          <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #060814;">Book Consultation</div>
+          <div class="sk-field" style="width: 40%; height: 14px;"></div>
+          <div class="sk-field"></div>
+          <div class="sk-field" style="width: 40%; height: 14px;"></div>
+          <div class="sk-field"></div>
+          <div class="sk-field" style="width: 40%; height: 14px;"></div>
+          <div class="sk-field"></div>
+          <div class="sk-button">Book Consultation</div>
+        </div>
         <iframe
           src="https://link.trym.co.in/widget/form/C3QNWOEvU9lO9L2o63iY"
-          style="width:100%;height:100%;min-height:594px;border:none;border-radius:8px"
           id="inline-C3QNWOEvU9lO9L2o63iY" 
+          loading="eager"
+          fetchpriority="high"
           data-layout="{'id':'INLINE'}"
           data-trigger-type="alwaysShow"
           data-trigger-value=""
@@ -267,6 +330,7 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
           data-layout-iframe-id="inline-C3QNWOEvU9lO9L2o63iY"
           data-form-id="C3QNWOEvU9lO9L2o63iY"
           title="Form 0"
+          onload="this.classList.add('iframe-loaded')"
         >
         </iframe>
         <script src="https://link.trym.co.in/js/form_embed.js"></script>
@@ -573,11 +637,22 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
         </div>
         <button onclick="closeLeadModal()" style="background: #F0F2F8; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 1.125rem; display: flex; align-items: center; justify-content: center; color: #4A4F6A; outline: none;">✕</button>
       </div>
-      <div style="width: 100%; min-height: 594px;">
+      <div class="form-embed-wrapper">
+        <div class="form-skeleton">
+          <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #060814;">Book Consultation</div>
+          <div class="sk-field" style="width: 40%; height: 14px;"></div>
+          <div class="sk-field"></div>
+          <div class="sk-field" style="width: 40%; height: 14px;"></div>
+          <div class="sk-field"></div>
+          <div class="sk-field" style="width: 40%; height: 14px;"></div>
+          <div class="sk-field"></div>
+          <div class="sk-button">Book Consultation</div>
+        </div>
         <iframe
           src="https://link.trym.co.in/widget/form/C3QNWOEvU9lO9L2o63iY"
-          style="width:100%;height:100%;min-height:594px;border:none;border-radius:8px"
           id="drawer-inline-C3QNWOEvU9lO9L2o63iY" 
+          loading="eager"
+          fetchpriority="high"
           data-layout="{'id':'INLINE'}"
           data-trigger-type="alwaysShow"
           data-trigger-value=""
@@ -590,6 +665,7 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
           data-layout-iframe-id="drawer-inline-C3QNWOEvU9lO9L2o63iY"
           data-form-id="C3QNWOEvU9lO9L2o63iY"
           title="Form 0"
+          onload="this.classList.add('iframe-loaded')"
         >
         </iframe>
       </div>
