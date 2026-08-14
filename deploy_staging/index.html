@@ -475,10 +475,20 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
     .hero-form {
       position: relative;
       top: 0;
+      /* Edge-to-edge full width on mobile */
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      border-radius: 0 !important;
+      border-left: none !important;
+      border-right: none !important;
+    }
+    .hero-form > div:first-child {
+      border-top-left-radius: 0 !important;
+      border-top-right-radius: 0 !important;
     }
     /* Hide the form container shadow on mobile to make it blend cleaner */
     .form-embed-wrapper {
-      box-shadow: 0 12px 30px rgba(5,11,54,0.2) !important;
+      box-shadow: none !important;
     }
   }
 
@@ -537,18 +547,18 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
           Learn to Work With AI.<br>
           <em style="font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic; color: #D8FF32;">Build With AI.</em>
         </h1>
-        <p style="margin: 0; font-size: 1.125rem; line-height: 1.6; color: #FFFFFF; max-width: 50ch;">
-          A practical 8-week Generative AI programme designed to transform how you <strong>work, create, and build</strong> — for students, professionals, founders and freelancers.
-        </p>
-      </div>
-        
-      <div class="hero-content">
         <div class="hero-stats-pills" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 2px;">
           <span class="stat-pill" style="border-color: rgba(216, 255, 50, 0.5); background: rgba(216, 255, 50, 0.15);"><strong style="color: #D8FF32;">🗣️ English &amp; தமிழ்</strong></span>
           <span class="stat-pill" style="border-color: rgba(216, 255, 50, 0.4); background: rgba(216, 255, 50, 0.1);"><strong style="color: #D8FF32;">🗓️ 8 Weeks</strong></span>
           <span class="stat-pill" style="border-color: rgba(216, 255, 50, 0.4); background: rgba(216, 255, 50, 0.1);"><strong style="color: #D8FF32;">⚡ 20 Live Classes</strong></span>
           <span class="stat-pill"><strong style="color: #D8FF32;">🌐 100% Online</strong></span>
         </div>
+      </div>
+        
+      <div class="hero-content">
+        <p style="margin: 0; font-size: 1.125rem; line-height: 1.6; color: #FFFFFF; max-width: 50ch;">
+          A practical 8-week Generative AI programme designed to transform how you <strong>work, create, and build</strong> — for students, professionals, founders and freelancers.
+        </p>
         
         <!-- Hero CTA & Social Proof -->
         <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 4px;">
@@ -632,16 +642,6 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
             <span style="font-family: 'Sora', sans-serif; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.02em; color: #FFFFFF;">Let's find where AI can take you</span>
           </div>
           <span style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; color: #D8FF32; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(216,255,50,0.12); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(216,255,50,0.3);">₹999 → ₹0</span>
-        </div>
-        <div class="form-skeleton">
-          <div style="font-family: 'Sora', sans-serif; font-weight: 600; font-size: 0.875rem; color: #060814;">Let's find where AI can take you</div>
-          <div class="sk-field" style="width: 40%; height: 14px;"></div>
-          <div class="sk-field"></div>
-          <div class="sk-field" style="width: 40%; height: 14px;"></div>
-          <div class="sk-field"></div>
-          <div class="sk-field" style="width: 40%; height: 14px;"></div>
-          <div class="sk-field"></div>
-          <div class="sk-button">CLAIM MY FREE AI STRATEGY CALL →</div>
         </div>
         <iframe
           src="https://link.trym.co.in/widget/form/C3QNWOEvU9lO9L2o63iY"
