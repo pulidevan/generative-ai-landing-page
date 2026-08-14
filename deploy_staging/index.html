@@ -705,14 +705,14 @@ fbq('track', 'ViewContent', { content_name: 'Generative AI Landing Page' });
   </div>
 
   <!-- Lead Capture Bottom Sheet / Modal Drawer -->
-  <div id="lead-modal-drawer" onclick="closeLeadModal()">
+  <div id="lead-modal-drawer">
     <div onclick="event.stopPropagation()" class="drawer-box">
       <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #E4E6F0; padding-bottom: 12px; margin-bottom: 12px;">
         <div>
           <span style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #1A22FF;">AI Essentials</span>
           <h3 style="margin: 2px 0 0 0; font-family: 'Sora', sans-serif; font-size: 1.25rem; font-weight: 700; color: #060814;">Book Consultation</h3>
         </div>
-        <button onclick="closeLeadModal()" style="background: #F0F2F8; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 1.125rem; display: flex; align-items: center; justify-content: center; color: #4A4F6A; outline: none;">✕</button>
+        <button id="close-modal-btn" type="button" aria-label="Close modal" onclick="closeLeadModal()" style="background: #F0F2F8; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.25rem; display: flex; align-items: center; justify-content: center; color: #4A4F6A; outline: none; z-index: 99;">✕</button>
       </div>
       <div class="form-embed-wrapper">
         <div class="form-skeleton">
@@ -785,6 +785,7 @@ class Component extends DCLogic {
     const drawer = document.getElementById('lead-modal-drawer');
     if (!drawer) return;
     drawer.style.display = 'flex';
+    drawer.style.pointerEvents = 'auto';
     requestAnimationFrame(() => {
       drawer.style.opacity = '1';
       const drawerBox = drawer.querySelector('.drawer-box');
@@ -798,10 +799,32 @@ class Component extends DCLogic {
     const drawerBox = drawer.querySelector('.drawer-box');
     if (drawerBox) drawerBox.style.transform = 'translateY(100%)';
     drawer.style.opacity = '0';
+    drawer.style.pointerEvents = 'none';
     setTimeout(() => {
       drawer.style.display = 'none';
+      drawer.style.pointerEvents = '';
     }, 250);
   }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const drawer = document.getElementById('lead-modal-drawer');
+    const closeBtn = document.getElementById('close-modal-btn');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        closeLeadModal();
+      });
+    }
+    if (drawer) {
+      drawer.addEventListener('click', (e) => {
+        if (e.target === drawer) {
+          e.preventDefault();
+          closeLeadModal();
+        }
+      });
+    }
+  });
 
   window.addEventListener('scroll', () => {
     const stickyBar = document.getElementById('sticky-bottom-bar');
@@ -830,7 +853,7 @@ class Component extends DCLogic {
     if (!targetBtn) return;
     
     // Ignore close button or buttons inside the modal itself
-    if (targetBtn.closest('#lead-modal-drawer') || targetBtn.innerText === '✕') return;
+    if (targetBtn.id === 'close-modal-btn' || targetBtn.closest('#lead-modal-drawer') || targetBtn.innerText === '✕') return;
 
     const isMobile = window.innerWidth <= 960;
     const isLowerSection = targetBtn.closest('#pricing, [data-screen-label="FAQ"], [data-screen-label="Closing CTA"], #sticky-bottom-bar, #outcomes, #curriculum');
