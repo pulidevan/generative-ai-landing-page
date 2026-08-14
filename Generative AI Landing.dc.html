@@ -623,7 +623,6 @@
         th,
         label,
         input,
-        button,
         select,
         textarea,
         details,
@@ -639,15 +638,27 @@
           color: #D8FF32 !important;
         }
 
-        /* Keep high contrast on lime badge tags and buttons: TRUE BLACK ALWAYS */
+        /* ALL BUTTONS AND CTAS ACROSS THE ENTIRE SITE: TRUE BLACK FONT ALWAYS */
+        button,
+        .btn,
         .btn-lime,
-        button.btn-lime,
-        a.btn-lime,
-        .sk-button,
+        .btn-primary,
         .sticky-btn-pri,
+        .sticky-btn-sec,
+        .sk-button,
+        [class*="Button"],
+        [class*="PriceCard"] button,
+        a[href="#enroll"],
+        button *,
+        .btn *,
         .btn-lime *,
-        button.btn-lime *,
-        a.btn-lime *,
+        .btn-primary *,
+        .sticky-btn-pri *,
+        .sticky-btn-sec *,
+        .sk-button *,
+        [class*="Button"] *,
+        [class*="PriceCard"] button *,
+        a[href="#enroll"] *,
         [style*="background: #D8FF32"],
         [style*="background:#D8FF32"],
         [style*="background: #d8ff32"],
@@ -663,6 +674,12 @@
           color: #000000 !important;
           -webkit-text-fill-color: #000000 !important;
           font-weight: 800 !important;
+        }
+
+        #close-modal-btn,
+        button[onclick*="dismissTicker"] {
+          color: #FFFFFF !important;
+          -webkit-text-fill-color: #FFFFFF !important;
         }
 
         /* Form Iframe Clipper to Crop Privacy Policy / Terms across all screen sizes */
