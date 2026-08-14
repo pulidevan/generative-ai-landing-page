@@ -1908,9 +1908,9 @@
         <div
           style="max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
           <div style="display: flex; align-items: center; gap: 12px;" class="sticky-info">
-            <span
+            <span id="batch-start-pill"
               style="background: rgba(216, 255, 50, 0.2); color: #D8FF32; font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; padding: 4px 12px; border-radius: 99px; white-space: nowrap;">
-              ⚡ Cohort 01 · 84% Filled
+              ⚡ Next Batch Starts Next Week · 84% Filled
             </span>
             <div style="color: #F9FAFC; font-size: 0.875rem; font-weight: 500;" class="sticky-title">
               The Advanced Generative AI Programme
@@ -2221,7 +2221,37 @@ class Component extends DCLogic {
       }, 2500);
     })();
 
-    // Exit intent modal popup disabled — all traffic directed directly to hero form embed (#enroll)
+    // Dynamic Next Batch Start Date Calculation (Next Monday from current load date)
+    (function () {
+      function formatBatchDate() {
+        const now = new Date();
+        const day = now.getDay(); // 0 = Sun, 1 = Mon, ..., 6 = Sat
+        let daysToAdd = (8 - day) % 7;
+        if (daysToAdd <= 1) daysToAdd += 7;
+        
+        const nextBatch = new Date(now.getTime() + daysToAdd * 24 * 60 * 60 * 1000);
+        const dayName = nextBatch.toLocaleDateString('en-US', { weekday: 'short' });
+        const monthName = nextBatch.toLocaleDateString('en-US', { month: 'short' });
+        const dateNum = nextBatch.getDate();
+        
+        let suffix = 'th';
+        if (dateNum === 1 || dateNum === 21 || dateNum === 31) suffix = 'st';
+        else if (dateNum === 2 || dateNum === 22) suffix = 'nd';
+        else if (dateNum === 3 || dateNum === 23) suffix = 'rd';
+
+        const formatted = `${dayName}, ${monthName} ${dateNum}${suffix}`;
+        
+        const pill = document.getElementById('batch-start-pill');
+        if (pill) {
+          pill.innerHTML = `⚡ Next Batch Starts ${formatted} · 84% Filled`;
+        }
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', formatBatchDate);
+      } else {
+        formatBatchDate();
+      }
+    })();
   </script>
 </body>
 
