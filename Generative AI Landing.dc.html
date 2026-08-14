@@ -351,21 +351,23 @@
           }
         }
 
-        /* Brand Mint Green CTAs (#D8FF32) */
-        button,
-        .btn,
-        .btn-primary,
-        .sticky-btn-pri,
-        .sticky-btn-sec,
-        [class*="Button"],
-        [class*="PriceCard"] button,
-        a[href="#enroll"] {
+        /* Brand Mint Green CTAs (#D8FF32) — Only target lime-classed buttons and sticky CTA */
+        .btn-lime,
+        .sticky-btn-pri {
           background-color: #D8FF32 !important;
-          color: #050B36 !important;
+          color: #000000 !important;
           border: none !important;
-          font-weight: 700 !important;
+          font-weight: 800 !important;
           box-shadow: 0 4px 16px rgba(216, 255, 50, 0.4) !important;
           transition: all 0.2s ease !important;
+        }
+
+        /* Blue-background buttons keep their blue background and white text */
+        [style*="background: #1A22FF"],
+        [style*="background:#1A22FF"] {
+          background-color: #1A22FF !important;
+          color: #FFFFFF !important;
+          -webkit-text-fill-color: #FFFFFF !important;
         }
 
         /* Seamless Form Embed Wrapper & Skeleton */
@@ -685,6 +687,34 @@
 
         #close-modal-btn,
         button[onclick*="dismissTicker"] {
+          color: #FFFFFF !important;
+          -webkit-text-fill-color: #FFFFFF !important;
+        }
+
+        /* Blue-background (#1A22FF) buttons need WHITE text for contrast */
+        [style*="background: #1A22FF"],
+        [style*="background:#1A22FF"],
+        [style*="background: #1A22FF"] *,
+        [style*="background:#1A22FF"] * {
+          color: #FFFFFF !important;
+          -webkit-text-fill-color: #FFFFFF !important;
+        }
+
+        /* Sticky bottom bar pill and title stay light */
+        #sticky-bottom-bar #batch-start-pill {
+          color: #D8FF32 !important;
+          -webkit-text-fill-color: #D8FF32 !important;
+          font-weight: 700 !important;
+        }
+        #sticky-bottom-bar .sticky-title {
+          color: #F9FAFC !important;
+          -webkit-text-fill-color: #F9FAFC !important;
+          font-weight: 500 !important;
+        }
+
+        /* Random social proof ticker dismiss X should be white on dark bg */
+        #random-social-ticker button,
+        #random-social-ticker [onclick] {
           color: #FFFFFF !important;
           -webkit-text-fill-color: #FFFFFF !important;
         }
