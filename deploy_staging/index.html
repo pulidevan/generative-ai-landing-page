@@ -21,8 +21,29 @@
   <script src="https://link.trym.co.in/js/form_embed.js" async fetchpriority="high"></script>
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/favicon.png">
-  <script src="./support.js"></script>
   <link rel="amphtml" href="https://genai.aiessentials.in/amp.html">
+  <script>
+    // Immediate Bulletproof Scroll Handler
+    window.scrollToEnrollForm = function (e) {
+      if (e) {
+        if (e.preventDefault) e.preventDefault();
+        if (e.stopPropagation) e.stopPropagation();
+      }
+      var target = document.getElementById('enroll') || document.querySelector('.hero-form') || document.querySelector('.form-embed-wrapper');
+      if (target) {
+        var offset = window.innerWidth <= 991 ? 16 : 24;
+        var scrollY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        var targetTop = target.getBoundingClientRect().top + scrollY - offset;
+        window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+        try {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } catch (err) {}
+      } else {
+        window.location.hash = '#enroll';
+      }
+      return false;
+    };
+  </script>
   <!-- Meta Pixel Code -->
   <script>
     !function (f, b, e, v, n, t, s) {
@@ -566,8 +587,8 @@
           .hero-container {
             display: flex !important;
             flex-direction: column !important;
-            gap: 16px !important;
-            padding: 20px 14px 28px !important;
+            gap: 14px !important;
+            padding: 6px 14px 28px !important;
             width: 100% !important;
             max-width: 100% !important;
             margin: 0 auto !important;
@@ -577,6 +598,8 @@
           .hero-header {
             width: 100% !important;
             order: 1 !important;
+            gap: 12px !important;
+            margin-top: 0 !important;
           }
 
           .hero-form {
@@ -593,52 +616,146 @@
             width: 100% !important;
             order: 3 !important;
           }
+        }
 
+        /* 05 — Modern Redesigned 8-Week Curriculum Section */
         .curriculum-grid {
           display: grid;
-          grid-template-columns: repeat(6, 1fr);
+          grid-template-columns: repeat(4, 1fr);
           gap: 16px;
+          width: 100%;
         }
 
         .curriculum-card {
-          grid-column: span 2;
-          background: #0A1245;
-          border: 1px solid rgba(26, 34, 255, 0.4);
-          border-radius: 14px;
-          padding: 20px;
+          background: linear-gradient(180deg, rgba(10, 18, 69, 0.95) 0%, rgba(6, 13, 56, 0.98) 100%);
+          border: 1px solid rgba(26, 34, 255, 0.45);
+          border-radius: 16px;
+          padding: 22px 18px;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          gap: 14px;
+          gap: 18px;
+          transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+          position: relative;
+          box-sizing: border-box;
         }
 
-        .curriculum-card:nth-child(7) {
-          grid-column: 2 / span 2;
+        .curriculum-card:hover {
+          transform: translateY(-3px);
+          border-color: rgba(216, 255, 50, 0.5);
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), 0 0 20px rgba(216, 255, 50, 0.15);
         }
 
-        .curriculum-card:nth-child(8) {
-          grid-column: 4 / span 2;
+        .curriculum-card-body {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
         }
 
-        @media (max-width: 991px) and (min-width: 641px) {
+        .week-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-family: 'Sora', sans-serif;
+          font-size: 0.6875rem;
+          font-weight: 800;
+          letter-spacing: 0.18em;
+          color: #D8FF32 !important;
+          -webkit-text-fill-color: #D8FF32 !important;
+          text-transform: uppercase;
+          background: rgba(216, 255, 50, 0.1);
+          border: 1px solid rgba(216, 255, 50, 0.25);
+          padding: 3px 8px;
+          border-radius: 6px;
+          width: fit-content;
+        }
+
+        .week-dot {
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background: #D8FF32;
+          box-shadow: 0 0 8px #D8FF32;
+          display: inline-block;
+        }
+
+        .curriculum-title {
+          margin: 4px 0 0 0;
+          font-family: 'Sora', sans-serif;
+          font-weight: 700;
+          font-size: 1.125rem;
+          line-height: 1.25;
+          color: #FFFFFF !important;
+          -webkit-text-fill-color: #FFFFFF !important;
+        }
+
+        .curriculum-desc {
+          margin: 0;
+          font-size: 0.8125rem;
+          color: rgba(255, 255, 255, 0.85) !important;
+          -webkit-text-fill-color: rgba(255, 255, 255, 0.85) !important;
+          line-height: 1.45;
+        }
+
+        .curriculum-tools {
+          display: flex;
+          gap: 5px;
+          flex-wrap: wrap;
+          margin-top: 4px;
+        }
+
+        .tool-pill {
+          background: rgba(26, 34, 255, 0.28);
+          border: 1px solid rgba(26, 34, 255, 0.55);
+          color: #FFFFFF !important;
+          -webkit-text-fill-color: #FFFFFF !important;
+          font-size: 0.6875rem;
+          font-weight: 600;
+          padding: 2px 8px;
+          border-radius: 99px;
+          letter-spacing: 0.02em;
+        }
+
+        .curriculum-shift {
+          background: rgba(216, 255, 50, 0.06);
+          border-left: 3px solid #D8FF32;
+          border-radius: 6px;
+          padding: 10px 12px;
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+
+        .shift-from {
+          color: rgba(255, 255, 255, 0.55) !important;
+          -webkit-text-fill-color: rgba(255, 255, 255, 0.55) !important;
+          font-size: 0.72rem;
+          text-decoration: line-through;
+          line-height: 1.35;
+        }
+
+        .shift-to {
+          color: #D8FF32 !important;
+          -webkit-text-fill-color: #D8FF32 !important;
+          font-weight: 700;
+          font-size: 0.78rem;
+          line-height: 1.35;
+        }
+
+        @media (max-width: 1080px) and (min-width: 641px) {
           .curriculum-grid {
             grid-template-columns: repeat(2, 1fr) !important;
-          }
-          .curriculum-card,
-          .curriculum-card:nth-child(7),
-          .curriculum-card:nth-child(8) {
-            grid-column: span 1 !important;
+            gap: 16px !important;
           }
         }
 
         @media (max-width: 640px) {
           .curriculum-grid {
             grid-template-columns: 1fr !important;
+            gap: 14px !important;
           }
-          .curriculum-card,
-          .curriculum-card:nth-child(7),
-          .curriculum-card:nth-child(8) {
-            grid-column: span 1 !important;
+          .curriculum-card {
+            padding: 18px 16px !important;
           }
         }
 
@@ -910,6 +1027,10 @@
           .hero-header {
             align-items: flex-start !important;
             text-align: left !important;
+            margin-top: -12px !important;
+          }
+          .hero-title {
+            margin-top: -4px !important;
           }
         }
 
@@ -923,15 +1044,52 @@
           }
         }
 
-        @media (max-width: 480px) {
-          .closing-cta-price {
-            display: none !important;
+        /* Top Minimal Centered Brand Strip (2x Prominent Logo) */
+        .top-brand-strip {
+          background: #050B36;
+          border: none;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 16px 20px 0 20px;
+          box-sizing: border-box;
+          position: relative;
+          z-index: 100;
+        }
+
+        .top-strip-logo {
+          height: 72px;
+          width: auto;
+          max-width: 480px;
+          object-fit: contain;
+          object-position: center;
+          filter: contrast(1.1) brightness(1.08);
+          image-rendering: -webkit-optimize-contrast;
+          display: block;
+          margin: 0 auto;
+        }
+
+        @media (max-width: 640px) {
+          .top-brand-strip {
+            padding: 10px 14px 0 14px !important;
+            margin-bottom: 0 !important;
+          }
+          .top-strip-logo {
+            height: 52px;
+            max-width: 320px;
           }
         }
       </style>
     </helmet>
     <div style="font-family: 'Inter', system-ui, sans-serif; color: #F9FAFC; background: #050B36;">
 
+      <!-- Top Minimal Brand Strip -->
+      <header class="top-brand-strip">
+        <a href="/" style="display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
+          <img src="assets/logo.png" alt="AI Essentials" class="top-strip-logo" />
+        </a>
+      </header>
 
       <!-- Hero (01) -->
       <section data-screen-label="Hero" style="background: #050B36; color: #F9FAFC;">
@@ -1104,13 +1262,10 @@
 
       <!-- 02 — THE TRANSFORMATION -->
       <section id="transformation" data-screen-label="The Transformation"
-        style="background: #08125C; color: #F9FAFC; border-top: 1px solid rgba(26, 34, 255, 0.4); border-bottom: 1px solid rgba(26, 34, 255, 0.4);">
+        style="background: #08125C; color: #F9FAFC;">
         <div class="section-container"
           style="max-width: 1240px; margin: 0 auto; padding: clamp(28px, 3.5vw, 48px) clamp(16px, 4vw, 56px); display: flex; flex-direction: column; gap: 24px;">
           <div style="display: flex; flex-direction: column; gap: 12px; max-width: 780px;">
-            <span
-              style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #D8FF32;">02
-              // THE TRANSFORMATION</span>
             <h2
               style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(2.2rem, 4.2vw, 3.6rem); letter-spacing: -0.03em; line-height: 1.05; color: #FFFFFF;">
               AI isn't just another skill to add to your resume.<br><em
@@ -1201,13 +1356,10 @@
 
       <!-- 03 — WHY THIS PROGRAMME? -->
       <section id="why-programme" data-screen-label="Why This Programme"
-        style="background: #08125C; color: #F9FAFC; border-top: 1px solid rgba(26, 34, 255, 0.4); border-bottom: 1px solid rgba(26, 34, 255, 0.4);">
+        style="background: #08125C; color: #F9FAFC;">
         <div class="section-container"
           style="max-width: 1240px; margin: 0 auto; padding: clamp(28px, 3.5vw, 48px) clamp(16px, 4vw, 56px); display: flex; flex-direction: column; gap: 24px;">
           <div style="display: flex; flex-direction: column; gap: 16px; max-width: 780px;">
-            <span
-              style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #D8FF32;">04
-              // WHY THIS PROGRAMME</span>
             <h2
               style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(2.2rem, 4.2vw, 3.6rem); letter-spacing: -0.03em; line-height: 1.05; color: #FFFFFF;">
               Because knowing AI tools isn't enough anymore.<br><em
@@ -1301,9 +1453,6 @@
         <div class="section-container"
           style="max-width: 1240px; margin: 0 auto; padding: clamp(28px, 3.5vw, 48px) clamp(16px, 4vw, 56px); display: flex; flex-direction: column; gap: 24px;">
           <div style="display: flex; flex-direction: column; gap: 16px; max-width: 780px;">
-            <span
-              style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #D8FF32;">05
-              // WHAT WILL YOU LEARN?</span>
             <h2
               style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(2.2rem, 4.2vw, 3.6rem); letter-spacing: -0.03em; line-height: 1.05; color: #FFFFFF;">
               8 Weeks to a Completely Different Way of Working.<br><em
@@ -1315,221 +1464,157 @@
           <div class="curriculum-grid">
             <!-- Week 01 -->
             <div class="curriculum-card">
-              <div>
-                <div
-                  style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">
-                  WEEK 01</div>
-                <h3
-                  style="margin: 4px 0 8px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">
-                  Think Better With AI</h3>
-                <p style="margin: 0; font-size: 0.875rem; color: rgba(255,255,255,0.85); line-height: 1.5;">Master
-                  prompting, reasoning, research and AI-assisted thinking.</p>
-                <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px;">
-                  <span
-                    style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">ChatGPT</span>
-                  <span
-                    style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Gemini</span>
-                  <span
-                    style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Perplexity</span>
+              <div class="curriculum-card-body">
+                <div class="week-badge">
+                  <span class="week-dot"></span> WEEK 01
+                </div>
+                <h3 class="curriculum-title">Think Better With AI</h3>
+                <p class="curriculum-desc">Master prompting, reasoning, research and AI-assisted thinking.</p>
+                <div class="curriculum-tools">
+                  <span class="tool-pill">ChatGPT</span>
+                  <span class="tool-pill">Gemini</span>
+                  <span class="tool-pill">Perplexity</span>
                 </div>
               </div>
-              <div
-                style="background: rgba(216,255,50,0.08); border-left: 3px solid #D8FF32; padding: 8px 12px; font-size: 0.75rem;">
-                <div style="color: rgba(255,255,255,0.6); text-decoration: line-through;">“What should I ask AI?”</div>
-                <div style="color: #D8FF32; font-weight: 700; margin-top: 2px;">“I know how to make AI think through the
-                  problem with me.”</div>
+              <div class="curriculum-shift">
+                <div class="shift-from">✕ “What should I ask AI?”</div>
+                <div class="shift-to">⚡ “I know how to make AI think through the problem with me.”</div>
               </div>
             </div>
 
             <!-- Week 02 -->
             <div class="curriculum-card">
-              <div>
-                <div
-                  style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">
-                  WEEK 02</div>
-                <h3
-                  style="margin: 4px 0 8px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">
-                  Build Your AI Brain</h3>
-                <p style="margin: 0; font-size: 0.875rem; color: rgba(255,255,255,0.85); line-height: 1.5;">Turn your
-                  documents, knowledge and research into an AI knowledge system.</p>
-                <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px;">
-                  <span
-                    style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">NotebookLM</span>
-                  <span
-                    style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Claude</span>
+              <div class="curriculum-card-body">
+                <div class="week-badge">
+                  <span class="week-dot"></span> WEEK 02
+                </div>
+                <h3 class="curriculum-title">Build Your AI Brain</h3>
+                <p class="curriculum-desc">Turn your documents, knowledge and research into an AI knowledge system.</p>
+                <div class="curriculum-tools">
+                  <span class="tool-pill">NotebookLM</span>
+                  <span class="tool-pill">Claude</span>
                 </div>
               </div>
-              <div
-                style="background: rgba(216,255,50,0.08); border-left: 3px solid #D8FF32; padding: 8px 12px; font-size: 0.75rem;">
-                <div style="color: rgba(255,255,255,0.6); text-decoration: line-through;">Searching through information
-                  manually.</div>
-                <div style="color: #D8FF32; font-weight: 700; margin-top: 2px;">Having AI work with your knowledge.
-                </div>
+              <div class="curriculum-shift">
+                <div class="shift-from">✕ Searching through information manually.</div>
+                <div class="shift-to">⚡ Having AI work with your knowledge.</div>
               </div>
             </div>
 
             <!-- Week 03 -->
             <div class="curriculum-card">
-              <div>
-                <div
-                  style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">
-                  WEEK 03</div>
-                <h3
-                  style="margin: 4px 0 8px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">
-                  Make AI Work For You</h3>
-                <p style="margin: 0; font-size: 0.875rem; color: rgba(255,255,255,0.85); line-height: 1.5;">Create
-                  agents and automated workflows that perform multi-step tasks.</p>
-                <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px;">
-                  <span
-                    style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Make</span>
-                  <span
-                    style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">n8n</span>
-                  <span
-                    style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Zapier</span>
+              <div class="curriculum-card-body">
+                <div class="week-badge">
+                  <span class="week-dot"></span> WEEK 03
+                </div>
+                <h3 class="curriculum-title">Make AI Work For You</h3>
+                <p class="curriculum-desc">Create agents and automated workflows that perform multi-step tasks.</p>
+                <div class="curriculum-tools">
+                  <span class="tool-pill">Make</span>
+                  <span class="tool-pill">n8n</span>
+                  <span class="tool-pill">Zapier</span>
                 </div>
               </div>
-              <div
-                style="background: rgba(216,255,50,0.08); border-left: 3px solid #D8FF32; padding: 8px 12px; font-size: 0.75rem;">
-                <div style="color: rgba(255,255,255,0.6); text-decoration: line-through;">Doing repetitive tasks
-                  yourself.</div>
-                <div style="color: #D8FF32; font-weight: 700; margin-top: 2px;">Designing systems that do them for you.
-                </div>
+              <div class="curriculum-shift">
+                <div class="shift-from">✕ Doing repetitive tasks yourself.</div>
+                <div class="shift-to">⚡ Designing systems that do them for you.</div>
               </div>
             </div>
 
             <!-- Week 04 -->
             <div class="curriculum-card">
-              <div>
-                <div
-                  style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">
-                  WEEK 04</div>
-                <h3
-                  style="margin: 4px 0 8px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">
-                  Give AI a Voice</h3>
-                <p style="margin: 0; font-size: 0.875rem; color: rgba(255,255,255,0.85); line-height: 1.5;">Explore
-                  voice agents, realistic voice generation and AI avatars.</p>
-                <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px;">
-                  <span
-                    style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">ElevenLabs</span>
-                  <span
-                    style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">HeyGen</span>
+              <div class="curriculum-card-body">
+                <div class="week-badge">
+                  <span class="week-dot"></span> WEEK 04
+                </div>
+                <h3 class="curriculum-title">Give AI a Voice</h3>
+                <p class="curriculum-desc">Explore voice agents, realistic voice generation and AI avatars.</p>
+                <div class="curriculum-tools">
+                  <span class="tool-pill">ElevenLabs</span>
+                  <span class="tool-pill">HeyGen</span>
                 </div>
               </div>
-              <div
-                style="background: rgba(216,255,50,0.08); border-left: 3px solid #D8FF32; padding: 8px 12px; font-size: 0.75rem;">
-                <div style="color: rgba(255,255,255,0.6); text-decoration: line-through;">Creating everything manually.
-                </div>
-                <div style="color: #D8FF32; font-weight: 700; margin-top: 2px;">Producing voice experiences at scale.
-                </div>
+              <div class="curriculum-shift">
+                <div class="shift-from">✕ Creating everything manually.</div>
+                <div class="shift-to">⚡ Producing voice experiences at scale.</div>
               </div>
             </div>
 
             <!-- Week 05 -->
             <div class="curriculum-card">
-              <div>
-                <div
-                  style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">
-                  WEEK 05</div>
-                <h3
-                  style="margin: 4px 0 8px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">
-                  Build Your AI Content Studio</h3>
-                <p style="margin: 0; font-size: 0.875rem; color: rgba(255,255,255,0.85); line-height: 1.5;">Create
-                  images, videos and branded creative using generative AI.</p>
-                <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px;">
-                  <span
-                    style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Midjourney</span>
-                  <span
-                    style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Higgsfield</span>
-                  <span
-                    style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Runway</span>
+              <div class="curriculum-card-body">
+                <div class="week-badge">
+                  <span class="week-dot"></span> WEEK 05
+                </div>
+                <h3 class="curriculum-title">Build Your AI Content Studio</h3>
+                <p class="curriculum-desc">Create images, videos and branded creative using generative AI.</p>
+                <div class="curriculum-tools">
+                  <span class="tool-pill">Midjourney</span>
+                  <span class="tool-pill">Higgsfield</span>
+                  <span class="tool-pill">Runway</span>
                 </div>
               </div>
-              <div
-                style="background: rgba(216,255,50,0.08); border-left: 3px solid #D8FF32; padding: 8px 12px; font-size: 0.75rem;">
-                <div style="color: rgba(255,255,255,0.6); text-decoration: line-through;">Waiting for production.</div>
-                <div style="color: #D8FF32; font-weight: 700; margin-top: 2px;">Directing your own AI production
-                  pipeline.</div>
+              <div class="curriculum-shift">
+                <div class="shift-from">✕ Waiting for production.</div>
+                <div class="shift-to">⚡ Directing your own AI production pipeline.</div>
               </div>
             </div>
 
             <!-- Week 06 -->
             <div class="curriculum-card">
-              <div>
-                <div
-                  style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">
-                  WEEK 06</div>
-                <h3
-                  style="margin: 4px 0 8px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">
-                  Design With AI</h3>
-                <p style="margin: 0; font-size: 0.875rem; color: rgba(255,255,255,0.85); line-height: 1.5;">Turn ideas
-                  into interfaces and websites faster.</p>
-                <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px;">
-                  <span
-                    style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">v0</span>
-                  <span
-                    style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Claude
-                    Design</span>
+              <div class="curriculum-card-body">
+                <div class="week-badge">
+                  <span class="week-dot"></span> WEEK 06
+                </div>
+                <h3 class="curriculum-title">Design With AI</h3>
+                <p class="curriculum-desc">Turn ideas into interfaces and websites faster.</p>
+                <div class="curriculum-tools">
+                  <span class="tool-pill">v0</span>
+                  <span class="tool-pill">Claude Design</span>
                 </div>
               </div>
-              <div
-                style="background: rgba(216,255,50,0.08); border-left: 3px solid #D8FF32; padding: 8px 12px; font-size: 0.75rem;">
-                <div style="color: rgba(255,255,255,0.6); text-decoration: line-through;">Blank canvas.</div>
-                <div style="color: #D8FF32; font-weight: 700; margin-top: 2px;">Working interface.</div>
+              <div class="curriculum-shift">
+                <div class="shift-from">✕ Blank canvas.</div>
+                <div class="shift-to">⚡ Working interface.</div>
               </div>
             </div>
 
             <!-- Week 07 -->
             <div class="curriculum-card">
-              <div>
-                <div
-                  style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">
-                  WEEK 07</div>
-                <h3
-                  style="margin: 4px 0 8px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">
-                  Code With AI</h3>
-                <p style="margin: 0; font-size: 0.875rem; color: rgba(255,255,255,0.85); line-height: 1.5;">Build
-                  software by directing AI coding agents.</p>
-                <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px;">
-                  <span
-                    style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Claude
-                    Code</span>
-                  <span
-                    style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Cursor</span>
-                  <span
-                    style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Google
-                    Antigravity</span>
+              <div class="curriculum-card-body">
+                <div class="week-badge">
+                  <span class="week-dot"></span> WEEK 07
+                </div>
+                <h3 class="curriculum-title">Code With AI</h3>
+                <p class="curriculum-desc">Build software by directing AI coding agents.</p>
+                <div class="curriculum-tools">
+                  <span class="tool-pill">Claude Code</span>
+                  <span class="tool-pill">Cursor</span>
+                  <span class="tool-pill">Google Antigravity</span>
                 </div>
               </div>
-              <div
-                style="background: rgba(216,255,50,0.08); border-left: 3px solid #D8FF32; padding: 8px 12px; font-size: 0.75rem;">
-                <div style="color: rgba(255,255,255,0.6); text-decoration: line-through;">“I can't code.”</div>
-                <div style="color: #D8FF32; font-weight: 700; margin-top: 2px;">“I can build with AI.”</div>
+              <div class="curriculum-shift">
+                <div class="shift-from">✕ “I can't code.”</div>
+                <div class="shift-to">⚡ “I can build with AI.”</div>
               </div>
             </div>
 
             <!-- Week 08 -->
             <div class="curriculum-card">
-              <div>
-                <div
-                  style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">
-                  WEEK 08</div>
-                <h3
-                  style="margin: 4px 0 8px 0; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem; color: #FFFFFF;">
-                  Turn Ideas Into Products</h3>
-                <p style="margin: 0; font-size: 0.875rem; color: rgba(255,255,255,0.85); line-height: 1.5;">Bring
-                  everything together and build something real.</p>
-                <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px;">
-                  <span
-                    style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Replit</span>
-                  <span
-                    style="background: rgba(26,34,255,0.2); color: #FFFFFF; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px;">Stripe</span>
+              <div class="curriculum-card-body">
+                <div class="week-badge">
+                  <span class="week-dot"></span> WEEK 08
+                </div>
+                <h3 class="curriculum-title">Turn Ideas Into Products</h3>
+                <p class="curriculum-desc">Bring everything together and build something real.</p>
+                <div class="curriculum-tools">
+                  <span class="tool-pill">Replit</span>
+                  <span class="tool-pill">Stripe</span>
                 </div>
               </div>
-              <div
-                style="background: rgba(216,255,50,0.08); border-left: 3px solid #D8FF32; padding: 8px 12px; font-size: 0.75rem;">
-                <div style="color: rgba(255,255,255,0.6); text-decoration: line-through;">Having ideas.</div>
-                <div style="color: #D8FF32; font-weight: 700; margin-top: 2px;">Shipping something people can actually
-                  use.</div>
+              <div class="curriculum-shift">
+                <div class="shift-from">✕ Having ideas.</div>
+                <div class="shift-to">⚡ Shipping something people can actually use.</div>
               </div>
             </div>
           </div>
@@ -1538,13 +1623,10 @@
 
       <!-- 06 — WHAT YOU'LL BUILD -->
       <section id="what-you-build" data-screen-label="What You Will Build"
-        style="background: #08125C; color: #F9FAFC; border-top: 1px solid rgba(26, 34, 255, 0.4); border-bottom: 1px solid rgba(26, 34, 255, 0.4);">
+        style="background: #08125C; color: #F9FAFC;">
         <div class="section-container"
           style="max-width: 1240px; margin: 0 auto; padding: clamp(28px, 3.5vw, 48px) clamp(16px, 4vw, 56px); display: flex; flex-direction: column; gap: 24px;">
           <div style="display: flex; flex-direction: column; gap: 12px; max-width: 780px;">
-            <span
-              style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #D8FF32;">06
-              // WHAT YOU'LL BUILD</span>
             <h2
               style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(2.2rem, 4.2vw, 3.6rem); letter-spacing: -0.03em; line-height: 1.05; color: #FFFFFF;">
               Because transformation is easier to believe when you can see it.
@@ -1610,9 +1692,6 @@
         <div class="section-container"
           style="max-width: 1240px; margin: 0 auto; padding: clamp(24px, 3vw, 40px) clamp(16px, 4vw, 56px); display: flex; flex-direction: column; gap: 20px;">
           <div style="display: flex; flex-direction: column; gap: 12px; max-width: 780px;">
-            <span
-              style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #D8FF32;">07
-              // THE AI STACK</span>
             <h2
               style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(2.2rem, 4.2vw, 3.6rem); letter-spacing: -0.03em; line-height: 1.05; color: #FFFFFF;">
               Learn the tools.<br><em
@@ -1721,13 +1800,10 @@
 
       <!-- 08 — THE EXPERIENCE -->
       <section id="experience" data-screen-label="The Experience"
-        style="background: #08125C; color: #F9FAFC; border-top: 1px solid rgba(26, 34, 255, 0.4); border-bottom: 1px solid rgba(26, 34, 255, 0.4);">
+        style="background: #08125C; color: #F9FAFC;">
         <div class="section-container"
           style="max-width: 1240px; margin: 0 auto; padding: clamp(28px, 3.5vw, 48px) clamp(16px, 4vw, 56px); display: flex; flex-direction: column; gap: 24px;">
           <div style="display: flex; flex-direction: column; gap: 12px; max-width: 780px;">
-            <span
-              style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #D8FF32;">08
-              // THE EXPERIENCE</span>
             <h2
               style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(2.2rem, 4.2vw, 3.6rem); letter-spacing: -0.03em; line-height: 1.05; color: #FFFFFF;">
               Don't just watch. <em
@@ -1797,9 +1873,6 @@
             placeholder="Drop mentor portrait" style="width: 100%; height: 100%; object-fit: cover;"></image-slot>
         </div>
         <div style="display: flex; flex-direction: column; gap: 14px;">
-          <span
-            style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #D8FF32;">09
-            // YOUR MENTOR</span>
           <h2
             style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(1.8rem, 3.5vw, 2.8rem); letter-spacing: -0.03em; line-height: 1.05; color: #FFFFFF;">
             Learn from someone who uses AI in the real world.
@@ -1827,12 +1900,9 @@
 
       <!-- 10 — AI ESSENTIALS PHILOSOPHY -->
       <section id="philosophy" data-screen-label="Philosophy"
-        style="background: #08125C; color: #F9FAFC; border-top: 1px solid rgba(26, 34, 255, 0.4); border-bottom: 1px solid rgba(26, 34, 255, 0.4);">
+        style="background: #08125C; color: #F9FAFC;">
         <div class="section-container"
           style="max-width: 1240px; margin: 0 auto; padding: clamp(24px, 3vw, 40px) clamp(16px, 4vw, 56px); display: flex; flex-direction: column; gap: 16px; text-align: center; align-items: center;">
-          <span
-            style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #D8FF32;">10
-            // OUR PHILOSOPHY</span>
           <h2
             style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(1.4rem, 2.8vw, 2.25rem); letter-spacing: -0.03em; line-height: 1.25; color: #FFFFFF; max-width: 1150px; width: 100%;">
             We don't want to create people who know more about AI.<br><em
@@ -1847,9 +1917,6 @@
         <div class="section-container"
           style="max-width: 1240px; margin: 0 auto; padding: clamp(28px, 3.5vw, 48px) clamp(16px, 4vw, 56px); display: flex; flex-direction: column; gap: 20px;">
           <div style="display: flex; flex-direction: column; gap: 8px; max-width: 780px;">
-            <span
-              style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #D8FF32;">11
-              // REVIEWS &amp; PROOF</span>
             <h2
               style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(2rem, 3.8vw, 3.2rem); letter-spacing: -0.03em; line-height: 1.05; color: #FFFFFF;">
               The real transformation happens when you start using it.
@@ -1947,19 +2014,31 @@
       <section data-screen-label="Closing CTA"
         style="max-width: 1240px; margin: 0 auto 40px; padding: 0 clamp(16px, 4vw, 56px);">
         <div
-          style="border-radius: 20px; background: linear-gradient(135deg, #08125C 0%, #050B36 100%); border: 1px solid rgba(26, 34, 255, 0.5); padding: clamp(32px, 4.5vw, 56px); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px;">
-          <span
-            style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #D8FF32; background: rgba(216,255,50,0.1); border: 1px solid rgba(216,255,50,0.3); padding: 5px 12px; border-radius: 99px;">
-            12 // START BUILDING YOUR AI ADVANTAGE
-          </span>
+          style="border-radius: 20px; background: linear-gradient(135deg, #08125C 0%, #050B36 100%); border: 1px solid rgba(26, 34, 255, 0.5); padding: clamp(32px, 4.5vw, 56px); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px;">
           <h2
-            style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(2rem, 4.5vw, 3.6rem); letter-spacing: -0.03em; line-height: 1.05; color: #FFFFFF; max-width: 900px;">
+            style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(2rem, 4.5vw, 3.6rem); letter-spacing: -0.03em; line-height: 1.12; color: #FFFFFF; max-width: 900px;">
             Your AI journey doesn't need another tutorial.<br><em
               style="font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic; color: #D8FF32;">Will
               you simply watch it happen? Or will you learn how to use it?</em>
           </h2>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 4px; font-size: 0.875rem; color: rgba(255,255,255,0.75);">
+            <span>⚡ 8 Weeks</span> · <span>20 Live Classes</span> · <span>Real AI Projects</span> · <span>1:1 Mentorship</span>
+          </div>
         </div>
       </section>
+
+      <!-- Site Footer with Bottom Bar Clearance -->
+      <footer style="max-width: 1240px; margin: 0 auto; padding: 36px clamp(16px, 4vw, 56px) 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center;">
+        <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1rem; color: #D8FF32; letter-spacing: -0.02em;">
+          AI ESSENTIALS
+        </div>
+        <p style="margin: 0; font-size: 0.8125rem; color: rgba(255, 255, 255, 0.6); max-width: 550px; line-height: 1.5;">
+          The Advanced Generative AI Programme for professionals, creators &amp; builders.
+        </p>
+        <div style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.45); margin-top: 4px;">
+          © 2026 AI Essentials. All rights reserved.
+        </div>
+      </footer>
 
 
 
@@ -2070,20 +2149,27 @@ class Component extends DCLogic {
 
     // Universal seamless CTA click handler — ALL buttons go directly to hero form embed (#enroll)
     window.scrollToEnrollForm = function (e) {
-      if (e && e.preventDefault) e.preventDefault();
+      if (e) {
+        if (e.preventDefault) e.preventDefault();
+        if (e.stopPropagation) e.stopPropagation();
+      }
       const enrollEl = document.getElementById('enroll') || document.querySelector('.hero-form') || document.querySelector('.form-embed-wrapper');
       if (enrollEl) {
         const offset = window.innerWidth <= 991 ? 16 : 24;
-        const bodyRect = document.body.getBoundingClientRect().top;
-        const elementRect = enrollEl.getBoundingClientRect().top;
-        const elementPosition = elementRect - bodyRect;
-        const offsetPosition = elementPosition - offset;
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        const targetTop = enrollEl.getBoundingClientRect().top + scrollY - offset;
 
         window.scrollTo({
-          top: Math.max(0, offsetPosition),
+          top: Math.max(0, targetTop),
           behavior: 'smooth'
         });
+        try {
+          enrollEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } catch (err) {}
+      } else {
+        window.location.hash = '#enroll';
       }
+      return false;
     };
 
     // Enterprise GTM & Analytics Event Infrastructure
@@ -2112,35 +2198,37 @@ class Component extends DCLogic {
 
     // 2. Universal seamless CTA click handler — pushes 'cta_click' to GTM dataLayer & scrolls to form
     document.addEventListener('click', (e) => {
-      const targetBtn = e.target.closest('a[href="#enroll"], button, .btn-lime, [class*="Button"], [class*="PriceCard"] button');
+      const targetBtn = e.target.closest('a[href="#enroll"], button, .btn-lime, .btn-white, [class*="Button"], [class*="PriceCard"] button');
       if (!targetBtn) return;
 
       // Ignore close buttons or notification dismiss buttons
       if (targetBtn.id === 'close-modal-btn' || targetBtn.closest('#recent-enrollment-ticker') || targetBtn.innerText.trim() === '✕') return;
 
-      const btnText = (targetBtn.innerText || targetBtn.textContent || '').replace(/\s+/g, ' ').trim();
-      const sectionEl = targetBtn.closest('section');
-      const sectionLabel = sectionEl ? (sectionEl.getAttribute('data-screen-label') || sectionEl.id || 'hero') : (targetBtn.closest('#sticky-bottom-bar') ? 'sticky_bottom_bar' : 'page_cta');
+      try {
+        const btnText = (targetBtn.innerText || targetBtn.textContent || '').replace(/\s+/g, ' ').trim();
+        const sectionEl = targetBtn.closest('section');
+        const sectionLabel = sectionEl ? (sectionEl.getAttribute('data-screen-label') || sectionEl.id || 'hero') : (targetBtn.closest('#sticky-bottom-bar') ? 'sticky_bottom_bar' : 'page_cta');
 
-      // GTM dataLayer push for CTA Click
-      window.dataLayer.push({
-        event: 'cta_click',
-        event_category: 'engagement',
-        event_action: 'cta_button_click',
-        event_label: btnText,
-        cta_text: btnText,
-        cta_location: sectionLabel,
-        cta_target: '#enroll',
-        destination_url: '#enroll'
-      });
-
-      // Meta Pixel Custom Event
-      if (typeof fbq === 'function') {
-        fbq('trackCustom', 'CTAClick', {
+        // GTM dataLayer push for CTA Click
+        window.dataLayer.push({
+          event: 'cta_click',
+          event_category: 'engagement',
+          event_action: 'cta_button_click',
+          event_label: btnText,
           cta_text: btnText,
-          section: sectionLabel
+          cta_location: sectionLabel,
+          cta_target: '#enroll',
+          destination_url: '#enroll'
         });
-      }
+
+        // Meta Pixel Custom Event
+        if (typeof fbq === 'function') {
+          fbq('trackCustom', 'CTAClick', {
+            cta_text: btnText,
+            section: sectionLabel
+          });
+        }
+      } catch (err) {}
 
       window.scrollToEnrollForm(e);
     });
