@@ -802,6 +802,7 @@ class Component extends DCLogic {
     if (!drawer) return;
     drawer.style.display = 'flex';
     drawer.style.pointerEvents = 'auto';
+    document.body.style.overflow = 'hidden';
     requestAnimationFrame(() => {
       drawer.style.opacity = '1';
       const drawerBox = drawer.querySelector('.drawer-box');
@@ -816,6 +817,7 @@ class Component extends DCLogic {
     if (drawerBox) drawerBox.style.transform = 'translateY(100%)';
     drawer.style.opacity = '0';
     drawer.style.pointerEvents = 'none';
+    document.body.style.overflow = '';
     setTimeout(() => {
       drawer.style.display = 'none';
       drawer.style.pointerEvents = '';
@@ -826,20 +828,29 @@ class Component extends DCLogic {
     const drawer = document.getElementById('lead-modal-drawer');
     const closeBtn = document.getElementById('close-modal-btn');
     if (closeBtn) {
-      closeBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        closeLeadModal();
+      ['click', 'touchstart'].forEach(evt => {
+        closeBtn.addEventListener(evt, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          closeLeadModal();
+        }, { passive: false });
       });
     }
     if (drawer) {
-      drawer.addEventListener('click', (e) => {
-        if (e.target === drawer) {
-          e.preventDefault();
-          closeLeadModal();
-        }
+      ['click', 'touchstart'].forEach(evt => {
+        drawer.addEventListener(evt, (e) => {
+          if (e.target === drawer) {
+            e.preventDefault();
+            closeLeadModal();
+          }
+        }, { passive: false });
       });
     }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' || e.key === 'Esc') {
+        closeLeadModal();
+      }
+    });
   });
 
   window.addEventListener('scroll', () => {
@@ -959,6 +970,16 @@ class Component extends DCLogic {
     });
   })();
 
+  window.dismissTicker = function(e) {
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+    sessionStorage.setItem('dismissed_recent_ticker', 'true');
+    const ticker = document.getElementById('recent-enrollment-ticker');
+    if (ticker) {
+      ticker.classList.remove('visible');
+      setTimeout(() => { ticker.style.display = 'none'; }, 400);
+    }
+  };
+
   // South Indian / Tamil Enrollments Blue Ticker Toast
   (function() {
     const recentEnrollments = [
@@ -976,6 +997,7 @@ class Component extends DCLogic {
 
     let currentIndex = 0;
     function displayNextTicker() {
+      if (sessionStorage.getItem('dismissed_recent_ticker') === 'true') return;
       let ticker = document.getElementById('recent-enrollment-ticker');
       if (!ticker) {
         ticker = document.createElement('div');
@@ -986,7 +1008,7 @@ class Component extends DCLogic {
       const current = recentEnrollments[currentIndex];
       ticker.innerHTML = `
         <div class="ticker-dot"></div>
-        <div>
+        <div style="flex: 1;">
           <div style="font-weight: 700; color: #FFFFFF; font-family: 'Sora', sans-serif; font-size: 0.8125rem;">
             ${current.name} (${current.city})
           </div>
@@ -994,12 +1016,13 @@ class Component extends DCLogic {
             ${current.role} enrolled in Gen AI Programme · <span style="color: #D8FF32; font-weight: 600;">${current.time}</span>
           </div>
         </div>
+        <button onclick="dismissTicker(event)" aria-label="Close notification" style="background: rgba(255,255,255,0.12); border: none; color: #FFFFFF; cursor: pointer; font-size: 0.875rem; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-left: 6px; flex-shrink: 0; outline: none;">✕</button>
       `;
 
       ticker.classList.add('visible');
 
       setTimeout(() => {
-        ticker.classList.remove('visible');
+        if (ticker) ticker.classList.remove('visible');
       }, 4500);
 
       currentIndex = (currentIndex + 1) % recentEnrollments.length;
