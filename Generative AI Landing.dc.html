@@ -2149,6 +2149,31 @@ class Component extends DCLogic {
       }
     };
 
+    // Enterprise GTM & Analytics Event Infrastructure
+    window.dataLayer = window.dataLayer || [];
+
+    // 1. Initial Page View DataLayer Push with Campaign Parameters
+    (function () {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        window.dataLayer.push({
+          event: 'page_view_custom',
+          page_type: 'landing_page',
+          page_title: document.title || 'Advanced Generative AI Programme',
+          page_url: window.location.href,
+          utm_source: params.get('utm_source') || 'direct',
+          utm_medium: params.get('utm_medium') || 'none',
+          utm_campaign: params.get('utm_campaign') || 'none',
+          utm_content: params.get('utm_content') || 'none',
+          utm_term: params.get('utm_term') || 'none',
+          program_name: 'Advanced Generative AI Programme',
+          program_price: 0,
+          currency: 'INR'
+        });
+      } catch (err) { }
+    })();
+
+    // 2. Universal seamless CTA click handler — pushes 'cta_click' to GTM dataLayer & scrolls to form
     document.addEventListener('click', (e) => {
       const targetBtn = e.target.closest('a[href="#enroll"], button, .btn-lime, [class*="Button"], [class*="PriceCard"] button');
       if (!targetBtn) return;
@@ -2156,18 +2181,80 @@ class Component extends DCLogic {
       // Ignore close buttons or notification dismiss buttons
       if (targetBtn.id === 'close-modal-btn' || targetBtn.closest('#recent-enrollment-ticker') || targetBtn.innerText.trim() === '✕') return;
 
+      const btnText = (targetBtn.innerText || targetBtn.textContent || '').replace(/\s+/g, ' ').trim();
+      const sectionEl = targetBtn.closest('section');
+      const sectionLabel = sectionEl ? (sectionEl.getAttribute('data-screen-label') || sectionEl.id || 'hero') : (targetBtn.closest('#sticky-bottom-bar') ? 'sticky_bottom_bar' : 'page_cta');
+
+      // GTM dataLayer push for CTA Click
+      window.dataLayer.push({
+        event: 'cta_click',
+        event_category: 'engagement',
+        event_action: 'cta_button_click',
+        event_label: btnText,
+        cta_text: btnText,
+        cta_location: sectionLabel,
+        cta_target: '#enroll',
+        destination_url: '#enroll'
+      });
+
+      // Meta Pixel Custom Event
+      if (typeof fbq === 'function') {
+        fbq('trackCustom', 'CTAClick', {
+          cta_text: btnText,
+          section: sectionLabel
+        });
+      }
+
       window.scrollToEnrollForm(e);
     });
 
-    // Bulletproof Dual-Detection Event Listener for Trym / LeadConnector Form Submission
+    // 3. Scroll Depth Tracking for Paid Traffic Quality Measurement (25%, 50%, 75%, 90%)
+    (function () {
+      var trackedDepths = {};
+      function checkScrollDepth() {
+        var h = document.documentElement.scrollHeight - window.innerHeight;
+        if (h <= 0) return;
+        var pct = Math.round((window.pageYOffset / h) * 100);
+        [25, 50, 75, 90].forEach(function (d) {
+          if (pct >= d && !trackedDepths[d]) {
+            trackedDepths[d] = true;
+            window.dataLayer.push({
+              event: 'scroll_depth',
+              event_category: 'engagement',
+              event_action: 'scroll',
+              event_label: d + '%',
+              scroll_depth_threshold: d
+            });
+          }
+        });
+      }
+      window.addEventListener('scroll', checkScrollDepth, { passive: true });
+    })();
+
+    // 4. Bulletproof Dual-Detection Event Listener for Lead Form Submission
     (function () {
       let userHasInteracted = false;
+      let hasFiredFormStart = false;
 
       // Track user interaction with the form container
       ['click', 'touchstart', 'keydown'].forEach(evt => {
         document.addEventListener(evt, (e) => {
           if (e.target.closest && e.target.closest('#enroll, #lead-modal-drawer, .form-embed-wrapper, iframe')) {
             userHasInteracted = true;
+            if (!hasFiredFormStart) {
+              hasFiredFormStart = true;
+              window.dataLayer.push({
+                event: 'form_start',
+                event_category: 'form_engagement',
+                event_action: 'form_start',
+                event_label: '1-on-1 AI Strategy Form',
+                form_id: 'C3QNWOEvU9lO9L2o63iY',
+                form_name: '1-on-1 AI Strategy Form'
+              });
+              if (typeof fbq === 'function') {
+                fbq('trackCustom', 'FormStart', { form_name: '1-on-1 AI Strategy Form' });
+              }
+            }
           }
         }, { passive: true });
       });
@@ -2176,18 +2263,46 @@ class Component extends DCLogic {
         if (window.hasTrackedLeadSubmission) return;
         window.hasTrackedLeadSubmission = true;
 
-        // 1. Immediately close modal drawer if open
+        // GTM DataLayer Conversion Events (Standard + Custom)
+        window.dataLayer.push({
+          event: 'generate_lead',
+          event_category: 'conversion',
+          event_action: 'form_submission',
+          event_label: 'Advanced Generative AI Strategy Call',
+          form_id: 'C3QNWOEvU9lO9L2o63iY',
+          form_name: '1-on-1 AI Strategy Form',
+          value: 999.00,
+          currency: 'INR',
+          program_name: 'Advanced Generative AI Programme'
+        });
+        window.dataLayer.push({
+          event: 'lead',
+          value: 999.00,
+          currency: 'INR'
+        });
+        window.dataLayer.push({
+          event: 'form_submit',
+          form_name: '1-on-1 AI Strategy Form'
+        });
+
+        // Track Meta Pixel Lead & CompleteRegistration events
+        if (typeof fbq === 'function') {
+          fbq('track', 'Lead', {
+            content_name: 'Generative AI Lead Form',
+            content_category: 'Course Enrollment',
+            value: 0.00,
+            currency: 'INR'
+          });
+          fbq('track', 'CompleteRegistration', {
+            content_name: 'Generative AI Programme',
+            status: 'successful'
+          });
+        }
+
+        // Close modal drawer if open
         if (typeof closeLeadModal === 'function') {
           closeLeadModal();
         }
-
-        // 2. Track Meta Pixel Lead & CompleteRegistration events
-        if (typeof fbq === 'function') {
-          fbq('track', 'Lead', { content_name: 'Generative AI Lead Form' });
-          fbq('track', 'CompleteRegistration', { content_name: 'Generative AI Programme' });
-        }
-
-        // Automatic thank-you page location redirect DISCONNECTED (User handles redirect separately)
       }
 
       window.addEventListener('message', (e) => {
@@ -2202,7 +2317,7 @@ class Component extends DCLogic {
 
         const lower = str.toLowerCase();
 
-        // 1. Check for submission keywords in message payload
+        // Check for submission keywords in message payload
         const isKeywordMatch =
           lower.includes('form_submitted') ||
           lower.includes('form-submitted') ||
@@ -2214,7 +2329,7 @@ class Component extends DCLogic {
           lower.includes('thankyou') ||
           lower.includes('thank_you');
 
-        // 2. Check for iFrameSizer height collapse (inline thank-you message shrinks iframe height < 360px)
+        // Check for iFrameSizer height collapse
         let isHeightCollapse = false;
         if (typeof e.data === 'string' && e.data.startsWith('[iFrameSizer]')) {
           const parts = e.data.split(':');

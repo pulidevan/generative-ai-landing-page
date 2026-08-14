@@ -415,6 +415,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </footer>
 
   <script>
+    // Enterprise GTM & Analytics Conversion Event Push
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'conversion',
+      event_category: 'conversion',
+      event_action: 'lead_confirmed',
+      event_label: 'Advanced Generative AI Strategy Call',
+      page_type: 'thank_you_page',
+      value: 999.00,
+      currency: 'INR',
+      program_name: 'Advanced Generative AI Programme'
+    });
+    window.dataLayer.push({
+      event: 'generate_lead',
+      value: 999.00,
+      currency: 'INR'
+    });
+    window.dataLayer.push({
+      event: 'purchase_intent_lead',
+      course_name: 'Advanced Generative AI Programme'
+    });
+
+    // Track WhatsApp Group CTA Clicks
+    document.querySelectorAll('.whatsapp-btn, a[href*="whatsapp.com"], a[href*="chat.whatsapp.com"]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        window.dataLayer.push({
+          event: 'whatsapp_join_click',
+          event_category: 'community_engagement',
+          event_action: 'whatsapp_group_click',
+          event_label: 'VIP WhatsApp Group',
+          destination: 'WhatsApp VIP Community'
+        });
+        if (typeof fbq === 'function') {
+          fbq('trackCustom', 'WhatsAppCommunityJoin');
+        }
+      });
+    });
+
     // Live Countdown Timer script
     const targetDate = new Date().getTime() + (7 * 24 * 60 * 60 * 1000);
     setInterval(() => {
