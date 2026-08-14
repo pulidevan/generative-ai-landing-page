@@ -594,11 +594,51 @@
             order: 3 !important;
           }
 
-          .form-embed-wrapper {
-            box-shadow: none !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            box-sizing: border-box !important;
+        .curriculum-grid {
+          display: grid;
+          grid-template-columns: repeat(6, 1fr);
+          gap: 16px;
+        }
+
+        .curriculum-card {
+          grid-column: span 2;
+          background: #0A1245;
+          border: 1px solid rgba(26, 34, 255, 0.4);
+          border-radius: 14px;
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          gap: 14px;
+        }
+
+        .curriculum-card:nth-child(7) {
+          grid-column: 2 / span 2;
+        }
+
+        .curriculum-card:nth-child(8) {
+          grid-column: 4 / span 2;
+        }
+
+        @media (max-width: 991px) and (min-width: 641px) {
+          .curriculum-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          .curriculum-card,
+          .curriculum-card:nth-child(7),
+          .curriculum-card:nth-child(8) {
+            grid-column: span 1 !important;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .curriculum-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .curriculum-card,
+          .curriculum-card:nth-child(7),
+          .curriculum-card:nth-child(8) {
+            grid-column: span 1 !important;
           }
         }
 
@@ -1228,10 +1268,9 @@
             </h2>
           </div>
 
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+          <div class="curriculum-grid">
             <!-- Week 01 -->
-            <div
-              style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+            <div class="curriculum-card">
               <div>
                 <div
                   style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">
@@ -1259,8 +1298,7 @@
             </div>
 
             <!-- Week 02 -->
-            <div
-              style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+            <div class="curriculum-card">
               <div>
                 <div
                   style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">
@@ -1287,8 +1325,7 @@
             </div>
 
             <!-- Week 03 -->
-            <div
-              style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+            <div class="curriculum-card">
               <div>
                 <div
                   style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">
@@ -1317,8 +1354,7 @@
             </div>
 
             <!-- Week 04 -->
-            <div
-              style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+            <div class="curriculum-card">
               <div>
                 <div
                   style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">
@@ -1345,8 +1381,7 @@
             </div>
 
             <!-- Week 05 -->
-            <div
-              style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+            <div class="curriculum-card">
               <div>
                 <div
                   style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">
@@ -1374,8 +1409,7 @@
             </div>
 
             <!-- Week 06 -->
-            <div
-              style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+            <div class="curriculum-card">
               <div>
                 <div
                   style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">
@@ -1401,8 +1435,7 @@
             </div>
 
             <!-- Week 07 -->
-            <div
-              style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+            <div class="curriculum-card">
               <div>
                 <div
                   style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">
@@ -1431,8 +1464,7 @@
             </div>
 
             <!-- Week 08 -->
-            <div
-              style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+            <div class="curriculum-card">
               <div>
                 <div
                   style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: #D8FF32;">
