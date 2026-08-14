@@ -738,13 +738,14 @@
           -webkit-text-fill-color: #FFFFFF !important;
         }
 
-        /* Blue-background (#1A22FF) buttons need WHITE text for contrast */
-        [style*="background: #1A22FF"],
-        [style*="background:#1A22FF"],
-        [style*="background: #1A22FF"] *,
-        [style*="background:#1A22FF"] * {
-          color: #FFFFFF !important;
-          -webkit-text-fill-color: #FFFFFF !important;
+        /* White-background buttons have deep dark navy text */
+        .btn-white,
+        .btn-white *,
+        [style*="background: #FFFFFF"].btn-white,
+        [style*="background: #FFFFFF"].btn-white * {
+          color: #050B36 !important;
+          -webkit-text-fill-color: #050B36 !important;
+          font-weight: 800 !important;
         }
 
         /* Sticky bottom bar pill and title stay light */
@@ -1294,8 +1295,8 @@
           </div>
 
           <div style="text-align: center; margin-top: 12px;">
-            <button onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})"
-              style="background: #1A22FF; color: #FFFFFF; border: none; border-radius: 99px; padding: 16px 32px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 0.9375rem; cursor: pointer;">
+            <button onclick="window.scrollToEnrollForm(event)" class="btn-white"
+              style="background: #FFFFFF !important; color: #050B36 !important; -webkit-text-fill-color: #050B36 !important; border: none; border-radius: 99px; padding: 16px 32px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 0.9375rem; cursor: pointer; box-shadow: 0 4px 20px rgba(255, 255, 255, 0.25);">
               MASTER APPLIED AI TODAY →
             </button>
           </div>
