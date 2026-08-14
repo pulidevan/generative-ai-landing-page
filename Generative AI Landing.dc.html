@@ -10,6 +10,8 @@
   <link rel="dns-prefetch" href="https://link.trym.co.in">
   <link rel="dns-prefetch" href="https://stcdn.leadconnectorhq.com">
   <link rel="dns-prefetch" href="https://backend.leadconnectorhq.com">
+  <link rel="preload" as="script" href="https://link.trym.co.in/js/form_embed.js" fetchpriority="high">
+  <script src="https://link.trym.co.in/js/form_embed.js" async fetchpriority="high"></script>
   <link id="dynamic-favicon" rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23D8FF32'/><circle cx='16' cy='16' r='9' fill='%2300FF66'/></svg>">
   <script>
@@ -270,23 +272,25 @@
           border-bottom-color: #1A22FF;
         }
 
-        /* Bottom Floating Sticky CTA Bar */
+        /* Bottom Floating Sticky CTA Bar - Always active across all screen sizes */
         #sticky-bottom-bar {
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          z-index: 9999;
-          background: #050B36;
-          border-top: 1px solid rgba(249, 250, 252, 0.15);
-          box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.45);
-          transform: translateY(100%);
-          transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-          padding: 12px 20px;
+          position: fixed !important;
+          bottom: 0 !important;
+          left: 0 !important;
+          right: 0 !important;
+          z-index: 9999 !important;
+          background: #050B36 !important;
+          border-top: 1px solid rgba(249, 250, 252, 0.15) !important;
+          box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.45) !important;
+          transform: translateY(110%) !important;
+          transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+          padding: 12px 20px !important;
+          box-sizing: border-box !important;
+          display: block !important;
         }
 
         #sticky-bottom-bar.visible {
-          transform: translateY(0);
+          transform: translateY(0) !important;
         }
 
         /* Slide-Up Lead Capture Bottom-Sheet / Modal Drawer */
@@ -682,17 +686,20 @@
           -webkit-text-fill-color: #FFFFFF !important;
         }
 
-        /* Form Iframe Clipper to Crop Privacy Policy / Terms across all screen sizes */
+        /* Form Iframe Container — Ensure 100% full uncropped visibility of all fields & submit buttons */
         .form-iframe-clipper {
-          overflow: hidden !important;
+          overflow: visible !important;
           position: relative !important;
-          max-height: 520px !important;
+          width: 100% !important;
+          min-height: 570px !important;
           border-radius: 0 0 16px 16px !important;
         }
 
         .form-iframe-clipper iframe {
-          margin-bottom: -65px !important;
+          margin-bottom: 0 !important;
           display: block !important;
+          width: 100% !important;
+          min-height: 570px !important;
         }
 
         /* AI Inference Form Loader Skeleton */
@@ -2159,31 +2166,49 @@ class Component extends DCLogic {
       });
     });
 
+    // Bottom Floating Sticky Bar Scroll Listener — Trigger on first scroll across all screen sizes
     function handleStickyBarScroll() {
       const stickyBar = document.getElementById('sticky-bottom-bar');
       if (!stickyBar) return;
-      if (window.scrollY > 280) {
+      const scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      if (scrollPos > 60) {
         stickyBar.classList.add('visible');
       } else {
         stickyBar.classList.remove('visible');
       }
     }
     window.addEventListener('scroll', handleStickyBarScroll, { passive: true });
+    window.addEventListener('touchmove', handleStickyBarScroll, { passive: true });
     window.addEventListener('load', handleStickyBarScroll);
+    document.addEventListener('DOMContentLoaded', handleStickyBarScroll);
 
-    // Universal seamless CTA click handler — ALL buttons go directly to hero form embed (#enroll)
+    // Universal seamless CTA click handler — ALL buttons and top ticker go directly to hero form embed (#enroll)
+    window.scrollToEnrollForm = function (e) {
+      if (e && e.preventDefault) e.preventDefault();
+      const enrollEl = document.getElementById('enroll');
+      if (enrollEl) {
+        const topBar = document.getElementById('top-offer-ticker');
+        const offset = topBar ? topBar.offsetHeight + 15 : 20;
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = enrollEl.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        const offsetPosition = elementPosition - offset;
+
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: 'smooth'
+        });
+      }
+    };
+
     document.addEventListener('click', (e) => {
-      const targetBtn = e.target.closest('a[href="#enroll"], button, [class*="Button"], [class*="PriceCard"] button');
+      const targetBtn = e.target.closest('#top-offer-ticker, a[href="#enroll"], button, .btn-lime, [class*="Button"], [class*="PriceCard"] button');
       if (!targetBtn) return;
 
       // Ignore close buttons or notification dismiss buttons
-      if (targetBtn.id === 'close-modal-btn' || targetBtn.closest('#recent-enrollment-ticker') || targetBtn.innerText === '✕') return;
+      if (targetBtn.id === 'close-modal-btn' || targetBtn.closest('#recent-enrollment-ticker') || targetBtn.innerText.trim() === '✕') return;
 
-      const enrollEl = document.getElementById('enroll');
-      if (enrollEl) {
-        e.preventDefault();
-        enrollEl.scrollIntoView({ behavior: 'smooth' });
-      }
+      window.scrollToEnrollForm(e);
     });
 
     // Bulletproof Dual-Detection Event Listener for Trym / LeadConnector Form Submission
