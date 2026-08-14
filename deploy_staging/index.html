@@ -800,18 +800,17 @@ class Component extends DCLogic {
       }, { passive: true });
     });
 
-    function executeThankYouRedirect() {
-      if (window.isRedirectingToThankYou) return;
-      window.isRedirectingToThankYou = true;
+    function handleFormSubmission() {
+      if (window.hasTrackedLeadSubmission) return;
+      window.hasTrackedLeadSubmission = true;
 
+      // Track Meta Pixel Lead & CompleteRegistration events
       if (typeof fbq === 'function') {
         fbq('track', 'Lead', { content_name: 'Generative AI Lead Form' });
         fbq('track', 'CompleteRegistration', { content_name: 'Generative AI Programme' });
       }
 
-      setTimeout(() => {
-        window.location.href = 'https://genai.aiessentials.in/thankyou.html';
-      }, 150);
+      // Automatic JS frontend redirect disabled — form backend handles thank you page / response natively
     }
 
     window.addEventListener('message', (e) => {
@@ -826,7 +825,7 @@ class Component extends DCLogic {
 
       const lower = str.toLowerCase();
 
-      // 1. Check for submission keywords in message payload
+      // Check for submission keywords in message payload
       const isKeywordMatch = 
         lower.includes('form_submitted') ||
         lower.includes('form-submitted') ||
@@ -838,20 +837,8 @@ class Component extends DCLogic {
         lower.includes('thankyou') ||
         lower.includes('thank_you');
 
-      // 2. Check for iFrameSizer height collapse (inline thank-you message shrinks iframe height < 360px)
-      let isHeightCollapse = false;
-      if (typeof e.data === 'string' && e.data.startsWith('[iFrameSizer]')) {
-        const parts = e.data.split(':');
-        if (parts.length >= 2) {
-          const h = parseInt(parts[1], 10);
-          if (!isNaN(h) && h > 60 && h < 360 && userHasInteracted) {
-            isHeightCollapse = true;
-          }
-        }
-      }
-
-      if (isKeywordMatch || isHeightCollapse) {
-        executeThankYouRedirect();
+      if (isKeywordMatch) {
+        handleFormSubmission();
       }
     });
   })();
