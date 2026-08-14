@@ -642,6 +642,32 @@
           }
         }
 
+        .review-stars,
+        .review-stars * {
+          color: #D8FF32 !important;
+          -webkit-text-fill-color: #D8FF32 !important;
+          font-size: 1.15rem !important;
+          letter-spacing: 2px !important;
+          display: inline-block !important;
+        }
+
+        .review-author,
+        .review-author * {
+          font-family: 'Sora', sans-serif !important;
+          font-weight: 700 !important;
+          font-size: 0.9375rem !important;
+          color: #D8FF32 !important;
+          -webkit-text-fill-color: #D8FF32 !important;
+        }
+
+        .review-role,
+        .review-role * {
+          font-size: 0.75rem !important;
+          color: #FFFFFF !important;
+          -webkit-text-fill-color: #FFFFFF !important;
+          opacity: 0.8 !important;
+        }
+
         :root {
           --text-strong: #FFFFFF !important;
           --text-body: #FFFFFF !important;
@@ -1893,79 +1919,74 @@
             <div class="horizontal-scroll-item"
               style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px;">
               <div>
-                <div style="color: #D8FF32; font-size: 1rem;">★★★★★</div>
+                <div class="review-stars">★★★★★</div>
                 <p
                   style="margin: 8px 0 0 0; font-size: 0.875rem; color: #FFFFFF; font-weight: 600; line-height: 1.5;">
                   “I automated our entire content pipeline in week five and deployed a client-facing RAG assistant.”</p>
               </div>
               <div style="border-top: 1px solid rgba(26,34,255,0.3); padding-top: 10px;">
-                <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.9375rem; color: #FFFFFF;">Ananya
-                  R.</div>
-                <div style="font-size: 0.75rem; color: #D8FF32;">Marketing Lead → AI Operator</div>
+                <div class="review-author">Ananya R.</div>
+                <div class="review-role">Marketing Lead → AI Operator</div>
               </div>
             </div>
 
             <div class="horizontal-scroll-item"
               style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px;">
               <div>
-                <div style="color: #D8FF32; font-size: 1rem;">★★★★★</div>
+                <div class="review-stars">★★★★★</div>
                 <p
                   style="margin: 8px 0 0 0; font-size: 0.875rem; color: #FFFFFF; font-weight: 600; line-height: 1.5;">
                   “Shipped my first paid micro-SaaS before the cohort ended. Zero prior coding — just directed agents.”
                 </p>
               </div>
               <div style="border-top: 1px solid rgba(26,34,255,0.3); padding-top: 10px;">
-                <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.9375rem; color: #FFFFFF;">Karthik
-                  S.</div>
-                <div style="font-size: 0.75rem; color: #D8FF32;">Founder, D2C Brand</div>
+                <div class="review-author">Karthik S.</div>
+                <div class="review-role">Founder, D2C Brand</div>
               </div>
             </div>
 
             <div class="horizontal-scroll-item"
               style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px;">
               <div>
-                <div style="color: #D8FF32; font-size: 1rem;">★★★★★</div>
+                <div class="review-stars">★★★★★</div>
                 <p
                   style="margin: 8px 0 0 0; font-size: 0.875rem; color: #FFFFFF; font-weight: 600; line-height: 1.5;">
                   “Moved from reporting analyst to leading our AI adoption pod. Same company, new mandate, better pay.”
                 </p>
               </div>
               <div style="border-top: 1px solid rgba(26,34,255,0.3); padding-top: 10px;">
-                <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.9375rem; color: #FFFFFF;">Meera
-                  V.</div>
-                <div style="font-size: 0.75rem; color: #D8FF32;">Senior Analyst</div>
+                <div class="review-author">Meera V.</div>
+                <div class="review-role">Senior Analyst</div>
               </div>
             </div>
 
             <div class="horizontal-scroll-item"
               style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px;">
               <div>
-                <div style="color: #D8FF32; font-size: 1rem;">★★★★★</div>
+                <div class="review-stars">★★★★★</div>
                 <p
                   style="margin: 8px 0 0 0; font-size: 0.875rem; color: #FFFFFF; font-weight: 600; line-height: 1.5;">
                   “The agentic coding module alone was worth 10x. I built my agency landing page and client backend in 3
                   days.”</p>
               </div>
               <div style="border-top: 1px solid rgba(26,34,255,0.3); padding-top: 10px;">
-                <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.9375rem; color: #FFFFFF;">Rahul
-                  M.</div>
-                <div style="font-size: 0.75rem; color: #D8FF32;">Freelance Web Developer</div>
+                <div class="review-author">Rahul M.</div>
+                <div class="review-role">Freelance Web Developer</div>
               </div>
             </div>
 
             <div class="horizontal-scroll-item"
               style="background: #0A1245; border: 1px solid rgba(26, 34, 255, 0.4); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px;">
               <div>
-                <div style="color: #D8FF32; font-size: 1rem;">★★★★★</div>
+                <div class="review-stars">★★★★★</div>
                 <p
                   style="margin: 8px 0 0 0; font-size: 0.875rem; color: #FFFFFF; font-weight: 600; line-height: 1.5;">
                   “As a student, having 4 working AI deployments on my resume gave me an unfair advantage in placement
                   interviews.”</p>
               </div>
               <div style="border-top: 1px solid rgba(26,34,255,0.3); padding-top: 10px;">
-                <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.9375rem; color: #FFFFFF;">Priya
-                  S.</div>
-                <div style="font-size: 0.75rem; color: #D8FF32;">Final-Year Student → AI Consultant</div>
+                <div class="review-author">Priya S.</div>
+                <div class="review-role">Final-Year Student → AI Consultant</div>
               </div>
             </div>
           </div>
