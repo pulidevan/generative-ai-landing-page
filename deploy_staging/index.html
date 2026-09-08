@@ -23,11 +23,99 @@
   <link rel="apple-touch-icon" href="assets/favicon.png">
   <link rel="amphtml" href="https://genai.aiessentials.in/amp.html">
   <script>
+    // Global Bulletproof Button Click Tracker & DataLayer Push
+    window.dataLayer = window.dataLayer || [];
+    window.trackButtonClick = function (targetEl) {
+      if (!targetEl) return;
+      var targetBtn = targetEl.closest ? targetEl.closest('a[href="#enroll"], a.btn-lime, a.btn-white, button, .btn-lime, .btn-white, [class*="Button"], [class*="PriceCard"] button') : targetEl;
+      if (!targetBtn || targetBtn._hasTrackedClick) return;
+      targetBtn._hasTrackedClick = true;
+      setTimeout(function () { targetBtn._hasTrackedClick = false; }, 400);
+
+      // Ignore modal close buttons or notification dismiss buttons
+      if (targetBtn.id === 'close-modal-btn' || (targetBtn.closest && targetBtn.closest('#recent-enrollment-ticker')) || targetBtn.innerText.trim() === '✕') return;
+
+      try {
+        var btnText = (targetBtn.innerText || targetBtn.textContent || targetBtn.value || targetBtn.getAttribute('aria-label') || '').replace(/\s+/g, ' ').trim();
+        var sectionEl = targetBtn.closest ? targetBtn.closest('section') : null;
+        var sectionLabel = sectionEl ? (sectionEl.getAttribute('data-screen-label') || sectionEl.id || 'hero') : ((targetBtn.closest && targetBtn.closest('#sticky-bottom-bar')) ? 'sticky_bottom_bar' : ((targetBtn.closest && targetBtn.closest('#lead-modal-drawer')) ? 'lead_modal_drawer' : 'page_cta'));
+
+        // Determine fold location
+        var btnLocation = targetBtn.getAttribute('data-button-location') || '';
+        if (!btnLocation) {
+          if (targetBtn.closest && targetBtn.closest('#sticky-bottom-bar')) {
+            btnLocation = 'sticky_bottom_bar';
+          } else if (targetBtn.closest && targetBtn.closest('#lead-modal-drawer')) {
+            btnLocation = 'modal_drawer';
+          } else if (sectionEl) {
+            var secId = (sectionEl.id || '').toLowerCase();
+            var secLabel = (sectionEl.getAttribute('data-screen-label') || '').toLowerCase();
+            if (secId.includes('transformation') || secLabel.includes('transformation')) {
+              btnLocation = '2nd_fold';
+            } else if (secId.includes('why') || secLabel.includes('why')) {
+              btnLocation = '3rd_fold';
+            } else if (secId.includes('curriculum') || secLabel.includes('curriculum')) {
+              btnLocation = '4th_fold';
+            } else if (secId.includes('batch') || secLabel.includes('batch') || secId.includes('guarantee')) {
+              btnLocation = '5th_fold';
+            } else if (secLabel.includes('closing') || secId.includes('closing')) {
+              btnLocation = '6th_fold';
+            } else {
+              btnLocation = '1st_fold';
+            }
+          } else {
+            btnLocation = '1st_fold';
+          }
+        }
+
+        // Button number and name
+        var btnNumber = targetBtn.getAttribute('data-button-number') || '';
+        var rawName = targetBtn.getAttribute('data-button-name') || targetBtn.getAttribute('name') || targetBtn.id || '';
+        var btnName = rawName ? rawName.toLowerCase().replace(/[^a-z0-9_]/g, '_') : (btnText ? btnText.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '') : 'cta_button');
+        var btnId = targetBtn.id || '';
+        var btnClass = targetBtn.className || '';
+        var ctaTarget = targetBtn.getAttribute('href') || '#enroll';
+
+        // ONLY SPECIFIC NUMBERED BUTTON EVENT IN TAG MANAGER
+        window.dataLayer.push({
+          event: btnName,
+          button_name: btnName,
+          button_number: btnNumber ? parseInt(btnNumber, 10) : undefined,
+          button_title: btnText,
+          button_location: btnLocation,
+          fold_location: btnLocation,
+          section_name: sectionLabel,
+          button_id: btnId,
+          button_class: btnClass,
+          cta_target: ctaTarget,
+          destination_url: ctaTarget,
+          event_category: 'button_click',
+          event_action: btnName,
+          event_label: btnText
+        });
+
+        // Meta Pixel Custom Event for specific button
+        if (typeof fbq === 'function') {
+          fbq('trackCustom', btnName, {
+            button_name: btnName,
+            button_number: btnNumber ? parseInt(btnNumber, 10) : undefined,
+            button_title: btnText,
+            button_location: btnLocation,
+            fold_location: btnLocation,
+            section: sectionLabel
+          });
+        }
+      } catch (err) {}
+    };
+
     // Immediate Bulletproof Centered Scroll & Highlight Glow Handler
     window.scrollToEnrollForm = function (e) {
       if (e) {
         if (e.preventDefault) e.preventDefault();
-        if (e.stopPropagation) e.stopPropagation();
+        var clickEl = e.currentTarget || e.target;
+        if (clickEl && window.trackButtonClick) {
+          window.trackButtonClick(clickEl);
+        }
       }
       var target = document.getElementById('enroll') || document.querySelector('.hero-form') || document.querySelector('.form-embed-wrapper');
       if (target) {
@@ -1248,8 +1336,7 @@
                   find where AI can take you</span>
               </div>
               <span
-                style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; color: #D8FF32; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(216,255,50,0.12); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(216,255,50,0.3);"><s
-                  style="opacity:0.7;font-weight:400;">₹999</s> → ₹0</span>
+                style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; color: #D8FF32; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(216,255,50,0.12); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(216,255,50,0.3);">Book Your Consultation</span>
             </div>
             <!-- AI Inference Form Loader Skeleton Overlay -->
             <div class="form-ai-loader">
@@ -1394,7 +1481,7 @@
               <div style="font-size: 0.875rem; color: rgba(255,255,255,0.85); margin-top: 2px;">Move from one-off
                 prompts to an autonomous AI operating system.</div>
             </div>
-            <button onclick="window.scrollToEnrollForm(event)" class="btn-lime"
+            <button id="btn_01_show_me_what_i_can_build" data-button-name="btn_01_show_me_what_i_can_build" data-button-number="1" data-button-location="2nd_fold" onclick="window.scrollToEnrollForm(event)" class="btn-lime"
               style="background: #D8FF32; color: #000000 !important; border: none; border-radius: 99px; padding: 12px 24px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 0.875rem; cursor: pointer; white-space: nowrap;">
               SHOW ME WHAT I CAN BUILD →
             </button>
@@ -1489,7 +1576,7 @@
           </div>
 
           <div style="text-align: center; margin-top: 12px;">
-            <button onclick="window.scrollToEnrollForm(event)" class="btn-white"
+            <button id="btn_02_master_applied_ai_today" data-button-name="btn_02_master_applied_ai_today" data-button-number="2" data-button-location="3rd_fold" onclick="window.scrollToEnrollForm(event)" class="btn-white"
               style="background: #FFFFFF !important; color: #050B36 !important; -webkit-text-fill-color: #050B36 !important; border: none; border-radius: 99px; padding: 16px 32px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 0.9375rem; cursor: pointer; box-shadow: 0 4px 20px rgba(255, 255, 255, 0.25);">
               MASTER APPLIED AI TODAY →
             </button>
@@ -1729,7 +1816,7 @@
             style="background: rgba(216,255,50,0.1); border: 1px solid rgba(216,255,50,0.3); border-radius: 14px; padding: 18px 24px; text-align: center;">
             <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.125rem; color: #FFFFFF;">You
               don't finish with 20 recorded classes. You finish with things you built.</div>
-            <button onclick="window.scrollToEnrollForm(event)" class="btn-lime"
+            <button id="btn_03_see_what_ill_build" data-button-name="btn_03_see_what_ill_build" data-button-number="3" data-button-location="4th_fold" onclick="window.scrollToEnrollForm(event)" class="btn-lime"
               style="margin-top: 10px; background: #D8FF32; color: #000000 !important; border: none; border-radius: 99px; padding: 10px 24px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 0.875rem; cursor: pointer;">SEE
               WHAT I'LL BUILD →</button>
           </div>
@@ -1906,9 +1993,9 @@
           </div>
 
           <div style="text-align: center; margin-top: 4px;">
-            <button onclick="window.scrollToEnrollForm(event)" class="btn-lime"
+            <button id="btn_04_book_my_free_ai_strategy_call" data-button-name="btn_04_book_my_free_ai_strategy_call" data-button-number="4" data-button-location="5th_fold" onclick="window.scrollToEnrollForm(event)" class="btn-lime"
               style="background: #D8FF32; color: #000000 !important; border: none; border-radius: 99px; padding: 14px 32px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 0.9375rem; cursor: pointer;">
-              BOOK MY FREE AI STRATEGY CALL →
+              BOOK YOUR CONSULTATION →
             </button>
           </div>
         </div>
@@ -2073,6 +2160,10 @@
           <div style="display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 4px; font-size: 0.875rem; color: rgba(255,255,255,0.75);">
             <span>⚡ 8 Weeks</span> · <span>20 Live Classes</span> · <span>Real AI Projects</span> · <span>1:1 Mentorship</span>
           </div>
+          <button id="btn_05_apply_now_closing" data-button-name="btn_05_apply_now_closing" data-button-number="5" data-button-location="6th_fold" onclick="window.scrollToEnrollForm(event)" class="btn-lime"
+            style="margin-top: 8px; background: #D8FF32; color: #000000 !important; border: none; border-radius: 99px; padding: 14px 32px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 0.9375rem; cursor: pointer;">
+            APPLY FOR NEXT COHORT →
+          </button>
         </div>
       </section>
 
@@ -2196,42 +2287,6 @@ class Component extends DCLogic {
     document.addEventListener('DOMContentLoaded', handleStickyBarScroll);
     handleStickyBarScroll();
 
-    // Universal seamless CTA click handler — ALL buttons go directly to hero form embed (#enroll)
-    window.scrollToEnrollForm = function (e) {
-      if (e) {
-        if (e.preventDefault) e.preventDefault();
-        if (e.stopPropagation) e.stopPropagation();
-      }
-      const enrollEl = document.getElementById('enroll') || document.querySelector('.hero-form') || document.querySelector('.form-embed-wrapper');
-      if (enrollEl) {
-        const scrollY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-        const targetHeight = enrollEl.offsetHeight || 550;
-        const vh = window.innerHeight || document.documentElement.clientHeight;
-        const centerOffset = Math.max(16, (vh - targetHeight) / 2);
-        const targetTop = enrollEl.getBoundingClientRect().top + scrollY - centerOffset;
-
-        window.scrollTo({
-          top: Math.max(0, targetTop),
-          behavior: 'smooth'
-        });
-
-        try {
-          enrollEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } catch (err) {}
-
-        // Trigger luminous highlight glow
-        enrollEl.classList.remove('form-highlight-glow');
-        void enrollEl.offsetWidth;
-        enrollEl.classList.add('form-highlight-glow');
-        setTimeout(() => {
-          enrollEl.classList.remove('form-highlight-glow');
-        }, 2600);
-      } else {
-        window.location.hash = '#enroll';
-      }
-      return false;
-    };
-
     // Enterprise GTM & Analytics Event Infrastructure
     window.dataLayer = window.dataLayer || [];
 
@@ -2256,42 +2311,14 @@ class Component extends DCLogic {
       } catch (err) { }
     })();
 
-    // 2. Universal seamless CTA click handler — pushes 'cta_click' to GTM dataLayer & scrolls to form
-    document.addEventListener('click', (e) => {
-      const targetBtn = e.target.closest('a[href="#enroll"], button, .btn-lime, .btn-white, [class*="Button"], [class*="PriceCard"] button');
-      if (!targetBtn) return;
-
-      // Ignore close buttons or notification dismiss buttons
-      if (targetBtn.id === 'close-modal-btn' || targetBtn.closest('#recent-enrollment-ticker') || targetBtn.innerText.trim() === '✕') return;
-
-      try {
-        const btnText = (targetBtn.innerText || targetBtn.textContent || '').replace(/\s+/g, ' ').trim();
-        const sectionEl = targetBtn.closest('section');
-        const sectionLabel = sectionEl ? (sectionEl.getAttribute('data-screen-label') || sectionEl.id || 'hero') : (targetBtn.closest('#sticky-bottom-bar') ? 'sticky_bottom_bar' : 'page_cta');
-
-        // GTM dataLayer push for CTA Click
-        window.dataLayer.push({
-          event: 'cta_click',
-          event_category: 'engagement',
-          event_action: 'cta_button_click',
-          event_label: btnText,
-          cta_text: btnText,
-          cta_location: sectionLabel,
-          cta_target: '#enroll',
-          destination_url: '#enroll'
-        });
-
-        // Meta Pixel Custom Event
-        if (typeof fbq === 'function') {
-          fbq('trackCustom', 'CTAClick', {
-            cta_text: btnText,
-            section: sectionLabel
-          });
-        }
-      } catch (err) {}
-
-      window.scrollToEnrollForm(e);
-    });
+    // 2. Global capture-phase click listener to guarantee tracking on any button click
+    document.addEventListener('click', function (e) {
+      if (!e.target || !e.target.closest) return;
+      var targetBtn = e.target.closest('a[href="#enroll"], a.btn-lime, a.btn-white, button, .btn-lime, .btn-white, [class*="Button"], [class*="PriceCard"] button');
+      if (targetBtn && window.trackButtonClick) {
+        window.trackButtonClick(targetBtn);
+      }
+    }, true);
 
     // 3. Scroll Depth Tracking for Paid Traffic Quality Measurement (25%, 50%, 75%, 90%)
     (function () {
@@ -2322,9 +2349,9 @@ class Component extends DCLogic {
       let hasFiredFormStart = false;
 
       // Track user interaction with the form container
-      ['click', 'touchstart', 'keydown'].forEach(evt => {
+      ['click', 'touchstart', 'keydown', 'input', 'focusin'].forEach(evt => {
         document.addEventListener(evt, (e) => {
-          if (e.target.closest && e.target.closest('#enroll, #lead-modal-drawer, .form-embed-wrapper, iframe')) {
+          if (e.target && e.target.closest && e.target.closest('#enroll, #lead-modal-drawer, .form-embed-wrapper, iframe')) {
             userHasInteracted = true;
             if (!hasFiredFormStart) {
               hasFiredFormStart = true;
@@ -2394,27 +2421,44 @@ class Component extends DCLogic {
         if (!e.data) return;
 
         let str = '';
-        if (typeof e.data === 'string') {
+        let isGhlSubmit = false;
+
+        if (typeof e.data === 'object') {
+          try {
+            // Check structured postMessage from LeadConnector / GoHighLevel
+            if (
+              e.data.type === 'form-submitted' ||
+              e.data.type === 'form_submitted' ||
+              e.data.action === 'form-submitted' ||
+              e.data.action === 'submission_success' ||
+              e.data.event === 'form_submission' ||
+              e.data.name === 'form-submitted' ||
+              (e.data.formId === 'C3QNWOEvU9lO9L2o63iY' && e.data.status === 'success')
+            ) {
+              isGhlSubmit = true;
+            }
+            str = JSON.stringify(e.data);
+          } catch (err) { str = ''; }
+        } else if (typeof e.data === 'string') {
           str = e.data;
-        } else if (typeof e.data === 'object') {
-          try { str = JSON.stringify(e.data); } catch (err) { str = ''; }
         }
 
         const lower = str.toLowerCase();
 
-        // Check for submission keywords in message payload
+        // Check for specific verified submission keywords (strictly avoid generic substrings like 'complete')
         const isKeywordMatch =
+          isGhlSubmit ||
           lower.includes('form_submitted') ||
           lower.includes('form-submitted') ||
           lower.includes('ghl_form_submitted') ||
-          lower.includes('submission_success') ||
-          lower.includes('appreciate your feedback') ||
-          lower.includes('thank you for taking') ||
-          lower.includes('complete') ||
-          lower.includes('thankyou') ||
-          lower.includes('thank_you');
+          lower.includes('leadconnector_form_submitted') ||
+          (userHasInteracted && (
+            lower.includes('submission_success') ||
+            lower.includes('thank you for taking') ||
+            lower.includes('appreciate your feedback')
+          ));
 
-        // Check for iFrameSizer height collapse
+        // Check for iFrameSizer height collapse only after genuine interaction
         let isHeightCollapse = false;
         if (typeof e.data === 'string' && e.data.startsWith('[iFrameSizer]')) {
           const parts = e.data.split(':');
@@ -2426,6 +2470,7 @@ class Component extends DCLogic {
           }
         }
 
+        // Only fire if it is a genuine submission and not a random initialization message
         if (isKeywordMatch || isHeightCollapse) {
           handleFormSubmission();
         }
@@ -2576,10 +2621,10 @@ class Component extends DCLogic {
         </div>
       </div>
       <div style="display: flex; gap: 10px; align-items: center; width: auto;" class="sticky-actions">
-        <button onclick="window.scrollToEnrollForm(event)"
+        <button id="btn_06_sticky_consultation" data-button-name="btn_06_sticky_consultation" data-button-number="6" data-button-location="sticky_bottom_bar" onclick="window.scrollToEnrollForm(event)"
           style="background: #D8FF32; color: #000000 !important; -webkit-text-fill-color: #000000 !important; border: none; border-radius: 99px; padding: 12px 28px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.9375rem; cursor: pointer; white-space: nowrap; box-shadow: 0 4px 16px rgba(216, 255, 50, 0.4);"
           class="sticky-btn-pri btn-lime">
-          Book Your FREE Consultation — <s style="opacity: 0.65; font-weight: 400; text-decoration: line-through;">₹999</s> ₹0
+          Book Your Consultation
         </button>
       </div>
     </div>
@@ -2664,7 +2709,7 @@ class Component extends DCLogic {
             Essentials</span>
           <h3
             style="margin: 2px 0 0 0; font-family: 'Sora', sans-serif; font-size: 1.25rem; font-weight: 700; color: #060814;">
-            Book Consultation</h3>
+            Book Your Consultation</h3>
         </div>
         <button id="close-modal-btn" type="button" aria-label="Close modal" onclick="closeLeadModal()"
           style="background: #F0F2F8; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.25rem; display: flex; align-items: center; justify-content: center; color: #4A4F6A; outline: none; z-index: 99;">✕</button>
