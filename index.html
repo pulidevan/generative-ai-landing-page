@@ -15,13 +15,27 @@
   <link rel="preconnect" href="https://stcdn.leadconnectorhq.com" crossorigin>
   <link rel="preconnect" href="https://backend.leadconnectorhq.com" crossorigin>
   <link rel="dns-prefetch" href="https://link.trym.co.in">
-  <link rel="dns-prefetch" href="https://stcdn.leadconnectorhq.com">
+  <!-- Start fetching the lead form before anything else on the page -->
+  <link rel="preload" as="script" href="https://link.trym.co.in/js/form_embed.js">
   <link rel="dns-prefetch" href="https://backend.leadconnectorhq.com">
-  <link rel="preload" as="script" href="https://link.trym.co.in/js/form_embed.js" fetchpriority="high">
-  <script src="https://link.trym.co.in/js/form_embed.js" async fetchpriority="high"></script>
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/favicon.png">
   <link rel="amphtml" href="https://genai.aiessentials.in/amp.html">
+  <script>
+    // Always show a fresh, empty form: the Trym/LeadConnector embed stores the last
+    // visitor's details in localStorage "_ud" and then shows a prefilled form with a
+    // "Start over" prompt. Clear it and stop the embed from saving it again.
+    (function () {
+      try { localStorage.removeItem('_ud'); } catch (e) {}
+      window.addEventListener('message', function (e) {
+        var d = e && e.data;
+        if (Array.isArray(d) && (d[0] === 'set-sticky-contacts' || d[0] === 'fetch-sticky-contacts')) {
+          e.stopImmediatePropagation();
+          try { localStorage.removeItem('_ud'); } catch (err) {}
+        }
+      }, true);
+    })();
+  </script>
   <script>
     // Global Bulletproof Button Click Tracker & DataLayer Push
     window.dataLayer = window.dataLayer || [];
@@ -233,6 +247,12 @@
           padding: 6px 14px;
           border-radius: 99px;
           white-space: nowrap;
+        }
+
+        /* Hide floating toasts while the lead form is on screen */
+        html.form-in-view #recent-enrollment-ticker {
+          opacity: 0 !important;
+          pointer-events: none !important;
         }
 
         /* Blue Social Proof Enrollment Ticker Toast */
@@ -497,10 +517,278 @@
         .form-embed-wrapper {
           position: relative;
           width: 100%;
-          min-height: 594px;
           background: #FFFFFF;
           border-radius: 16px;
           overflow: hidden;
+        }
+
+        /* Premium Native Lead Form Styles */
+        .native-lead-form {
+          padding: 22px 24px 20px;
+          background: #FFFFFF !important;
+          color: #060814 !important;
+          color-scheme: light !important;
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+          box-sizing: border-box;
+        }
+        .native-lead-form * {
+          box-sizing: border-box;
+        }
+        .native-lead-form .form-header-title-block {
+          text-align: left;
+          margin-bottom: 2px;
+          padding-bottom: 14px;
+          border-bottom: 1px solid #E4E6F0;
+        }
+        .native-lead-form .form-main-title {
+          font-family: 'Sora', sans-serif !important;
+          font-size: 1.25rem !important;
+          font-weight: 700 !important;
+          color: #060814 !important;
+          -webkit-text-fill-color: #060814 !important;
+          margin: 0 0 4px 0 !important;
+          line-height: 1.25 !important;
+        }
+        .native-lead-form .form-sub-title {
+          font-family: 'Inter', sans-serif !important;
+          font-size: 0.8125rem !important;
+          color: #4A4F6A !important;
+          -webkit-text-fill-color: #4A4F6A !important;
+          margin: 0 !important;
+          line-height: 1.45 !important;
+        }
+        .native-lead-form .form-group {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+          text-align: left;
+        }
+        .native-lead-form label {
+          font-family: 'Sora', sans-serif !important;
+          font-size: 0.8125rem !important;
+          font-weight: 600 !important;
+          color: #060814 !important;
+          -webkit-text-fill-color: #060814 !important;
+          letter-spacing: -0.01em;
+          display: flex !important;
+          align-items: center !important;
+          gap: 4px !important;
+        }
+        .native-lead-form label .req {
+          color: #FF3366 !important;
+          -webkit-text-fill-color: #FF3366 !important;
+          font-weight: 700 !important;
+        }
+        .native-lead-form .input-wrap {
+          position: relative;
+          display: flex;
+          align-items: center;
+          width: 100%;
+        }
+        .native-lead-form .input-icon {
+          position: absolute;
+          left: 14px;
+          width: 18px;
+          height: 18px;
+          color: #8C90A8;
+          pointer-events: none;
+          transition: color 0.2s ease;
+        }
+        .native-lead-form input[type="text"],
+        .native-lead-form input[type="email"],
+        .native-lead-form input[type="tel"],
+        .native-lead-form select {
+          width: 100%;
+          height: 46px;
+          padding: 0 14px 0 42px;
+          background: #F9FAFC !important;
+          background-color: #F9FAFC !important;
+          border: 1.5px solid #E4E6F0 !important;
+          border-radius: 10px;
+          font-family: 'Inter', sans-serif !important;
+          font-size: 0.9375rem !important;
+          color: #060814 !important;
+          -webkit-text-fill-color: #060814 !important;
+          color-scheme: light !important;
+          outline: none;
+          transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+          box-sizing: border-box;
+          -webkit-appearance: none;
+          appearance: none;
+        }
+        .native-lead-form input::placeholder {
+          color: #8C90A8 !important;
+          -webkit-text-fill-color: #8C90A8 !important;
+          font-weight: 400;
+        }
+        .native-lead-form input:focus,
+        .native-lead-form select:focus {
+          background: #FFFFFF !important;
+          background-color: #FFFFFF !important;
+          border-color: #1A22FF !important;
+          box-shadow: 0 0 0 4px rgba(26, 34, 255, 0.12) !important;
+        }
+        .native-lead-form .input-wrap:focus-within .input-icon {
+          color: #1A22FF;
+        }
+
+        /* Phone input with country code badge */
+        .native-lead-form .phone-wrap {
+          display: flex;
+          align-items: stretch;
+        }
+        .native-lead-form .country-badge {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 4px;
+          padding: 0 12px;
+          background: #EEF0F8;
+          border: 1.5px solid #E4E6F0;
+          border-right: none;
+          border-radius: 10px 0 0 10px;
+          font-family: 'Sora', sans-serif !important;
+          font-size: 0.8125rem !important;
+          font-weight: 700 !important;
+          color: #060814 !important;
+          -webkit-text-fill-color: #060814 !important;
+          white-space: nowrap;
+          user-select: none;
+        }
+        .native-lead-form .phone-wrap input {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+          padding-left: 14px;
+        }
+        .native-lead-form .phone-wrap:focus-within .country-badge {
+          border-color: #1A22FF;
+          background: #E8EAFF;
+        }
+
+        /* Select dropdowns */
+        .native-lead-form .select-wrap {
+          position: relative;
+          width: 100%;
+        }
+        .native-lead-form select {
+          padding-left: 14px;
+          padding-right: 38px;
+          cursor: pointer;
+          background-color: #F9FAFC !important;
+          color: #060814 !important;
+          -webkit-text-fill-color: #060814 !important;
+          color-scheme: light !important;
+        }
+        .native-lead-form select option {
+          color: #060814 !important;
+          background-color: #FFFFFF !important;
+          background: #FFFFFF !important;
+          -webkit-text-fill-color: #060814 !important;
+        }
+        .native-lead-form .select-arrow {
+          position: absolute;
+          right: 14px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 16px;
+          height: 16px;
+          color: #8C90A8;
+          pointer-events: none;
+          transition: transform 0.2s ease, color 0.2s ease;
+        }
+        .native-lead-form .select-wrap:focus-within .select-arrow {
+          color: #1A22FF;
+          transform: translateY(-50%) rotate(180deg);
+        }
+
+        /* Submit Button */
+        .native-submit-btn {
+          width: 100%;
+          height: 50px;
+          margin-top: 4px;
+          background: #D8FF32 !important;
+          color: #050B36 !important;
+          border: none;
+          border-radius: 12px;
+          font-family: 'Sora', sans-serif;
+          font-size: 1rem;
+          font-weight: 700;
+          letter-spacing: -0.01em;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          cursor: pointer;
+          box-shadow: 0 8px 24px rgba(216, 255, 50, 0.45);
+          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+          position: relative;
+          overflow: hidden;
+        }
+        .native-submit-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 12px 28px rgba(216, 255, 50, 0.6);
+          background: #E2FF4A !important;
+        }
+        .native-submit-btn:active {
+          transform: translateY(0);
+        }
+        .native-submit-btn .btn-arrow {
+          width: 18px;
+          height: 18px;
+          transition: transform 0.2s ease;
+        }
+        .native-submit-btn:hover .btn-arrow {
+          transform: translateX(4px);
+        }
+        .native-submit-btn.submitting {
+          pointer-events: none;
+          opacity: 0.9;
+        }
+        .native-submit-btn.submitting .btn-arrow {
+          display: none;
+        }
+        .native-submit-btn .btn-spinner {
+          width: 18px;
+          height: 18px;
+          border: 2px solid rgba(5, 11, 54, 0.25);
+          border-top-color: #050B36;
+          border-radius: 50%;
+          animation: formSpin 0.7s linear infinite;
+        }
+        @keyframes formSpin {
+          to { transform: rotate(360deg); }
+        }
+
+        .form-trust-footer {
+          text-align: center;
+          margin-top: -4px;
+          font-size: 0.75rem;
+          color: #8C90A8;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+        }
+
+        @media (max-width: 600px) {
+          .native-lead-form {
+            padding: 18px 16px 16px;
+            gap: 13px;
+          }
+          .native-lead-form input[type="text"],
+          .native-lead-form input[type="email"],
+          .native-lead-form input[type="tel"],
+          .native-lead-form select {
+            height: 44px;
+            font-size: 0.875rem;
+          }
+          .native-submit-btn {
+            height: 48px;
+            font-size: 0.9375rem;
+          }
         }
 
         .form-embed-wrapper iframe {
@@ -511,10 +799,7 @@
           border-radius: 16px;
           position: relative;
           z-index: 2;
-          opacity: 0;
-          transition: opacity 0.4s ease;
-          margin-bottom: -60px;
-          /* Hide the GHL Privacy Policy footer */
+          /* Visible immediately (no fade-in delay); no negative margin, it clipped the submit button */
         }
 
         .form-embed-wrapper iframe.iframe-loaded {
@@ -1332,66 +1617,34 @@
                 <span
                   style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #D8FF32; box-shadow: 0 0 10px #D8FF32;"></span>
                 <span
-                  style="font-family: 'Sora', sans-serif; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.02em; color: #FFFFFF;">Let's
-                  find where AI can take you</span>
+                  style="font-family: 'Sora', sans-serif; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.02em; color: #FFFFFF;">Book Your 1-on-1 Consultation</span>
               </div>
               <span
-                style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; color: #D8FF32; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(216,255,50,0.12); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(216,255,50,0.3);">Book Your Consultation</span>
+                style="font-family: 'Sora', sans-serif; font-size: 0.6875rem; font-weight: 700; color: #D8FF32; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(216,255,50,0.12); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(216,255,50,0.3); white-space: nowrap;">Takes 30 sec</span>
             </div>
-            <!-- AI Inference Form Loader Skeleton Overlay -->
-            <div class="form-ai-loader">
-              <div class="ai-pulse-bar">
-                <div class="ai-pulse-dot"></div>
-                <span>⚡ Initializing 1-on-1 AI Strategy Form...</span>
-              </div>
-              <div class="sk-input" style="width: 100%;"></div>
-              <div class="sk-input" style="width: 100%;"></div>
-              <div class="sk-input" style="width: 100%;"></div>
-              <div class="sk-input" style="width: 100%;"></div>
-              <div class="sk-btn" style="width: 100%;"></div>
-            </div>
-            <div class="form-iframe-clipper"
-              style="overflow: hidden; height: 535px; position: relative; background: #FFFFFF;">
-              <iframe src="https://link.trym.co.in/widget/form/C3QNWOEvU9lO9L2o63iY" id="inline-C3QNWOEvU9lO9L2o63iY"
-                style="width: 100%; height: 594px; border: none; display: block;" loading="eager" fetchpriority="high"
-                data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value=""
-                data-activation-type="alwaysActivated" data-activation-value="" data-deactivation-type="neverDeactivate"
-                data-deactivation-value="" data-form-name="Form 0" data-height="594"
-                data-layout-iframe-id="inline-C3QNWOEvU9lO9L2o63iY" data-form-id="C3QNWOEvU9lO9L2o63iY" title="Form 0"
-                onload="this.classList.add('iframe-loaded'); if (window.hideFormLoaders) window.hideFormLoaders();">
+            <div class="trym-iframe-wrapper" style="background: #FFFFFF; position: relative;">
+              <iframe
+                src="https://link.trym.co.in/widget/form/C3QNWOEvU9lO9L2o63iY"
+                loading="eager" fetchpriority="high"
+                style="width: 100%; height: 640px; border: none; display: block;"
+                id="inline-C3QNWOEvU9lO9L2o63iY"
+                data-layout="{'id':'INLINE'}"
+                data-trigger-type="alwaysShow"
+                data-trigger-value=""
+                data-activation-type="alwaysActivated"
+                data-activation-value=""
+                data-deactivation-type="neverDeactivate"
+                data-deactivation-value=""
+                data-form-name="genai.aiessentials.in"
+                data-height="640"
+                data-layout-iframe-id="inline-C3QNWOEvU9lO9L2o63iY"
+                data-form-id="C3QNWOEvU9lO9L2o63iY"
+                data-cookie-consent="true"
+                data-cookie-consent-provider="auto"
+                title="genai.aiessentials.in">
               </iframe>
             </div>
             <script src="https://link.trym.co.in/js/form_embed.js"></script>
-            <script>
-              window.hideFormLoaders = function () {
-                var loaders = document.querySelectorAll('.form-ai-loader');
-                loaders.forEach(function (l) { l.classList.add('loaded'); });
-              };
-              function autoCropIframeFooters() {
-                var clippers = document.querySelectorAll('.form-iframe-clipper');
-                clippers.forEach(function (c) {
-                  var iframe = c.querySelector('iframe');
-                  if (iframe && iframe.offsetHeight > 100) {
-                    var targetH = iframe.offsetHeight - 62;
-                    c.style.height = targetH + 'px';
-                    c.style.maxHeight = targetH + 'px';
-                  }
-                });
-              }
-              window.addEventListener('load', function () {
-                autoCropIframeFooters();
-                setTimeout(window.hideFormLoaders, 600);
-              });
-              window.addEventListener('resize', autoCropIframeFooters);
-              window.addEventListener('message', function (e) {
-                setTimeout(autoCropIframeFooters, 50);
-                setTimeout(autoCropIframeFooters, 200);
-                setTimeout(autoCropIframeFooters, 600);
-                setTimeout(window.hideFormLoaders, 300);
-              });
-              setInterval(autoCropIframeFooters, 200);
-              setTimeout(window.hideFormLoaders, 1600);
-            </script>
           </div>
         </div>
       </section>
@@ -2505,6 +2758,8 @@ class Component extends DCLogic {
       let currentIndex = 0;
       function displayNextTicker() {
         if (sessionStorage.getItem('dismissed_recent_ticker') === 'true') return;
+        // Never pop the toast over the lead form
+        if (window.__formInView) return;
         let ticker = document.getElementById('recent-enrollment-ticker');
         if (!ticker) {
           ticker = document.createElement('div');
@@ -2636,12 +2891,47 @@ class Component extends DCLogic {
       function forceVisible() {
         var bar = document.getElementById('sticky-bottom-bar');
         if (!bar) return;
-        bar.classList.add('visible');
-        bar.style.setProperty('transform', 'none', 'important');
-        bar.style.setProperty('opacity', '1', 'important');
+        // Slide the bar away while the lead form is on screen so it never covers the form
+        var hide = !!window.__formInView;
+        bar.classList.toggle('visible', !hide);
+        bar.style.setProperty('transition', 'transform 0.3s ease, opacity 0.3s ease', 'important');
+        bar.style.setProperty('transform', hide ? 'translateY(110%)' : 'none', 'important');
+        bar.style.setProperty('opacity', hide ? '0' : '1', 'important');
         bar.style.setProperty('visibility', 'visible', 'important');
         bar.style.setProperty('display', 'block', 'important');
-        bar.style.setProperty('pointer-events', 'auto', 'important');
+        bar.style.setProperty('pointer-events', hide ? 'none' : 'auto', 'important');
+      }
+      window.__refreshStickyBar = forceVisible;
+
+      // Track whether the hero lead form is visible (or being filled in)
+      function watchForm() {
+        var form = document.getElementById('enroll');
+        if (!form) return;
+        var inView = false, focused = false;
+        function update() {
+          window.__formInView = inView || focused;
+          document.documentElement.classList.toggle('form-in-view', window.__formInView);
+          forceVisible();
+        }
+        if ('IntersectionObserver' in window) {
+          new IntersectionObserver(function (entries) {
+            inView = entries[0].isIntersecting;
+            update();
+          }, { threshold: 0.15 }).observe(form);
+        }
+        // Clicking into the embedded form moves focus into its iframe
+        window.addEventListener('blur', function () {
+          setTimeout(function () {
+            focused = !!(document.activeElement && form.contains(document.activeElement));
+            update();
+          }, 0);
+        });
+        window.addEventListener('focus', function () { focused = false; update(); });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', watchForm);
+      } else {
+        watchForm();
       }
       forceVisible();
       document.addEventListener('DOMContentLoaded', forceVisible);
@@ -2709,37 +2999,211 @@ class Component extends DCLogic {
             Essentials</span>
           <h3
             style="margin: 2px 0 0 0; font-family: 'Sora', sans-serif; font-size: 1.25rem; font-weight: 700; color: #060814;">
-            Book Your Consultation</h3>
+            Book Your 1-on-1 Consultation</h3>
+          <p style="margin: 4px 0 0 0; font-family: 'Inter', sans-serif; font-size: 0.8125rem; color: #4A4F6A;">Reserve your personalized AI roadmap session. 100% free, zero obligation.</p>
         </div>
         <button id="close-modal-btn" type="button" aria-label="Close modal" onclick="closeLeadModal()"
           style="background: #F0F2F8; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.25rem; display: flex; align-items: center; justify-content: center; color: #4A4F6A; outline: none; z-index: 99;">✕</button>
       </div>
-      <div class="form-embed-wrapper" style="overflow: hidden; border-radius: 16px; position: relative;">
-        <!-- AI Inference Form Loader Skeleton Overlay -->
-        <div class="form-ai-loader">
-          <div class="ai-pulse-bar">
-            <div class="ai-pulse-dot"></div>
-            <span>⚡ Loading AI Consultation Booking...</span>
-          </div>
-          <div class="sk-input" style="width: 100%;"></div>
-          <div class="sk-input" style="width: 100%;"></div>
-          <div class="sk-input" style="width: 100%;"></div>
-          <div class="sk-input" style="width: 100%;"></div>
-          <div class="sk-btn" style="width: 100%;"></div>
-        </div>
-        <div class="form-iframe-clipper"
-          style="overflow: hidden; height: 535px; position: relative; background: #FFFFFF;">
-          <iframe src="https://link.trym.co.in/widget/form/C3QNWOEvU9lO9L2o63iY"
-            id="drawer-inline-C3QNWOEvU9lO9L2o63iY"
-            style="width: 100%; height: 594px; border: none; display: block;" loading="eager" fetchpriority="high"
-            data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value=""
-            data-activation-type="alwaysActivated" data-activation-value="" data-deactivation-type="neverDeactivate"
-            data-deactivation-value="" data-form-name="Form 0" data-height="594"
-            data-layout-iframe-id="drawer-inline-C3QNWOEvU9lO9L2o63iY" data-form-id="C3QNWOEvU9lO9L2o63iY"
-            title="Form 0" onload="this.classList.add('iframe-loaded'); if (window.hideFormLoaders) window.hideFormLoaders();">
-          </iframe>
-        </div>
+      <div class="trym-iframe-wrapper" style="background: #FFFFFF; min-height: 520px; overflow: hidden; position: relative; border-radius: 8px;">
+        <iframe
+          src="https://link.trym.co.in/widget/form/C3QNWOEvU9lO9L2o63iY"
+          loading="lazy"
+          style="width: 100%; height: 580px; border: none; display: block;"
+          id="drawer-inline-C3QNWOEvU9lO9L2o63iY"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="genai.aiessentials.in"
+          data-height="580"
+          data-layout-iframe-id="drawer-inline-C3QNWOEvU9lO9L2o63iY"
+          data-form-id="C3QNWOEvU9lO9L2o63iY"
+          data-cookie-consent="true"
+          data-cookie-consent-provider="auto"
+          title="genai.aiessentials.in">
+        </iframe>
       </div>
+    </div>
+  </div>
+
+  <!-- Native Form Submission Handler & UTM Parameter Tracker -->
+  <script>
+    // Optional Webhook endpoint (if you configure a Webhook in Trym/Zapier/Make, set it here)
+    window.TRYM_WEBHOOK_URL = window.TRYM_WEBHOOK_URL || "";
+
+    // Auto populate UTM tags into hidden form fields on page load
+    document.addEventListener("DOMContentLoaded", function () {
+      try {
+        var urlParams = new URLSearchParams(window.location.search);
+        var utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_adset"];
+        utmKeys.forEach(function (key) {
+          var val = urlParams.get(key);
+          if (val) {
+            document.querySelectorAll('input[name="' + key + '"]').forEach(function (inp) {
+              inp.value = val;
+            });
+          }
+        });
+      } catch (e) {}
+    });
+
+    // Native Form Submission Function
+    window.handleNativeLeadSubmit = function (event, form) {
+      event.preventDefault();
+
+      var submitBtn = form.querySelector('.native-submit-btn');
+      var btnText = submitBtn ? submitBtn.querySelector('.btn-text') : null;
+      var btnSpinner = submitBtn ? submitBtn.querySelector('.btn-spinner') : null;
+      var btnArrow = submitBtn ? submitBtn.querySelector('.btn-arrow') : null;
+
+      var nameInput = form.querySelector('input[name="first_name"]');
+      var phoneInput = form.querySelector('input[name="phone"]');
+      var emailInput = form.querySelector('input[name="email"]');
+      var describeSelect = form.querySelector('select[name="which_describes_you"]');
+      var goalSelect = form.querySelector('select[name="what_do_you_want_ai_to_help_you_achieve"]');
+
+      if (!nameInput || !nameInput.value.trim()) {
+        if (nameInput) nameInput.focus();
+        return false;
+      }
+
+      var rawPhone = phoneInput ? phoneInput.value.trim().replace(/\D/g, '') : '';
+      if (!rawPhone || rawPhone.length < 10) {
+        if (phoneInput) phoneInput.focus();
+        alert('Please enter a valid 10-digit WhatsApp number.');
+        return false;
+      }
+
+      if (!emailInput || !emailInput.value.trim() || !emailInput.checkValidity()) {
+        if (emailInput) emailInput.focus();
+        return false;
+      }
+
+      if (!describeSelect || !describeSelect.value) {
+        if (describeSelect) describeSelect.focus();
+        return false;
+      }
+
+      if (!goalSelect || !goalSelect.value) {
+        if (goalSelect) goalSelect.focus();
+        return false;
+      }
+
+      // UI Submitting State
+      if (submitBtn) submitBtn.classList.add('submitting');
+      if (btnText) btnText.textContent = '⚡ Confirming Consultation...';
+      if (btnArrow) btnArrow.style.display = 'none';
+      if (btnSpinner) btnSpinner.style.display = 'inline-block';
+
+      // Capture UTMs
+      var urlParams = new URLSearchParams(window.location.search);
+      var utmSource = urlParams.get('utm_source') || (form.querySelector('input[name="utm_source"]') ? form.querySelector('input[name="utm_source"]').value : '');
+      var utmMedium = urlParams.get('utm_medium') || (form.querySelector('input[name="utm_medium"]') ? form.querySelector('input[name="utm_medium"]').value : '');
+      var utmCampaign = urlParams.get('utm_campaign') || (form.querySelector('input[name="utm_campaign"]') ? form.querySelector('input[name="utm_campaign"]').value : '');
+      var utmContent = urlParams.get('utm_content') || (form.querySelector('input[name="utm_content"]') ? form.querySelector('input[name="utm_content"]').value : '');
+      var utmAdset = urlParams.get('utm_adset') || (form.querySelector('input[name="utm_adset"]') ? form.querySelector('input[name="utm_adset"]').value : '');
+
+      var fullPhone = '+91' + rawPhone.slice(-10);
+
+      var payload = {
+        formId: 'C3QNWOEvU9lO9L2o63iY',
+        location_id: 'U8SNgySI480lSg0MThRA',
+        first_name: nameInput.value.trim(),
+        phone: fullPhone,
+        email: emailInput.value.trim(),
+        C7s3xCfqb9hlywK4Y1kM: describeSelect.value,
+        which_describes_you: describeSelect.value,
+        dUhkGETQ7V05OCyrXe8l: goalSelect.value,
+        what_do_you_want_ai_to_help_you_achieve: goalSelect.value,
+        utm_source: utmSource,
+        utm_medium: utmMedium,
+        utm_campaign: utmCampaign,
+        utm_content: utmContent,
+        utm_adset: utmAdset
+      };
+
+      // GTM DataLayer Event
+      if (window.dataLayer) {
+        window.dataLayer.push({
+          event: 'lead_form_submitted',
+          form_name: 'genai_aiessentials_consultation',
+          lead: {
+            name: payload.first_name,
+            email: payload.email,
+            phone: payload.phone,
+            profile: payload.which_describes_you,
+            goal: payload.what_do_you_want_ai_to_help_you_achieve
+          }
+        });
+      }
+
+      // Meta Pixel Event
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', {
+          content_name: 'AI Consultation',
+          value: 0,
+          currency: 'INR'
+        });
+      }
+
+      // Background Headless Bridge to Trym Form C3QNWOEvU9lO9L2o63iY
+      try {
+        var bridgeParams = new URLSearchParams();
+        bridgeParams.set('first_name', payload.first_name);
+        bridgeParams.set('phone', payload.phone);
+        bridgeParams.set('email', payload.email);
+        bridgeParams.set('which_describes_you', payload.which_describes_you);
+        bridgeParams.set('what_do_you_want_ai_to_help_you_achieve', payload.what_do_you_want_ai_to_help_you_achieve);
+        if (utmSource) bridgeParams.set('utm_source', utmSource);
+        if (utmMedium) bridgeParams.set('utm_medium', utmMedium);
+        if (utmCampaign) bridgeParams.set('utm_campaign', utmCampaign);
+        if (utmContent) bridgeParams.set('utm_content', utmContent);
+        if (utmAdset) bridgeParams.set('utm_adset', utmAdset);
+
+        var bridge = document.getElementById('trym-headless-bridge');
+        if (!bridge) {
+          bridge = document.createElement('iframe');
+          bridge.id = 'trym-headless-bridge';
+          bridge.style.display = 'none';
+          bridge.style.width = '0';
+          bridge.style.height = '0';
+          bridge.style.border = 'none';
+          document.body.appendChild(bridge);
+        }
+        bridge.src = 'https://link.trym.co.in/widget/form/C3QNWOEvU9lO9L2o63iY?' + bridgeParams.toString();
+      } catch (err) {
+        console.warn('Bridge notice:', err);
+      }
+
+      // Optional Webhook
+      if (window.TRYM_WEBHOOK_URL) {
+        try {
+          fetch(window.TRYM_WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+            mode: 'no-cors'
+          }).catch(function (e) { console.warn('Webhook notice:', e); });
+        } catch (e) {}
+      }
+
+      // Save lead name for thank you page
+      try {
+        sessionStorage.setItem('lead_first_name', payload.first_name);
+      } catch (e) {}
+
+      // Smooth Redirect to Thank You page
+      setTimeout(function () {
+        window.location.href = 'thankyou.html';
+      }, 600);
+
+      return false;
+    };
+  </script>
     </div>
   </div>
 </body>
