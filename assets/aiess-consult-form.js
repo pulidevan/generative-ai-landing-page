@@ -11,7 +11,7 @@
  */
 (function () {
   'use strict';
-  var BUILD = '2026.11.06-1';
+  var BUILD = '2026.11.06-2';
   var ENDPOINT = 'https://leads.aiessentials.in/api/consult-lead.php';
   var PROFILES = ['💼 Working Professional', '🧑‍💻 Freelancer / Consultant', '🎓 Student / Fresher', '🏢 Business Owner / Founder', '🔄 Career Switcher'];
   var GOALS = ['Create Ai Videos', 'Build websites and app using AI', 'Get more clients and increase my income', 'Deliver work faster using AI',
@@ -21,20 +21,54 @@
 
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 
-  function attribution() {
+  // Where THIS visit came from. Only this visit: URL UTMs, then ad click ids, then the referrer, else "direct".
+  // Never an older visit's source from localStorage (that is how a LinkedIn visit weeks ago labelled a direct visit today).
+  function platformFromHost(h) {
+    h = (h || '').toLowerCase();
+    if (!h) return '';
+    if (/instagram\.com$/.test(h)) return 'instagram';
+    if (/(^|\.)linkedin\.com$|lnkd\.in$/.test(h)) return 'linkedin';
+    if (/whatsapp|wa\.me$/.test(h)) return 'whatsapp';
+    if (/youtube\.com$|youtu\.be$/.test(h)) return 'youtube';
+    if (/(^|\.)(twitter|x)\.com$|^t\.co$/.test(h)) return 'twitter';
+    if (/facebook\.com$|fb\.com$|fb\.me$/.test(h)) return 'facebook';
+    if (/(^|\.)google\./.test(h)) return 'google';
+    if (/(^|\.)bing\.com$/.test(h)) return 'bing';
+    if (/telegram|t\.me$/.test(h)) return 'telegram';
+    if (/(^|\.)aiessentials\.in$/.test(h)) return h === location.hostname ? '' : h;   // our own other sites
+    return h;
+  }
+  function resolveVisit() {
     var a = {}, q;
     try { q = new URLSearchParams(location.search); } catch (e) { q = null; }
-    var stored = {};
-    try { stored = JSON.parse(sessionStorage.getItem('aiess_consult_attr') || '{}') || {}; } catch (e) {}
-    UTM.forEach(function (k) { var v = q && q.get(k); if (v) a[k] = v; else if (stored[k]) a[k] = stored[k]; });
-    a.referrer = stored.referrer || document.referrer || '';
+    UTM.forEach(function (k) { var v = q && q.get(k); if (v) a[k] = v.trim().slice(0, 200); });
+    var ref = '';
+    try { ref = document.referrer ? new URL(document.referrer).hostname : ''; } catch (e) {}
+    if (ref === location.hostname) ref = '';
+    a.referrer = ref ? document.referrer.slice(0, 200) : '';
+    var platform = (a.utm_source || '').toLowerCase() || platformFromHost(ref) ||
+      (a.fbclid ? 'facebook_or_instagram' : '') || (a.gclid ? 'google' : '') || 'direct';
+    a.source_platform = platform;
     a.landing_page = location.hostname + location.pathname;
     a.source_link = location.href.slice(0, 500);
-    a.device = /Mobi|Android|iPhone/i.test(navigator.userAgent) ? 'Mobile' : (/iPad|Tablet/i.test(navigator.userAgent) ? 'Tablet' : 'Desktop');
-    try { sessionStorage.setItem('aiess_consult_attr', JSON.stringify(a)); } catch (e) {}
+    a.device = /iPad|Tablet/i.test(navigator.userAgent) ? 'Tablet' : (/Mobi|Android|iPhone/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop');
     return a;
   }
-  attribution(); // remember first-landing UTMs for this tab even if the URL changes later
+  // Keep this visit's landing signals for the tab (in-page navigation can drop the query string), but a new
+  // visit with its own UTMs or referrer replaces them.
+  var VISIT = (function () {
+    var now = resolveVisit(), saved = null;
+    try { saved = JSON.parse(sessionStorage.getItem('aiess_consult_visit') || 'null'); } catch (e) {}
+    var fresh = now.source_platform !== 'direct' || !saved;
+    var v = fresh ? now : saved;
+    try { sessionStorage.setItem('aiess_consult_visit', JSON.stringify(v)); } catch (e) {}
+    return v;
+  })();
+  function attribution() {
+    var a = JSON.parse(JSON.stringify(VISIT));
+    a.source_link = location.href.slice(0, 500);
+    return a;
+  }
 
   var ICON = {
     user: '<svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
